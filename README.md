@@ -175,10 +175,10 @@ Oracle skills extend your agent's capabilities with specialized workflows:
 | 22 | **retrospective** | skill | Create session retrospective with AI diary |
 | 23 | **standup** | skill | Daily standup check |
 | 24 | **where-we-are** | skill | Session awareness - alias for /recap --now |
-| 25 | **who-we-are** | skill | Know ourselves |
+| 25 | **who-are-you** | skill | Know ourselves |
 | 26 | **worktree** | skill | Git worktree for parallel work |
 
-*Generated: 2026-02-20 03:22:29 UTC*
+*Generated: 2026-02-20 03:33:07 UTC*
 
 ## Supported Agents
 

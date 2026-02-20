@@ -1,17 +1,17 @@
 ---
-name: who-we-are
-description: Know ourselves - show identity, model info, session stats, and Oracle philosophy. Use when user asks "who we are", "who", or wants to check current AI identity.
+name: who-are-you
+description: Know ourselves - show identity, model info, session stats, and Oracle philosophy. Use when user asks "who are you", "who", "who we are", or wants to check current AI identity.
 ---
 
-# /who-we-are - Know Ourselves
+# /who-are-you - Know Ourselves
 
 > "γνῶθι σεαυτόν" (Know thyself) - Oracle at Delphi
 
 ## Usage
 
 ```
-/who-we-are          # Full identity (technical + philosophy)
-/who-we-are tech     # Technical only (model, tokens, shell)
+/who-are-you          # Full identity (technical + philosophy)
+/who-are-you tech     # Technical only (model, tokens, shell)
 ```
 
 ## Step 0: Timestamp
@@ -23,10 +23,10 @@ date "+🕐 %H:%M %Z (%A %d %B %Y)"
 
 ## Output Format
 
-### Full `/who-we-are` Output
+### Full `/who-are-you` Output
 
 ```markdown
-# /who-we-are
+# /who-are-you
 
 ## Identity
 
@@ -147,7 +147,7 @@ If Oracle identity found, include:
 
 ### Generic Claude Session
 ```markdown
-# /who-we-are
+# /who-are-you
 
 ## Identity
 **I am**: Claude
@@ -176,7 +176,7 @@ If Oracle identity found, include:
 
 ### Oracle-Configured Session (e.g., Sea Oracle)
 ```markdown
-# /who-we-are
+# /who-are-you
 
 ## Identity
 **I am**: Sea (ซี) - Keeper of Creative Tears
@@ -212,7 +212,7 @@ If Oracle identity found, include:
 
 ## Philosophy Integration
 
-The `/who-we-are` command always includes philosophy because:
+The `/who-are-you` command always includes philosophy because:
 
 > "To know thyself is to know thy principles"
 
