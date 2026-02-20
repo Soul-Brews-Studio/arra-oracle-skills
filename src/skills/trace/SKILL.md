@@ -17,6 +17,8 @@ Find + Log + Dig + Distill
 /trace [query] --repo [url]       # Clone to ghq, then search
 /trace --dig                      # Session goldminer: scan Claude Code .jsonl files
 /trace --dig [N]                  # Scan N most recent sessions (default 10)
+/trace --dig --all                # Scan across ALL repos (not just current)
+/trace --dig --all [N]            # All repos, N most recent
 ```
 
 ## Directory Structure
@@ -215,6 +217,7 @@ Scans `~/.claude/projects/` session `.jsonl` files to build a timeline of recent
 
 ### Step 1: Discover Project Dirs
 
+**Default** (current repo only):
 ```bash
 PROJECT_BASE=$(ls -d "$HOME/.claude/projects/"*"$(basename "$(pwd)")" 2>/dev/null | head -1)
 export PROJECT_DIRS="$PROJECT_BASE"
@@ -222,6 +225,11 @@ for wt in "${PROJECT_BASE}"-wt*; do [ -d "$wt" ] && export PROJECT_DIRS="$PROJEC
 ```
 
 Uses `basename` of `pwd` to match the repo name suffix (avoids `github.com` vs `github-com` encoding mismatch). Also picks up worktree dirs (`-wt`, `-wt-1`, etc.).
+
+**With `--all`** (all repos):
+```bash
+export PROJECT_DIRS=$(ls -d "$HOME/.claude/projects/"*/ | tr '\n' ':')
+```
 
 ### Step 2: Extract Session Data
 
@@ -288,12 +296,14 @@ Read the JSON output and display as a table:
 | `--oracle` | Fast | Oracle only | No |
 | `--smart` | Medium | Oracle → maybe deep | Yes (< 3 results) |
 | `--deep` | Thorough | 5 parallel agents | N/A |
-| `--dig` | Fast | Claude Code sessions | No |
+| `--dig` | Fast | Claude Code sessions (current repo) | No |
+| `--dig --all` | Fast | Claude Code sessions (all repos) | No |
 
 | Flag | Effect |
 |------|--------|
 | `--repo [path]` | Search specific local repo |
 | `--repo [url]` | Clone to ghq, then search |
+| `--all` | With `--dig`: scan all repos, not just current |
 
 ---
 
