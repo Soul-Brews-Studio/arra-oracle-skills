@@ -1,6 +1,6 @@
 {
   "name": "oracle-skills",
-  "version": "1.5.83",
+  "version": "1.5.84",
   "description": "Install Oracle skills to Claude Code, OpenCode, Cursor, and 11+ AI coding agents",
   "type": "module",
   "bin": {
@@ -17,7 +17,8 @@
     "compile": "bun scripts/compile.ts",
     "version": "bun run compile && bun scripts/update-readme-table.ts && git add src/commands README.md",
     "prepare": "lefthook install",
-    "prepublishOnly": "bun run compile && bun run build"
+    "prepublishOnly": "bun run compile && bun run build",
+    "clawhub": "bun scripts/clawhub-build.ts"
   },
   "keywords": [
     "oracle",

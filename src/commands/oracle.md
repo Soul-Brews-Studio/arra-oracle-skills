@@ -1,5 +1,5 @@
 ---
-description: v1.5.83 | Manage Oracle skills and profiles. Use when user says "oracle", "profile", "install skill", "remove skill", "switch profile".
+description: v1.5.84 | Manage Oracle skills and profiles. Use when user says "oracle", "profile", "install skill", "remove skill", "switch profile".
 ---
 
 # /oracle
@@ -18,4 +18,4 @@ Execute the `oracle` skill with the provided arguments.
 **IMPORTANT**: Only use the path above. Do NOT search for or use any other file with "oracle" in the name.
 
 ---
-*oracle-skills-cli v1.5.83*
+*oracle-skills-cli v1.5.84*
