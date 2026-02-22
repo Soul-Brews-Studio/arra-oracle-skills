@@ -1,6 +1,6 @@
 ---
 name: trace
-description: Find projects across git history, repos, docs, and Oracle. Use when user asks "trace", "find project", "where is [project]", "search history", "dig", "sessions", "past sessions". Supports --oracle (fast), --smart (default), --deep (5 subagents), --dig (session goldminer).
+description: Find projects across git history, repos, docs, and Oracle. Use when user asks "trace", "find project", "where is [project]", "search history", "dig", "sessions", "past sessions", "timeline". Supports --oracle (fast), --smart (default), --deep (5 subagents), --dig (session goldminer), --timeline (day-by-day view).
 ---
 
 # /trace - Unified Discovery System
@@ -19,6 +19,8 @@ Find + Log + Dig + Distill
 /trace --dig [N]                  # Scan N most recent sessions (default 10)
 /trace --dig --all                # Scan across ALL repos (not just current)
 /trace --dig --all [N]            # All repos, N most recent
+/trace --dig --all --timeline     # Day-by-day grouped timeline (all repos)
+/trace --dig --timeline [N]       # Timeline for current repo, N sessions
 ```
 
 ## Directory Structure
@@ -263,10 +265,51 @@ Column rendering rules:
 - **Date**: `MM-DD` short format (strip year)
 - **Session**: `HH:MM–HH:MM` using `startGMT7` and `endGMT7` (strip date, keep time only)
 - **Min**: `[durationMin]m`
-- **Repo**: basename of `gitBranch` path, or `gitBranch` value directly if short
+- **Repo**: use `repoName` field from dig.py output (resolved via ghq)
 - **Msgs**: `realHumanMessages` count
 
 "Msgs" = real typed human messages (not tool approvals).
+
+### With --timeline: Group by Date
+
+When `--timeline` flag is present, group sessions by date instead of a flat table. Use `--all` to see all repos (recommended for timeline).
+
+**Step 1**: Run dig.py with large N (e.g. 200 for `--all`, or user-specified count)
+
+**Step 2**: Group sessions by date from `startGMT7`. Render each day as:
+
+```markdown
+## Feb 22 (Sun) — [vibe label]
+
+                  · · ·   sleeping / offline
+08:48–09:11    23m   homelab        Update Fleet Runbook + Explore black.local
+09:11–11:30   139m   homelab        Set Up KVM OpenClaw Node on black.local
+09:37–12:51   194m   Nat-s-Agents   /recap → supergateway → CF ZT → oracle-v2 dig
+                  · · ·   45m gap
+12:51–13:03    12m   Nat-s-Agents   Dig All + Design oracle-v2 ← current
+                  · · ·   no session yet
+
+## Feb 21 (Sat) — Long day: Fleet + Brewing + Skills
+
+06:19–08:38   139m   homelab        Moltworker Gateway + MBP Node
+08:40           (bg)  openclaw       ClawHub Build Script (idle long)
+09:23–16:08   405m   homelab        Debug MBP Node 401 — Gateway Token Auth
+```
+
+**Rendering rules**:
+- **Day header**: `## MMM DD (Day) — [vibe label]` — infer vibe from session summaries (e.g. "Infrastructure Day", "Brewing + Skills")
+- **Session rows**: `HH:MM–HH:MM  [N]m  REPO  Summary` — use `repoName` for repo, `summary` for focus
+- **Gap rows**: `· · ·  [label]` between sessions when gap > 30 min
+- **Sidechain**: prefix `(bg)` for sessions with `isSidechain: true`
+- **Current**: append `← current` marker on the last session of the current day (today only)
+- **Sort**: days newest-first, sessions within each day oldest-first (chronological)
+- **Date format**: `startGMT7` time portion only (HH:MM), `endGMT7` time portion (HH:MM)
+- **Repo width**: pad repo names to align columns
+
+**Step 3**: Show summary footer:
+```markdown
+**Days**: [count] | **Sessions**: [count] | **Total time**: [sum of durationMin]m
+```
 
 ### Step 4: No trace log for --dig
 
@@ -308,12 +351,14 @@ Column rendering rules:
 | `--deep` | Thorough | 5 parallel agents | N/A |
 | `--dig` | Fast | Claude Code sessions (current repo) | No |
 | `--dig --all` | Fast | Claude Code sessions (all repos) | No |
+| `--dig --timeline` | Fast | Day-by-day grouped timeline | No |
 
 | Flag | Effect |
 |------|--------|
 | `--repo [path]` | Search specific local repo |
 | `--repo [url]` | Clone to ghq, then search |
 | `--all` | With `--dig`: scan all repos, not just current |
+| `--timeline` | With `--dig`: group sessions by date |
 
 ---
 
