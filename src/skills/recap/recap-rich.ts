@@ -28,18 +28,16 @@ if (existsSync(focusFile)) {
   console.log("No focus file");
 }
 
-// Schedule (vault-first)
-console.log("\n## TODAY");
+// Schedule (vault-first) — file only has pending events, already sorted
+console.log("\n## UPCOMING");
 const vaultSchedule = join(homedir(), ".oracle", "ψ", "inbox", "schedule.md");
 const scheduleFile = existsSync(vaultSchedule) ? vaultSchedule : join(ROOT, "ψ/inbox/schedule.md");
 if (existsSync(scheduleFile)) {
-  const schedule = await Bun.file(scheduleFile).text();
-  const todayNum = now.getDate();
-  const monthName = now.toLocaleDateString("en-US", { month: "short" });
-  const matches = schedule.split("\n").filter((l) => 
-    l.includes(monthName) && (l.includes(` ${todayNum} `) || l.includes(` ${todayNum + 1} `))
-  ).slice(0, 3);
-  console.log(matches.join("\n") || "No schedule");
+  const lines = (await Bun.file(scheduleFile).text()).split("\n");
+  const rows = lines.filter((l) => l.startsWith("| ") && !l.includes("---") && !l.includes("Date")).slice(0, 5);
+  console.log(rows.join("\n") || "No events");
+} else {
+  console.log("No schedule file");
 }
 
 // Git

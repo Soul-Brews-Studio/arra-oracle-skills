@@ -31,18 +31,13 @@ if (existsSync(focusFile)) {
   if (taskMatch) focusTask = taskMatch[1].trim().slice(0, 80);
 }
 
-// Schedule (vault-first)
+// Schedule (vault-first) — grab first event row from schedule.md
 let schedule = "No schedule";
 const vaultSchedule = join(homedir(), ".oracle", "ψ", "inbox", "schedule.md");
 const scheduleFile = existsSync(vaultSchedule) ? vaultSchedule : join(root, "ψ/inbox/schedule.md");
 if (existsSync(scheduleFile)) {
-  const scheduleContent = await Bun.file(scheduleFile).text();
-  const today = new Date();
-  const month = today.toLocaleString('en', { month: 'short' });
-  const day = today.getDate();
-  const tomorrow = day + 1;
-  const regex = new RegExp(`${month}\\s*(${day}|${tomorrow})`, 'i');
-  const match = scheduleContent.split('\n').find(line => regex.test(line));
+  const match = (await Bun.file(scheduleFile).text()).split('\n')
+    .find(l => l.startsWith('| ') && !l.includes('---') && !l.includes('Date'));
   if (match) schedule = match.replace(/\|/g, '').trim().slice(0, 120);
 }
 
