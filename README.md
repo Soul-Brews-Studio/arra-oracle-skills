@@ -11,21 +11,65 @@ Install Oracle skills to Claude Code, OpenCode, Cursor, and 11+ AI coding agents
 >
 > Use this repo as the **single entry point** for Oracle installation.
 
-## Quick Install (Claude Code)
+## Quick Start for AI Agents
 
-**Step 0:** Install Claude Code (if not installed)
+If you're an AI agent and a user asked you to install oracle-skills:
+
+**macOS / Linux** — pre-built binary (~37ms startup, no runtime needed):
 
 ```bash
-curl -fsSL https://claude.ai/install.sh | bash
+curl -fsSL https://raw.githubusercontent.com/Soul-Brews-Studio/oracle-skills-cli/main/install.sh | bash
 ```
 
-**Step 1:** Tell Claude to run, then restart and `/awaken`:
+**Windows** — via bunx (requires [Bun](https://bun.sh)):
 
 ```bash
-# Install oracle-skills
-curl -fsSL https://raw.githubusercontent.com/Soul-Brews-Studio/oracle-skills-cli/main/install.sh | bash
+bunx --bun oracle-skills@github:Soul-Brews-Studio/oracle-skills-cli install -g -y
+```
 
-# Setup permissions (run in your Oracle repo after restart)
+To install for specific agents only, add `--agent`:
+
+```bash
+oracle-skills install -g -y --agent claude-code gemini antigravity
+```
+
+After install, restart your session and run `/learn` on this repo to understand the skills you just installed.
+
+**What this does**: Installs Oracle skills (slash commands like `/learn`, `/trace`, `/recap`, `/rrr`) into your agent's skills directory. Skills are markdown + scripts that extend your capabilities with session awareness, codebase exploration, retrospectives, and more.
+
+See [Supported Agents](#supported-agents) for the full list of compatible agents and their skill paths.
+
+---
+
+## Install
+
+### macOS / Linux — Pre-built binary (recommended)
+
+No Bun or Node.js required. Downloads a self-contained ~59MB binary:
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/Soul-Brews-Studio/oracle-skills-cli/main/install.sh | bash
+```
+
+| Platform | Binary | Startup |
+|----------|--------|---------|
+| macOS Apple Silicon | `oracle-skills-darwin-arm64` | ~37ms |
+| macOS Intel | `oracle-skills-darwin-x64` | ~37ms |
+| Linux x64 | `oracle-skills-linux-x64` | ~37ms |
+| Linux ARM64 | `oracle-skills-linux-arm64` | ~37ms |
+
+### Windows / fallback — bunx
+
+Requires [Bun](https://bun.sh) installed:
+
+```bash
+bunx --bun oracle-skills@github:Soul-Brews-Studio/oracle-skills-cli#main install -g -y
+```
+
+### After install
+
+```bash
+# Setup permissions in your Oracle repo
 mkdir -p .claude && cat > .claude/settings.local.json << 'EOF'
 {
   "permissions": {
@@ -43,105 +87,7 @@ mkdir -p .claude && cat > .claude/settings.local.json << 'EOF'
 EOF
 ```
 
-Then restart Claude Code and run:
-
-```
-/awaken
-```
-
----
-
-## Install — FOR AI LLM AGENTS
-
-### One Command
-
-```bash
-curl -fsSL https://raw.githubusercontent.com/Soul-Brews-Studio/oracle-skills-cli/main/install.sh | bash
-```
-
-<details>
-<summary>📜 View install.sh (safe & transparent)</summary>
-
-```bash
-#!/bin/bash
-# Oracle Skills Installer - checks and installs: bun, ghq, oracle-skills
-
-# 1. Check & install bun
-which bun || curl -fsSL https://bun.sh/install | bash
-
-# 2. Check & install ghq
-which ghq || brew install ghq  # or: go install github.com/x-motemen/ghq@latest
-
-# 3. Install oracle-skills
-~/.bun/bin/bunx --bun oracle-skills@github:Soul-Brews-Studio/oracle-skills-cli#main install -g -y
-
-# Permissions are set up during /awaken in your Oracle repo
-echo "✨ Done! Run: claude . then /awaken"
-```
-
-</details>
-
----
-
-### Manual Steps
-
-```
-# Requirements: bash/zsh (macOS/Linux) or Git Bash (Windows)
-
-# 1. Check & install bun
-which bun || curl -fsSL https://bun.sh/install | bash
-
-# 2. Check & install ghq (for /learn and /trace)
-which ghq || brew install ghq  # macOS
-# Linux/Windows: go install github.com/x-motemen/ghq@latest
-
-# 3. Install oracle-skills
-~/.bun/bin/bunx --bun \
-  oracle-skills@github:Soul-Brews-Studio/oracle-skills-cli#main \
-  install -g -y
-
-# 4. Setup permissions in your Oracle repo (run BEFORE claude .)
-# cd /path/to/your-oracle-repo
-mkdir -p .claude && cat > .claude/settings.local.json << 'EOF'
-{
-  "permissions": {
-    "allow": [
-      "Bash(gh:*)", "Bash(ghq:*)", "Bash(git:*)",
-      "Bash(bun:*)", "Bash(bunx:*)", "Bash(mkdir:*)", "Bash(ln:*)",
-      "Bash(rg:*)", "Bash(date:*)", "Bash(ls:*)", "Bash(tree:*)",
-      "Bash(curl:*)", "Bash(du:*)", "Bash(wc:*)",
-      "Bash(bash)", "Bash(source ~/.bashrc)",
-      "Bash(export PATH=\"$HOME/.bun/bin:$PATH\")",
-      "Bash(*ψ/*)", "Bash(*psi/*)",
-      "Skill(learn)", "Skill(trace)", "Skill(awaken)",
-      "Skill(rrr)", "Skill(recap)", "Skill(project)"
-    ]
-  }
-}
-EOF
-
-# 5. Create alias (add to ~/.bashrc or ~/.zshrc)
-alias oracle-skills='~/.bun/bin/bunx --bun \
-  oracle-skills@github:Soul-Brews-Studio/oracle-skills-cli#main'
-
-# 6. Usage (with alias)
-oracle-skills install -g -y
-oracle-skills list -g
-oracle-skills uninstall -g -y
-
-# Or full command
-~/.bun/bin/bunx --bun oracle-skills@github:Soul-Brews-Studio/oracle-skills-cli#main install -g -y
-~/.bun/bin/bunx --bun oracle-skills@github:Soul-Brews-Studio/oracle-skills-cli#main list -g
-~/.bun/bin/bunx --bun oracle-skills@github:Soul-Brews-Studio/oracle-skills-cli#main uninstall -g -y
-
-# Flags
-# -g  Global (user) directory
-# -y  Skip prompts
-# -a  Target agent(s)
-# -s  Specific skill(s)
-```
-
-Then run `claude "/awaken"` to create a new Oracle ([example](https://github.com/Soul-Brews-Studio/phukhao-oracle)).
+Then restart Claude Code and run `/awaken` ([example](https://github.com/Soul-Brews-Studio/phukhao-oracle)).
 
 ## Skills
 
@@ -155,23 +101,23 @@ Oracle skills extend your agent's capabilities with specialized workflows:
 | - |  |  |  |
 | 4 | **deep-research** | skill + code | Deep Research via Gemini |
 | 5 | **gemini** | skill + code | Control Gemini via MQTT WebSocket |
-| 6 | **oraclenet** | skill + code | OracleNet — claim identity, post, comment |
-| 7 | **physical** | skill + code | Physical location awareness from FindMy |
-| 8 | **project** | skill + code | Clone and track external repos |
-| 9 | **recap** | skill + code | Session orientation and awareness |
-| 10 | **schedule** | skill + code | Query schedule via Oracle API (Drizzle DB) |
-| 11 | **speak** | skill + code | Text-to-speech using edge-tts or macOS say |
-| 12 | **watch** | skill + code | Learn from YouTube videos |
+| 6 | **oracle-family-scan** | skill + code | Manage Oracle family |
+| 7 | **oraclenet** | skill + code | OracleNet — claim identity, post, comment |
+| 8 | **physical** | skill + code | Physical location awareness from FindMy |
+| 9 | **project** | skill + code | Clone and track external repos |
+| 10 | **recap** | skill + code | Session orientation and awareness |
+| 11 | **schedule** | skill + code | Query schedule via Oracle API (Drizzle DB) |
+| 12 | **speak** | skill + code | Text-to-speech using edge-tts or macOS say |
+| 13 | **watch** | skill + code | Learn from YouTube videos |
 | - |  |  |  |
-| 13 | **awaken** | skill | Guided Oracle birth |
-| 14 | **birth** | skill | Prepare birth props for a new Oracle repo |
-| 15 | **dig** | skill | Mine Claude Code sessions |
-| 16 | **feel** | skill | Log emotions with optional structure |
-| 17 | **forward** | skill | Create handoff + enter plan mode for next |
-| 18 | **fyi** | skill | Log information for future reference |
-| 19 | **merged** | skill | Post-Merge Cleanup |
-| 20 | **oracle** | skill | Manage Oracle skills and profiles |
-| 21 | **oracle-family-scan** | skill | Manage Oracle family |
+| 14 | **awaken** | skill | Guided Oracle birth |
+| 15 | **birth** | skill | Prepare birth props for a new Oracle repo |
+| 16 | **dig** | skill | Mine Claude Code sessions |
+| 17 | **feel** | skill | Log emotions with optional structure |
+| 18 | **forward** | skill | Create handoff + enter plan mode for next |
+| 19 | **fyi** | skill | Log information for future reference |
+| 20 | **merged** | skill | Post-Merge Cleanup |
+| 21 | **oracle** | skill | Manage Oracle skills and profiles |
 | 22 | **oracle-soul-sync-update** | skill | Sync Oracle instruments with the family |
 | 23 | **philosophy** | skill | Display Oracle philosophy principles |
 | 24 | **retrospective** | skill | Create session retrospective with AI diary |
@@ -181,7 +127,7 @@ Oracle skills extend your agent's capabilities with specialized workflows:
 | 28 | **who-are-you** | skill | Know ourselves |
 | 29 | **worktree** | skill | Git worktree for parallel work |
 
-*Generated: 2026-02-27 15:17:08 UTC*
+*Generated: 2026-03-02 04:05:44 UTC*
 
 ## Supported Agents
 
