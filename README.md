@@ -13,14 +13,24 @@ Install Oracle skills to Claude Code, OpenCode, Cursor, and 11+ AI coding agents
 
 ## Quick Start for AI Agents
 
-If you're an AI agent and a user asked you to install oracle-skills, run this:
+If you're an AI agent and a user asked you to install oracle-skills:
+
+**macOS / Linux** — pre-built binary (~37ms startup, no runtime needed):
 
 ```bash
-# Install for specific agents (pick the ones the user asked for)
-bunx --bun oracle-skills@github:Soul-Brews-Studio/oracle-skills-cli install -g -y --agent claude-code opencode gemini antigravity
+curl -fsSL https://raw.githubusercontent.com/Soul-Brews-Studio/oracle-skills-cli/main/install.sh | bash
+```
 
-# Or install for all detected agents
+**Windows** — via bunx (requires [Bun](https://bun.sh)):
+
+```bash
 bunx --bun oracle-skills@github:Soul-Brews-Studio/oracle-skills-cli install -g -y
+```
+
+To install for specific agents only, add `--agent`:
+
+```bash
+oracle-skills install -g -y --agent claude-code gemini antigravity
 ```
 
 After install, restart your session and run `/learn` on this repo to understand the skills you just installed.
@@ -117,7 +127,7 @@ Oracle skills extend your agent's capabilities with specialized workflows:
 | 28 | **who-are-you** | skill | Know ourselves |
 | 29 | **worktree** | skill | Git worktree for parallel work |
 
-*Generated: 2026-03-02 04:05:06 UTC*
+*Generated: 2026-03-02 04:05:44 UTC*
 
 ## Supported Agents
 
