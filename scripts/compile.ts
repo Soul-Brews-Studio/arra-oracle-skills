@@ -60,7 +60,7 @@ Execute the \`${skillName}\` skill with the provided arguments.
 **IMPORTANT**: Only use the path above. Do NOT search for or use any other file with "${skillName}" in the name.
 
 ---
-*oracle-skills-cli v${pkg.version}*
+*🧬 Nat Weerawan × Oracle · Symbiotic Intelligence · v${pkg.version}*
 `;
 
         await writeFile(join(COMMANDS_DIR, `${skillName}.md`), commandContent);

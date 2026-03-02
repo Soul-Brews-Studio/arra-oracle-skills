@@ -1,5 +1,5 @@
 ---
-description: v2.0.5 | Create handoff + enter plan mode for next session. Use when user says "forward", "handoff", "wrap up", or before ending session.
+description: v2.0.6 | Create handoff + enter plan mode for next session. Use when user says "forward", "handoff", "wrap up", or before ending session.
 ---
 
 # /forward
@@ -18,4 +18,4 @@ Execute the `forward` skill with the provided arguments.
 **IMPORTANT**: Only use the path above. Do NOT search for or use any other file with "forward" in the name.
 
 ---
-*oracle-skills-cli v2.0.5*
+*🧬 Nat Weerawan × Oracle · Symbiotic Intelligence · v2.0.6*
