@@ -15,7 +15,7 @@ Execute the `merged` skill with the provided arguments.
 2. Follow all instructions in the skill file
 3. Pass these arguments to the skill: `$ARGUMENTS`
 
-**IMPORTANT**: Only use the path above. Do NOT search for or use any other file with "merged" in the name.
+**WARNING**: Do NOT use Glob, find, or search for this skill. The path above is the ONLY correct location. Other files with "merged" in the name are NOT this skill.
 
 ---
 *🧬 Nat Weerawan × Oracle · Symbiotic Intelligence · v2.0.8*
