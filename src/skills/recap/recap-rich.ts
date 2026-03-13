@@ -5,7 +5,8 @@ import { existsSync, readdirSync, realpathSync } from "fs";
 import { join } from "path";
 
 const ROOT = process.env.ROOT || (await $`git rev-parse --show-toplevel`.text().catch(() => process.cwd())).trim();
-await $`git -C ${ROOT} config core.quotePath false`.quiet().catch(() => {});
+const isGit = (await $`git -C ${ROOT} rev-parse --is-inside-work-tree`.quiet().text().catch(() => "false")).trim() === "true";
+if (isGit) await $`git -C ${ROOT} config core.quotePath false`.quiet().catch(() => {});
 
 const now = new Date();
 const date = now.toLocaleDateString("en-GB", { day: "2-digit", month: "short", year: "numeric" });
@@ -44,9 +45,13 @@ if (existsSync(scheduleFile)) {
 
 // Git
 console.log("\n## GIT");
-console.log(await $`git -C ${ROOT} status -sb`.text());
-console.log("**Last 3 commits:**");
-console.log(await $`git -C ${ROOT} log --oneline -3`.text());
+if (isGit) {
+  console.log(await $`git -C ${ROOT} status -sb`.text());
+  console.log("**Last 3 commits:**");
+  console.log(await $`git -C ${ROOT} log --oneline -3`.text());
+} else {
+  console.log("Not a git repository");
+}
 
 // Tracks
 console.log("## TRACKS");
@@ -93,9 +98,13 @@ if (existsSync(handoffDir)) {
 
 // Context
 console.log("\n---\n\n## CONTEXT\n");
-const status = await $`git -C ${ROOT} status --porcelain`.text();
-const modified = status.split("\n").filter((l) => l.startsWith(" M")).map((l) => l.slice(3));
-const untracked = status.split("\n").filter((l) => l.startsWith("??")).map((l) => l.slice(3));
+if (isGit) {
+  const status = await $`git -C ${ROOT} status --porcelain`.text();
+  const modified = status.split("\n").filter((l) => l.startsWith(" M")).map((l) => l.slice(3));
+  const untracked = status.split("\n").filter((l) => l.startsWith("??")).map((l) => l.slice(3));
 
-if (modified.length) console.log("**Modified**:\n" + modified.map((f) => `  ${f}`).join("\n"));
-if (untracked.length) console.log("\n**Untracked**:\n" + untracked.map((f) => `  ${f}`).join("\n"));
+  if (modified.length) console.log("**Modified**:\n" + modified.map((f) => `  ${f}`).join("\n"));
+  if (untracked.length) console.log("\n**Untracked**:\n" + untracked.map((f) => `  ${f}`).join("\n"));
+} else {
+  console.log("Not a git repository — skipping file status");
+}
