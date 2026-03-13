@@ -133,18 +133,19 @@ Oracle skills extend your agent's capabilities with specialized workflows:
 | 18 | **feel** | skill | Log emotions with optional structure |
 | 19 | **forward** | skill | Create handoff + enter plan mode for next |
 | 20 | **fyi** | skill | Log information for future reference |
-| 21 | **merged** | skill | Post-Merge Cleanup |
-| 22 | **oracle** | skill | Manage Oracle skills |
-| 23 | **oracle-soul-sync-update** | skill | Sync Oracle instruments with the family |
-| 24 | **philosophy** | skill | Display Oracle philosophy principles |
-| 25 | **retrospective** | skill | Create session retrospective with AI diary |
-| 26 | **standup** | skill | Daily standup check |
-| 27 | **talk-to** | skill | Talk to an agent via Oracle threads |
-| 28 | **where-we-are** | skill | Session awareness - alias for /recap --now |
-| 29 | **who-are-you** | skill | Know ourselves |
-| 30 | **worktree** | skill | Git worktree for parallel work |
+| 21 | **go** | skill | Switch skill profiles and features |
+| 22 | **merged** | skill | Post-Merge Cleanup |
+| 23 | **oracle** | skill | Manage Oracle skills |
+| 24 | **oracle-soul-sync-update** | skill | Sync Oracle instruments with the family |
+| 25 | **philosophy** | skill | Display Oracle philosophy principles |
+| 26 | **retrospective** | skill | Create session retrospective with AI diary |
+| 27 | **standup** | skill | Daily standup check |
+| 28 | **talk-to** | skill | Talk to an agent via Oracle threads |
+| 29 | **where-we-are** | skill | Session awareness - alias for /recap --now |
+| 30 | **who-are-you** | skill | Know ourselves |
+| 31 | **worktree** | skill | Git worktree for parallel work |
 
-*Generated: 2026-03-13 05:09:04 UTC*
+*Generated: 2026-03-13 05:15:20 UTC*
 
 ## Supported Agents
 
