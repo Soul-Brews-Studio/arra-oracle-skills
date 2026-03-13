@@ -112,7 +112,23 @@ export function registerInstall(program: Command, version: string) {
           shellMode,
         });
 
-        p.outro('✨ Oracle skills installed! Restart your agent to activate.');
+        p.outro('✨ Oracle skills installed!');
+
+        // Awakening — show CLI commands on first install
+        console.log(`
+  🔮 Oracle Skills v${version} — Awakened
+
+  CLI Commands:
+    oracle-skills agents             # list supported agents
+    oracle-skills about              # prereqs + system status
+    oracle-skills list -g            # show installed skills
+    oracle-skills profiles           # list profiles
+    oracle-skills select -g          # interactive skill picker
+    oracle-skills install -g -y      # reinstall all skills
+    oracle-skills uninstall -g -y    # remove all skills
+
+  Restart your agent to activate skills.
+`);
       } catch (error) {
         p.log.error(`Error: ${error instanceof Error ? error.message : 'Unknown error'}`);
         process.exit(1);

@@ -45,12 +45,12 @@ program
   .description('Install Oracle skills to Claude Code, OpenCode, Cursor, and 11+ AI coding agents')
   .version(VERSION);
 
-// Register all commands
+// Register all commands (agents first — most useful for discovery)
+registerAgents(program);
 registerInstall(program, VERSION);
 registerInit(program, VERSION);
 registerUninstall(program, VERSION);
 registerSelect(program, VERSION);
-registerAgents(program);
 registerList(program);
 registerProfiles(program);
 registerAbout(program, VERSION);

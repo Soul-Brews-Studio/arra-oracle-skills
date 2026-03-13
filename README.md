@@ -82,7 +82,7 @@ Oracle skills extend your agent's capabilities with specialized workflows:
 | 27 | **who-are-you** | skill | Know ourselves |
 | 28 | **worktree** | skill | Git worktree for parallel work |
 
-*Generated: 2026-03-13 10:53:14 UTC*
+*Generated: 2026-03-13 12:37:03 UTC*
 
 ## Supported Agents
 
@@ -93,6 +93,7 @@ Run `oracle-skills agents` to see detected agents and paths.
 ## CLI
 
 ```
+oracle-skills agents             # list supported agents
 oracle-skills about              # prereqs check + system status
 oracle-skills init               # first-time setup (standard profile)
 oracle-skills install -g -y      # install all skills globally
@@ -102,7 +103,6 @@ oracle-skills uninstall -g -s X  # remove specific skill(s)
 oracle-skills list -g            # show installed skills
 oracle-skills profiles           # list profiles
 oracle-skills profiles minimal   # show skills in a profile
-oracle-skills agents             # list agents
 ```
 
 ## Origin
