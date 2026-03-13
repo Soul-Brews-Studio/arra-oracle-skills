@@ -46,7 +46,7 @@ describe("installer stub format", () => {
 
   it("stub should have correct structure", async () => {
     const content = await readFile(
-      join(process.cwd(), "src/commands", "fyi.md"),
+      join(process.cwd(), "src/commands", "standup.md"),
       "utf-8"
     );
 
@@ -65,7 +65,7 @@ describe("installer stub format", () => {
     expect(content).toContain("Read the skill file");
 
     // Skill path in instructions
-    expect(content).toContain("~/.claude/skills/fyi/SKILL.md");
+    expect(content).toContain("~/.claude/skills/standup/SKILL.md");
 
     // Arguments (inline)
     expect(content).toContain("$ARGUMENTS");

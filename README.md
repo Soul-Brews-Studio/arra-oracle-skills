@@ -3,7 +3,7 @@
 [![CI](https://github.com/Soul-Brews-Studio/oracle-skills-cli/actions/workflows/ci.yml/badge.svg)](https://github.com/Soul-Brews-Studio/oracle-skills-cli/actions/workflows/ci.yml)
 [![Version](https://img.shields.io/github/v/tag/Soul-Brews-Studio/oracle-skills-cli?label=version)](https://github.com/Soul-Brews-Studio/oracle-skills-cli/releases)
 
-Skills for AI coding agents. 31 skills, 18 agents, 4 profiles.
+Skills for AI coding agents. 28 skills, 18 agents, 4 profiles.
 
 ## Install
 
@@ -28,9 +28,9 @@ oracle-skills uninstall -g -s dig   # remove specific skill
 
 | Profile | Count | Skills |
 |---------|-------|--------|
-| **minimal** | 7 | `forward`, `retrospective`, `recap`, `standup`, `go`, `about-oracle`, `oracle-family-scan` |
-| **standard** | 11 | `forward`, `retrospective`, `recap`, `standup`, `trace`, `dig`, `learn`, `talk-to`, `oracle-family-scan`, `go`, `about-oracle` |
-| **full** | 31 | all |
+| **minimal** | 7 | `forward`, `rrr`, `recap`, `standup`, `go`, `about-oracle`, `oracle-family-scan` |
+| **standard** | 11 | `forward`, `rrr`, `recap`, `standup`, `trace`, `dig`, `learn`, `talk-to`, `oracle-family-scan`, `go`, `about-oracle` |
+| **full** | 28 | all |
 
 Switch anytime: `/go minimal`, `/go standard`, `/go full`, `/go + soul`
 
@@ -72,20 +72,17 @@ Oracle skills extend your agent's capabilities with specialized workflows:
 | 17 | **dig** | skill | Mine Claude Code sessions |
 | 18 | **feel** | skill | Log emotions with optional structure |
 | 19 | **forward** | skill | Create handoff + enter plan mode for next |
-| 20 | **fyi** | skill | Log information for future reference |
-| 21 | **go** | skill | Switch skill profiles and features |
-| 22 | **merged** | skill | Post-Merge Cleanup |
-| 23 | **oracle** | skill | Manage Oracle skills |
-| 24 | **oracle-soul-sync-update** | skill | Sync Oracle instruments with the family |
-| 25 | **philosophy** | skill | Display Oracle philosophy principles |
-| 26 | **retrospective** | skill | Create session retrospective with AI diary |
-| 27 | **standup** | skill | Daily standup check |
-| 28 | **talk-to** | skill | Talk to an agent via Oracle threads |
-| 29 | **where-we-are** | skill | Session awareness - alias for /recap --now |
-| 30 | **who-are-you** | skill | Know ourselves |
-| 31 | **worktree** | skill | Git worktree for parallel work |
+| 20 | **go** | skill | Switch skill profiles and features |
+| 21 | **oracle** | skill | Manage Oracle skills |
+| 22 | **oracle-soul-sync-update** | skill | Sync Oracle instruments with the family |
+| 23 | **philosophy** | skill | Display Oracle philosophy principles |
+| 24 | **standup** | skill | Daily standup check |
+| 25 | **talk-to** | skill | Talk to an agent via Oracle threads |
+| 26 | **where-we-are** | skill | Session awareness |
+| 27 | **who-are-you** | skill | Know ourselves |
+| 28 | **worktree** | skill | Git worktree for parallel work |
 
-*Generated: 2026-03-13 06:28:08 UTC*
+*Generated: 2026-03-13 06:44:41 UTC*
 
 ## Supported Agents
 

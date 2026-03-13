@@ -88,7 +88,7 @@ This is the test skill content.
 
   it("should match new format with instructions", async () => {
     const output = await readFile(
-      join(process.cwd(), "src/commands", "fyi.md"),
+      join(process.cwd(), "src/commands", "standup.md"),
       "utf-8"
     );
 

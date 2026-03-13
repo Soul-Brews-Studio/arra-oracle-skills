@@ -42,12 +42,12 @@ describe("installer behavior by agent type", () => {
 
     it("stub should include skill location", async () => {
       const stubContent = await readFile(
-        join(process.cwd(), "src/commands", "fyi.md"),
+        join(process.cwd(), "src/commands", "standup.md"),
         "utf-8"
       );
 
       // Should tell agent where to find full skill
-      expect(stubContent).toContain("~/.claude/skills/fyi/SKILL.md");
+      expect(stubContent).toContain("~/.claude/skills/standup/SKILL.md");
     });
   });
 

@@ -1,14 +1,14 @@
 ---
 name: where-we-are
-description: Session awareness - alias for /recap --now. Use when user asks "now", "where are we", "what are we doing", "status".
+description: Session awareness - alias for /recap --now deep. Use when user asks "now", "where are we", "what are we doing", "status".
 ---
 
 # /where-we-are
 
-This skill has been merged into `/recap --now`.
+Alias for `/recap --now deep`.
 
 ## Instructions
 
-Run `/recap --now` (or `/recap --now deep` if user asked for deep mode).
+Run `/recap --now deep`.
 
-Pass arguments: `$ARGUMENTS`
+ARGUMENTS: $ARGUMENTS

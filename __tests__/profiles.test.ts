@@ -2,19 +2,19 @@ import { describe, it, expect } from "bun:test";
 import { profiles, features, resolveProfile, resolveProfileWithFeatures } from "../src/profiles";
 
 const ALL_SKILLS = [
-  'forward', 'retrospective', 'recap', 'standup', 'go', 'about-oracle',
+  'forward', 'rrr', 'recap', 'standup', 'go', 'about-oracle',
   'trace', 'dig', 'learn', 'talk-to', 'oracle-family-scan',
   'awaken', 'philosophy', 'who-are-you', 'birth', 'feel',
   'oraclenet', 'oracle-soul-sync-update', 'oracle',
   'worktree', 'physical', 'schedule',
   'speak', 'deep-research', 'watch', 'gemini',
-  'merged', 'fyi', 'where-we-are', 'rrr', 'project',
+  'where-we-are', 'project',
 ];
 
 describe("profiles", () => {
   it("minimal has 7 skills (4 ritual + go + about-oracle + oracle-family-scan)", () => {
     const result = resolveProfile("minimal", ALL_SKILLS);
-    expect(result).toEqual(['forward', 'retrospective', 'recap', 'standup', 'go', 'about-oracle', 'oracle-family-scan']);
+    expect(result).toEqual(['forward', 'rrr', 'recap', 'standup', 'go', 'about-oracle', 'oracle-family-scan']);
     expect(result?.length).toBe(7);
   });
 
@@ -29,7 +29,7 @@ describe("profiles", () => {
     expect(result?.length).toBe(11);
     // includes minimal
     expect(result).toContain('forward');
-    expect(result).toContain('retrospective');
+    expect(result).toContain('rrr');
     expect(result).toContain('recap');
     expect(result).toContain('standup');
     // includes discovery
@@ -68,13 +68,11 @@ describe("features", () => {
     expect(features.network).toContain('oraclenet');
   });
 
-  it("workspace has 3 skills (merged/fyi deprecated)", () => {
+  it("workspace has 3 skills", () => {
     expect(features.workspace.length).toBe(3);
     expect(features.workspace).toContain('worktree');
     expect(features.workspace).toContain('physical');
     expect(features.workspace).toContain('schedule');
-    expect(features.workspace).not.toContain('merged');
-    expect(features.workspace).not.toContain('fyi');
   });
 
   it("creator has 4 content skills", () => {
