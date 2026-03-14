@@ -3,7 +3,7 @@
 [![CI](https://github.com/Soul-Brews-Studio/oracle-skills-cli/actions/workflows/ci.yml/badge.svg)](https://github.com/Soul-Brews-Studio/oracle-skills-cli/actions/workflows/ci.yml)
 [![Version](https://img.shields.io/github/v/tag/Soul-Brews-Studio/oracle-skills-cli?label=version)](https://github.com/Soul-Brews-Studio/oracle-skills-cli/releases)
 
-Skills for AI coding agents. 28 skills, 18 agents, 4 profiles.
+Skills for AI coding agents. 32 skills, 18 agents, 4 profiles.
 
 ## Install
 
@@ -30,7 +30,7 @@ oracle-skills uninstall -g -s dig   # remove specific skill
 |---------|-------|--------|
 | **minimal** | 8 | `forward`, `rrr`, `recap`, `standup`, `go`, `about-oracle`, `oracle-family-scan`, `oracle-soul-sync-update` |
 | **standard** | 12 | `forward`, `rrr`, `recap`, `standup`, `trace`, `dig`, `learn`, `talk-to`, `oracle-family-scan`, `go`, `about-oracle`, `oracle-soul-sync-update` |
-| **full** | 28 | all |
+| **full** | 32 | all |
 
 Switch anytime: `/go minimal`, `/go standard`, `/go full`, `/go + soul`
 
@@ -42,6 +42,7 @@ Switch anytime: `/go minimal`, `/go standard`, `/go full`, `/go + soul`
 | **+network** | `talk-to`, `oracle-family-scan`, `oracle-soul-sync-update`, `oracle`, `oraclenet` |
 | **+workspace** | `worktree`, `physical`, `schedule` |
 | **+creator** | `speak`, `deep-research`, `watch`, `gemini` |
+| **+pulse** | `pulse-board`, `pulse-add`, `pulse-timeline`, `pulse-scan` |
 
 <!-- profiles:end -->
 
@@ -76,13 +77,17 @@ Oracle skills extend your agent's capabilities with specialized workflows:
 | 21 | **oracle** | skill | Manage Oracle skills |
 | 22 | **oracle-soul-sync-update** | skill | Sync Oracle instruments with the family |
 | 23 | **philosophy** | skill | Display Oracle philosophy principles |
-| 24 | **standup** | skill | Daily standup check |
-| 25 | **talk-to** | skill | Talk to an agent via Oracle threads |
-| 26 | **where-we-are** | skill | Session awareness |
-| 27 | **who-are-you** | skill | Know ourselves |
-| 28 | **worktree** | skill | Git worktree for parallel work |
+| 24 | **pulse-add** | skill | Add task to Pulse board |
+| 25 | **pulse-board** | skill | View Pulse Master Board |
+| 26 | **pulse-scan** | skill | Scan for untracked issues and oracle activity |
+| 27 | **pulse-timeline** | skill | ASCII Gantt timeline of Pulse board items |
+| 28 | **standup** | skill | Daily standup check |
+| 29 | **talk-to** | skill | Talk to an agent via Oracle threads |
+| 30 | **where-we-are** | skill | Session awareness |
+| 31 | **who-are-you** | skill | Know ourselves |
+| 32 | **worktree** | skill | Git worktree for parallel work |
 
-*Generated: 2026-03-13 12:50:35 UTC*
+*Generated: 2026-03-14 07:33:34 UTC*
 
 ## Supported Agents
 
