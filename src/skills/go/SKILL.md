@@ -113,12 +113,21 @@ oracle-skills uninstall -g -s <skill...> -y
 
 ## Available Features
 
-| Feature | Skills |
-|---------|--------|
-| **soul** | awaken, philosophy, who-are-you, about-oracle, birth, feel |
-| **network** | talk-to, oracle-family-scan, oracle-soul-sync-update, oracle, oraclenet |
-| **workspace** | worktree, physical, schedule |
-| **creator** | speak, deep-research, watch, gemini |
+| Feature | Skills | Notes |
+|---------|--------|-------|
+| **soul** | awaken, philosophy, who-are-you, about-oracle, birth, feel | Wizard v2: demographics, fast/full mode, system check |
+| **network** | talk-to, oracle-family-scan, oracle-soul-sync-update, oracle, oraclenet | Registry now tracks demographics |
+| **workspace** | worktree, physical, schedule | |
+| **creator** | speak, deep-research, watch, gemini | |
+
+### Soul Feature (Wizard v2 Enhancements)
+
+The `soul` feature now supports `/awaken` wizard v2:
+- **Fast mode** (~5 min): Philosophy fed directly, no trace/learn
+- **Full Soul Sync** (~20 min): Deep trace + discover principles
+- **Demographics**: Gender, team, memory consent collected during birth
+- **System check**: Git identity, gh CLI, bun auto-detected in Phase 0
+- Skills in soul feature read demographics from CLAUDE.md when available
 
 ---
 

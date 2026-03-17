@@ -35,7 +35,8 @@ export const profiles: Record<string, { include?: string[]; exclude?: string[] }
 // --- Features (add-on modules) ---
 
 export const features: Record<string, string[]> = {
-  // soul: birth/awaken new oracles (awaken↔learn 95%, awaken↔philosophy 74%)
+  // soul: birth/awaken new oracles + wizard v2 demographics (awaken↔learn 95%, awaken↔philosophy 74%)
+  // wizard v2: gender, team, memory consent, fast/full mode, system check
   soul: ['awaken', 'philosophy', 'who-are-you', 'about-oracle', 'birth', 'feel'],
   // network: multi-oracle communication (talk-to↔trace 87%, family-scan↔forward 62%)
   network: ['talk-to', 'oracle-family-scan', 'oracle-soul-sync-update', 'oracle', 'oraclenet'],

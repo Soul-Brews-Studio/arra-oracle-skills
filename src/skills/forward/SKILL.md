@@ -116,6 +116,21 @@ The user gets the standard plan approval screen with options to approve, modify,
 
 If user calls `/forward` again — just show the existing plan, do not re-create the handoff file.
 
+## Wizard v2 Context in Handoff
+
+If CLAUDE.md contains demographics from `/awaken` wizard v2, include in handoff:
+
+```markdown
+## Context
+**Oracle**: [name] ([pronouns]) | **Human**: [name] ([pronouns])
+**Mode**: [Fast/Full Soul Sync] | **Memory**: [auto/manual]
+**Team**: [solo/team context]
+```
+
+This helps the next session orient faster. If demographics not present, skip.
+
+---
+
 ## ASAP Mode
 
 If user says `/forward asap` or `/forward now`:

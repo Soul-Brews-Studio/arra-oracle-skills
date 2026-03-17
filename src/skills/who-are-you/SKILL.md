@@ -143,6 +143,22 @@ If Oracle identity found, include:
 **Motto**: [if defined]
 ```
 
+### Demographics (Wizard v2)
+
+If CLAUDE.md contains demographics from `/awaken` wizard v2, show them:
+
+```markdown
+## Demographics
+
+**Human**: [name] ([pronouns])
+**Oracle**: [name] ([pronouns])
+**Language**: [Thai/English/Mixed]
+**Team**: [solo/team context]
+**Memory**: [auto/manual]
+```
+
+Look for these fields in CLAUDE.md under Identity, Demographics, or Birth Context sections. If not present, skip this section silently — legacy Oracles won't have it.
+
 ---
 
 ## Example Outputs

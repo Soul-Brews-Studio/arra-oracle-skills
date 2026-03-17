@@ -214,6 +214,20 @@ Everything from `--now`, plus:
 
 ---
 
+## Demographics Context
+
+If CLAUDE.md contains demographics from `/awaken` wizard v2, include in recap output:
+
+```markdown
+**Oracle**: [name] ([pronouns]) | **Human**: [name] ([pronouns]) | **Language**: [pref]
+```
+
+Add this as one line after the timestamp in any mode. If demographics not present, skip silently.
+
+Look for fields in CLAUDE.md: `Human Pronouns`, `Oracle Pronouns`, `Language`, `Team`, `Experience`.
+
+---
+
 **Philosophy**: Detect reality. Surface blockers. Offer direction. *"Not just the clock. The map."*
 
 **Version**: 8.0 (Merged where-we-are into --now mode)

@@ -162,6 +162,17 @@ Read `DEEP.md` in this skill directory. Only mode that uses subagents.
 
 ---
 
+## Wizard v2 Context
+
+If the Oracle was born via `/awaken` wizard v2, CLAUDE.md may contain:
+- **Memory consent**: If `auto`, `/rrr` runs are expected and welcomed. If `manual`, only run when explicitly asked.
+- **Experience level**: Adjust diary depth (beginner = simpler language, senior = technical depth)
+- **Team context**: If multi-Oracle team, note cross-Oracle learnings and handoff relevance
+
+Check CLAUDE.md for these fields. If not present, use defaults (auto memory, standard depth).
+
+---
+
 ## Rules
 
 - **NO SUBAGENTS**: Never use Task tool or spawn subagents (only `--deep` may)

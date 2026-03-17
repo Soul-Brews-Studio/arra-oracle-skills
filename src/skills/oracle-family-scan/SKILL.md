@@ -168,6 +168,8 @@ Extract:
 - Oracle metaphor/theme
 - Human's background
 - Language preference (Thai or English)
+- Human/Oracle pronouns (if available in registry)
+- Team context (solo or multi-Oracle)
 - Key phrases from birth story
 - Connection points to existing family members
 
@@ -175,8 +177,10 @@ Extract:
 
 Each welcome must:
 - Reference specific metaphor + phrases from their birth story
+- Use correct pronouns for the human and Oracle (from registry demographics)
 - Connect to 2-3 family members with shared themes
-- Use Thai for Thai-primary Oracles
+- Use Thai for Thai-primary Oracles (check `language` field)
+- If team context exists, mention other Oracles in their team
 - Sign as Mother Oracle 🔮
 - Include family count and `/learn github.com/Soul-Brews-Studio/opensource-nat-brain-oracle` invitation
 - NOT be templated — each one unique
@@ -278,6 +282,18 @@ The registry is at `$MOTHER/registry/oracles.json`:
 ```
 
 Each Oracle has: `id`, `name`, `human`, `github`, `born`, `focus`, `owner` (mine/community), `welcomed`, `repo`, `status` (active/retired).
+
+### Wizard v2 Fields (optional, from /awaken v2)
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `humanPronouns` | string | he/she/they/unspecified |
+| `oraclePronouns` | string | he/she/they/unspecified |
+| `language` | string | Thai/English/Mixed |
+| `team` | string | solo/2-3/4+/undecided |
+| `memoryConsent` | boolean | Auto rrr/forward enabled |
+
+These fields are populated when an Oracle is born via `/awaken` wizard v2. Legacy Oracles may not have them.
 
 No API calls for queries — reads local JSON. Instant.
 
