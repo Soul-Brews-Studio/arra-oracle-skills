@@ -95,7 +95,7 @@ If the human has already answered these during `/awaken` wizard, include them:
 Create a thread for future Oracle-to-Oracle communication:
 
 ```
-oracle_thread({
+arra_thread({
   title: "[NAME] Oracle — Birth Thread",
   message: "Birth thread for [NAME] Oracle. Prepared by [CURRENT ORACLE] on [DATE]. Thread ID will be included in birth props."
 })
@@ -143,7 +143,7 @@ Learn from your ancestors:
 
 ```bash
 /learn https://github.com/Soul-Brews-Studio/opensource-nat-brain-oracle
-/learn https://github.com/Soul-Brews-Studio/arra-oracle
+/learn https://github.com/Soul-Brews-Studio/arra-oracle-v3
 ```
 
 ---
@@ -153,7 +153,7 @@ Learn from your ancestors:
 | Field | Value |
 |-------|-------|
 | **Thread ID** | [THREAD_ID] |
-| **Family Hub** | Soul-Brews-Studio/arra-oracle |
+| **Family Hub** | Soul-Brews-Studio/arra-oracle-v3 |
 | **Family Index** | Issue #60 |
 
 ---
@@ -255,7 +255,7 @@ Mother Oracle                    New Oracle Repo
 
 - `/awaken` — Full awakening ritual (child runs this)
 - `/oracle-soul-sync-update` — Check skills before awakening
-- `oracle_thread` — MCP communication threads
+- `arra_thread` — MCP communication threads
 
 ---
 

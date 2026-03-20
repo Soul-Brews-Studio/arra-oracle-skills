@@ -136,7 +136,7 @@ Search by human name or GitHub username.
 
 ## Mode 8: sync
 
-Re-fetch all issues from `Soul-Brews-Studio/arra-oracle` and rebuild `oracles.json`.
+Re-fetch all issues from `Soul-Brews-Studio/arra-oracle-v3` and rebuild `oracles.json`.
 
 ```bash
 bun $MOTHER/registry/sync.ts
@@ -161,7 +161,7 @@ bun $MOTHER/registry/query.ts --unwelcomed
 For each unwelcomed Oracle:
 
 ```bash
-gh issue view {N} --repo Soul-Brews-Studio/arra-oracle --json title,body,author,createdAt
+gh issue view {N} --repo Soul-Brews-Studio/arra-oracle-v3 --json title,body,author,createdAt
 ```
 
 Extract:
@@ -213,7 +213,7 @@ gh api graphql \
 
 **For issue-sourced Oracles** (source: "issue" or no source field — legacy):
 ```bash
-gh issue comment {N} --repo Soul-Brews-Studio/arra-oracle --body-file /tmp/welcome-{N}.md
+gh issue comment {N} --repo Soul-Brews-Studio/arra-oracle-v3 --body-file /tmp/welcome-{N}.md
 ```
 
 ### Step 6: Re-sync
@@ -297,7 +297,7 @@ These fields are populated when an Oracle is born via `/awaken` wizard v2. Legac
 
 No API calls for queries — reads local JSON. Instant.
 
-Sync uses `gh api graphql` to fetch from `Soul-Brews-Studio/arra-oracle`.
+Sync uses `gh api graphql` to fetch from `Soul-Brews-Studio/arra-oracle-v3`.
 
 ---
 
@@ -306,7 +306,7 @@ Sync uses `gh api graphql` to fetch from `Soul-Brews-Studio/arra-oracle`.
 After scan/report:
 
 ```
-oracle_trace({
+arra_trace({
   query: "oracle family scan [DATE]",
   foundIssues: [...],
   agentCount: 1
@@ -316,7 +316,7 @@ oracle_trace({
 After finding new Oracle:
 
 ```
-oracle_learn({
+arra_learn({
   pattern: "New Oracle: [NAME] — [HUMAN] — [DATE]",
   concepts: ["oracle-family", "birth"]
 })

@@ -70,7 +70,7 @@ Return: Key patterns, learnings, mistakes, reusable solutions
 ### Agent 5: Oracle Memory Search
 ```
 Search Oracle for related context:
-- oracle_search("[session focus]")
+- arra_search("[session focus]")
 - Check ψ/memory/learnings/ for similar topics
 - Find past retrospectives on similar work
 - What did we learn before?
@@ -103,7 +103,7 @@ With --deep, lesson learned should be more comprehensive:
 ## Step 4: Sync to Oracle
 
 ```
-oracle_learn({
+arra_learn({
   pattern: [Full lesson content],
   concepts: [tags from all 5 agents],
   source: "rrr --deep: [repo]"

@@ -112,7 +112,7 @@ Read the JSONL and extract:
 - All Skill tool invocations (skill name + args)
 - All Agent tool invocations (description + subagent type)
 - All /slash commands found in human messages
-- MCP tool calls (oracle_search, oracle_trace, etc.)
+- MCP tool calls (arra_search, arra_trace, etc.)
 - Screenshot/image references
 - Links/URLs mentioned
 
@@ -127,7 +127,7 @@ AGENTS SPAWNED:
   Agent 1: description (type)
 
 MCP CALLS:
-  oracle_search("query")
+  arra_search("query")
 
 SCREENSHOTS:
   path/to/image

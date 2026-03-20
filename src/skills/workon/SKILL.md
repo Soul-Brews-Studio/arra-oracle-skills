@@ -12,7 +12,7 @@ Start work from issue OR resume killed worktree.
 ```
 /workon #435                              # Work on issue (this repo)
 /workon #435 --oracle neo                 # Assign to specific Oracle
-/workon Soul-Brews-Studio/arra-oracle#435 # Cross-repo issue
+/workon Soul-Brews-Studio/arra-oracle-v3#435 # Cross-repo issue
 /workon --resume athena                   # Resume killed worktree + old session
 /workon --resume thor                     # Resume Thor with old context
 ```
@@ -47,9 +47,9 @@ Pulse tracks work via issues — no issue = Pulse doesn't see.
 
 ### Step 4: Send Task (MCP first → hey after)
 
-Post to oracle_thread:
+Post to arra_thread:
 ```
-oracle_thread({ title: "channel:[worktree-name]", message: "instructions + issue link" })
+arra_thread({ title: "channel:[worktree-name]", message: "instructions + issue link" })
 ```
 
 Then notify:
@@ -82,7 +82,7 @@ Instructions include:
 ### Step 6: When Worktree Reports Back
 
 Worktree follows this pattern when done:
-1. `oracle_thread()` → MCP reply with summary + PR link
+1. `arra_thread()` → MCP reply with summary + PR link
 2. `maw hey [parent]-oracle` → notify parent
 3. `maw hey [reviewer]-oracle` → notify reviewer
 

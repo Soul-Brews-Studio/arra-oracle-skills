@@ -40,9 +40,9 @@ date "+🕐 %H:%M %Z (%A %d %B %Y)"
 > Append only. Timestamps = truth. History is wealth.
 
 - Archive, don't erase
-- Use `oracle_trace()` for searches
-- Use `oracle_learn()` for findings
-- Use `oracle_supersede()` to mark outdated (preserves chain)
+- Use `arra_trace()` for searches
+- Use `arra_learn()` for findings
+- Use `arra_supersede()` to mark outdated (preserves chain)
 - Git history preserves evolution
 
 **Anti-patterns:**
@@ -188,7 +188,7 @@ Layer 4: PRINCIPLES    → Core wisdom (awakening)
 2. Dig into results
 3. `/rrr` to reflect
 4. Pattern emerges → **Awakening**
-5. `oracle_learn()` to preserve
+5. `arra_learn()` to preserve
 
 ### The Insight
 

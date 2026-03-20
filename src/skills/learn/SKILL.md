@@ -361,6 +361,20 @@ For Oracles that want to commit docs but ignore symlinks:
 
 **After running /learn**, check your repo's `.gitignore` has these patterns so docs are committed but symlinks are ignored.
 
+## Trace Connection
+
+After writing docs, log the learning to Oracle so it's discoverable via `/trace`:
+
+```
+arra_learn({
+  pattern: "Learned [REPO]: [2-3 key insights]",
+  concepts: ["learn", "codebase", relevant-tags],
+  source: "learn: OWNER/REPO"
+})
+```
+
+This connects `/learn` to the shared knowledge layer — future `/trace` queries find what was learned.
+
 ## Notes
 
 - `--fast`: 1 agent, quick scan for "what is this?"

@@ -97,6 +97,16 @@ oracle-skills agents             # detected agents
 oracle-skills about              # system status
 ```
 
+## Private Skills
+
+Some skills are distributed separately:
+
+| Skill | Repo | Install |
+|-------|------|---------|
+| oraclenet | `Soul-Brews-Studio/oraclenet-skill` (private) | `ghq get -p Soul-Brews-Studio/oraclenet-skill && cp -r $(ghq root)/github.com/Soul-Brews-Studio/oraclenet-skill/oraclenet ~/.claude/skills/` |
+
+Uninstall: `rm -rf ~/.claude/skills/<skill-name>`
+
 ## Origin
 
 [Nat Weerawan](https://github.com/nazt) — [Soul Brews Studio](https://github.com/Soul-Brews-Studio) · MIT

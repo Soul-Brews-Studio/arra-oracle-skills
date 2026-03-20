@@ -71,7 +71,7 @@ Write immediately, no prompts. Include:
 ### 4. Oracle Sync
 
 ```
-oracle_learn({ pattern: [lesson content], concepts: [tags], source: "rrr: REPO" })
+arra_learn({ pattern: [lesson content], concepts: [tags], source: "rrr: REPO" })
 ```
 
 ### 5. Save

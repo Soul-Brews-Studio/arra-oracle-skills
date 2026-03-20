@@ -32,7 +32,7 @@ If ARGUMENTS is empty, show usage help then run --list.
 
 ## Mode 1: --list
 
-1. `oracle_threads()` (no status filter)
+1. `arra_threads()` (no status filter)
 2. Filter titles starting with `channel:` or `topic:`, exclude `closed`
 3. Display: `channel:arthur (#42) pending — 12 msgs`
 
@@ -41,7 +41,7 @@ If ARGUMENTS is empty, show usage help then run --list.
 Skip lookup. One MCP call.
 
 1. Compose message from intent
-2. `oracle_thread({ title: "channel:{agent}", message, role: "human" })`
+2. `arra_thread({ title: "channel:{agent}", message, role: "human" })`
 3. **Notify**: `Bash maw hey {agent}-oracle 'Thread #{id} from {self}: {preview}'`
    - If `maw hey` fails → warn only, don't error (thread already sent)
 4. Confirm: `Created channel:{agent} (thread #{id})`
@@ -50,11 +50,11 @@ Skip lookup. One MCP call.
 
 1. Compose message from intent
 2. If first arg is `#{id}` → post directly to that thread ID
-3. Otherwise: `oracle_threads()` → find `channel:{agent}`, create if missing
+3. Otherwise: `arra_threads()` → find `channel:{agent}`, create if missing
 4. Post message to thread
 5. **Notify**: `Bash maw hey {agent}-oracle 'Thread #{id} from {self}: {preview}'`
    - If `maw hey` fails → warn only, don't error (thread already sent)
-6. `oracle_thread_read({ threadId })` → show any agent responses
+6. `arra_thread_read({ threadId })` → show any agent responses
 7. Confirm: `Posted to channel:{agent} (thread #{id})`
 
 ## Mode 4: loop (autonomous conversation)
@@ -64,7 +64,7 @@ Like Ralph loop — AI drives the conversation autonomously. No user prompts bet
 1. Find or create thread (`channel:{agent}`, or `--new` to skip lookup)
 2. Compose opening message from user's intent and post it
 3. **Autonomous loop** (max 10 iterations):
-   a. `oracle_thread_read({ threadId })` — check for new messages
+   a. `arra_thread_read({ threadId })` — check for new messages
    b. If agent responded: read their response, compose a thoughtful follow-up, post it
    c. If no new response: compose a follow-up question or probe deeper, post it
    d. After each exchange, briefly note what you learned

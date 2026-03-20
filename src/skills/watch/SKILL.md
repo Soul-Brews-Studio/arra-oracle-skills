@@ -83,7 +83,7 @@ Or manually create a learning file at `ψ/memory/learnings/YYYY-MM-DD_video-slug
 ### Step 4: Index to Oracle
 
 ```
-oracle_learn({
+arra_learn({
   pattern: "YouTube transcript: [TITLE] - [key takeaways summary]",
   concepts: ["youtube", "transcript", "video", "[topic-tags from content]"],
   source: "/watch skill"
@@ -106,7 +106,7 @@ oracle_learn({
 - Oracle: Indexed ✓
 
 ### Quick Access
-`/trace [SLUG]` or `oracle_search("[TITLE]")`
+`/trace [SLUG]` or `arra_search("[TITLE]")`
 ```
 
 ## IMPORTANT: Save Gemini Conversation Link

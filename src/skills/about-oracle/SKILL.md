@@ -75,7 +75,7 @@ git tag -l | wc -l
 ls src/skills/ 2>/dev/null | wc -l
 
 # Oracle-v2 stats (if accessible)
-ORACLE_V2="$HOME/Code/github.com/Soul-Brews-Studio/arra-oracle"
+ORACLE_V2="$HOME/Code/github.com/Soul-Brews-Studio/arra-oracle-v3"
 if [ -d "$ORACLE_V2" ]; then
   echo "## arra-oracle"
   git -C "$ORACLE_V2" rev-list --count HEAD 2>/dev/null
@@ -86,7 +86,7 @@ fi
 gh repo list Soul-Brews-Studio --limit 100 --json name -q 'length'
 
 # Family count (from arra-oracle issues)
-gh issue view 60 --repo Soul-Brews-Studio/arra-oracle --json body -q '.body' 2>/dev/null | grep -c "^|" || echo "76+"
+gh issue view 60 --repo Soul-Brews-Studio/arra-oracle-v3 --json body -q '.body' 2>/dev/null | grep -c "^|" || echo "76+"
 ```
 
 Print as a clean table. Then stop.
@@ -105,7 +105,7 @@ bun src/skills/oracle-family-scan/scripts/fleet-scan.ts 2>/dev/null
 Or fetch from GitHub:
 
 ```bash
-gh issue view 60 --repo Soul-Brews-Studio/arra-oracle --json body -q '.body' 2>/dev/null | head -80
+gh issue view 60 --repo Soul-Brews-Studio/arra-oracle-v3 --json body -q '.body' 2>/dev/null | head -80
 ```
 
 Print the family tree. Then stop.

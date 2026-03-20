@@ -44,7 +44,7 @@ Upcoming (5 events)
 │ Mar 10 │ 15:00 │ นัดอ.เศรษฐ์ (ที่คลินิก)                │
 └────────┴───────┴──────────────────────────────────┘
 
-📄 `~/.oracle/ψ/inbox/schedule.md`
+📄 `~/.arra/ψ/inbox/schedule.md`
 ```
 
 Rules:
@@ -67,5 +67,5 @@ GET /api/schedule?status=all              → include done/cancelled
 ## See Also
 
 - `scripts/query.ts` - Query script (hits Oracle API)
-- Oracle DB: `~/.oracle/oracle.db` → `schedule` table
-- Auto-export: `~/.oracle/ψ/inbox/schedule.md` (generated on write)
+- Oracle DB: `~/.arra/arra.db` → `schedule` table
+- Auto-export: `~/.arra/ψ/inbox/schedule.md` (generated on write)

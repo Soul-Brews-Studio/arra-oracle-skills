@@ -85,7 +85,7 @@ TRACE_FILE="$ROOT/ψ/memory/traces/$TODAY/${TIME}_[query-slug].md"
 **Fastest. Just Oracle MCP, no subagents.**
 
 ```
-oracle_search("[query]", limit=15)
+arra_search("[query]", limit=15)
 ```
 
 Display results and done. Even if empty.
@@ -98,7 +98,7 @@ Display results and done. Even if empty.
 
 **Step 1**: Query Oracle first
 ```
-oracle_search("[query]", limit=10)
+arra_search("[query]", limit=10)
 ```
 
 **Step 2**: Check result count
@@ -197,7 +197,7 @@ timestamp: YYYY-MM-DD HH:MM
 ## Step 4: Log to Oracle MCP
 
 ```
-oracle_trace({
+arra_trace({
   query: "[query]",
   project: "[TARGET_NAME]",
   foundFiles: [...],

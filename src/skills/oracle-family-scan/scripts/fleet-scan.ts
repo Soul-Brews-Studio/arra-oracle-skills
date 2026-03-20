@@ -8,7 +8,7 @@
 
 import { $ } from "bun";
 
-const ORACLE_REPO = "Soul-Brews-Studio/arra-oracle";
+const ORACLE_REPO = "Soul-Brews-Studio/arra-oracle-v3";
 const ORGS = ["Soul-Brews-Studio", "laris-co", "nazt"];
 const BIRTH_PATTERN = /awaken|born|birth|enter.*chat|hello|สวัสดี|arrived/i;
 

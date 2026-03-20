@@ -127,9 +127,21 @@ When `--timeline` flag is present, group sessions by date instead of a flat tabl
 
 ---
 
-## No trace log
+## Trace Connection
 
-`/dig` does NOT write a trace log file or call oracle_trace. It's a read-only scan. Output goes to screen only.
+After displaying the timeline, log the discovery to Oracle so it's searchable later:
+
+```
+arra_trace({
+  query: "dig session [N]",
+  project: "[repo-name]",
+  foundFiles: [],
+  foundCommits: [list of commit hashes from timeline],
+  foundIssues: []
+})
+```
+
+This connects `/dig` discoveries to `/trace` — "When did we first work on X?" becomes answerable.
 
 ---
 
