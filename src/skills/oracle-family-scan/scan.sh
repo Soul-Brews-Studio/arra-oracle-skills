@@ -3,7 +3,7 @@
 # Usage: ./scan.sh [mode] [options]
 # Modes: scan (default), list, repos, report
 
-REPO="Soul-Brews-Studio/oracle-v2"
+REPO="Soul-Brews-Studio/arra-oracle"
 MODE="${1:-scan}"
 
 # Colors

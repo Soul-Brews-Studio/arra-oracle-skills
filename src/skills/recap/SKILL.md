@@ -59,7 +59,8 @@ Read those top 5 files. This recovers the same context `/compact` restores — h
 ### Step 4: Dig last session
 
 ```bash
-PROJECT_BASE=$(ls -d "$HOME/.claude/projects/"*"$(basename "$(pwd)")" 2>/dev/null | head -1)
+ENCODED_PWD=$(pwd | sed 's|^/|-|; s|/|-|g')
+PROJECT_BASE=$(ls -d "$HOME/.claude/projects/${ENCODED_PWD}" 2>/dev/null | head -1)
 export PROJECT_DIRS="$PROJECT_BASE"
 python3 ~/.claude/skills/dig/scripts/dig.py 1
 ```
@@ -71,21 +72,7 @@ Include in recap:
 
 Need more? `/dig 5` or `/dig --timeline`.
 
-Also check pulse context:
-
-```bash
-cat ψ/data/pulse/project.json 2>/dev/null
-cat ψ/data/pulse/heartbeat.json 2>/dev/null
-```
-
-If pulse data exists, add one line after the script output:
-```
-⚡ Session #X of Y | Streak: N days | Week: ±X% msgs
-```
-
-If pulse files don't exist, skip silently.
-
-**Total**: 1 bash call + optional pulse read + LLM analysis
+**Total**: 1 bash call + LLM analysis
 
 ---
 
@@ -211,6 +198,34 @@ Everything from `--now`, plus:
 
 **Next action?**
 ```
+
+---
+
+## Session Context
+
+The recap scripts (`recap.ts` and `recap-rich.ts`) auto-detect and display the current session:
+
+```
+📡 Session: 74c32f34 | oracle-skills-cli | 2h 15m
+```
+
+Detection: scans `~/.claude/projects/[encoded-pwd]/*.jsonl` for the most recent session file, extracts short ID and elapsed time from first timestamp.
+
+If session detection fails, skip silently — it's informational only.
+
+---
+
+## Demographics Context
+
+If CLAUDE.md contains demographics from `/awaken` wizard v2, include in recap output:
+
+```markdown
+**Oracle**: [name] ([pronouns]) | **Human**: [name] ([pronouns]) | **Language**: [pref]
+```
+
+Add this as one line after the timestamp in any mode. If demographics not present, skip silently.
+
+Look for fields in CLAUDE.md: `Human Pronouns`, `Oracle Pronouns`, `Language`, `Team`, `Experience`.
 
 ---
 

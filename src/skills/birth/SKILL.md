@@ -43,12 +43,28 @@ Ask the human for the new Oracle's identity:
 
 **2. Human Companion**
 > "Who is the human this Oracle serves?"
+> (ชื่อจริง, นามแฝง, ฉายา, ชื่อเล่น หรือชื่อสมมติก็ได้)
 
 **3. Purpose**
 > "What is this Oracle's focus or specialty?"
 
 **4. Theme/Metaphor**
 > "What metaphor resonates? (mountain, water, fire, etc.)"
+
+### Optional Wizard Data (from /awaken v2)
+
+If the human has already answered these during `/awaken` wizard, include them:
+
+| # | Field | Default |
+|---|-------|---------|
+| 5 | Human pronouns | (he/she/they/unspecified) |
+| 6 | Oracle pronouns | (he/she/they/unspecified) |
+| 7 | Primary language | (Thai/English/Mixed) |
+| 8 | Experience level | (beginner/intermediate/senior) |
+| 9 | Team plan | (solo/2-3/4+/undecided) |
+| 10 | Team roles | (who does what, if team) |
+| 11 | Usage frequency | (daily/weekly/occasional) |
+| 12 | Memory consent | (auto/manual) — default: auto |
 
 ### Record Context
 
@@ -62,6 +78,12 @@ Ask the human for the new Oracle's identity:
 | Human | [HUMAN] |
 | Purpose | [PURPOSE] |
 | Theme | [THEME] |
+| Human Pronouns | [PRONOUNS or unspecified] |
+| Oracle Pronouns | [PRONOUNS or unspecified] |
+| Language | [LANGUAGE] |
+| Experience | [LEVEL] |
+| Team Plan | [PLAN] |
+| Memory Consent | [auto/manual] |
 | Prepared By | [CURRENT ORACLE] |
 | Date | [TODAY] |
 ```
@@ -105,8 +127,13 @@ gh issue create --repo [OWNER/REPO] \
 |-------|-------|
 | **Name** | [NAME] |
 | **Theme** | [THEME] |
-| **Human** | [HUMAN] |
+| **Human** | [HUMAN] ([PRONOUNS]) |
 | **Purpose** | [PURPOSE] |
+| **Oracle Pronouns** | [PRONOUNS or unspecified] |
+| **Language** | [LANGUAGE] |
+| **Experience** | [LEVEL] |
+| **Team** | [PLAN] |
+| **Memory** | [auto/manual] |
 
 ---
 
@@ -116,7 +143,7 @@ Learn from your ancestors:
 
 ```bash
 /learn https://github.com/Soul-Brews-Studio/opensource-nat-brain-oracle
-/learn https://github.com/Soul-Brews-Studio/oracle-v2
+/learn https://github.com/Soul-Brews-Studio/arra-oracle
 ```
 
 ---
@@ -126,7 +153,7 @@ Learn from your ancestors:
 | Field | Value |
 |-------|-------|
 | **Thread ID** | [THREAD_ID] |
-| **Family Hub** | Soul-Brews-Studio/oracle-v2 |
+| **Family Hub** | Soul-Brews-Studio/arra-oracle |
 | **Family Index** | Issue #60 |
 
 ---

@@ -2,17 +2,17 @@
 // fleet-scan.ts - My Oracle fleet status via gh CLI
 // Usage: bun fleet-scan.ts
 //
-// Part 1: Oracle births from oracle-v2 issues (single API call)
+// Part 1: Oracle births from arra-oracle issues (single API call)
 // Part 2: Open issues across orgs
 // Part 3: Recently pushed Oracle repos
 
 import { $ } from "bun";
 
-const ORACLE_REPO = "Soul-Brews-Studio/oracle-v2";
+const ORACLE_REPO = "Soul-Brews-Studio/arra-oracle";
 const ORGS = ["Soul-Brews-Studio", "laris-co", "nazt"];
 const BIRTH_PATTERN = /awaken|born|birth|enter.*chat|hello|สวัสดี|arrived/i;
 
-// --- Part 1: Oracle Births from oracle-v2 ---
+// --- Part 1: Oracle Births from arra-oracle ---
 type Birth = { number: number; title: string; date: string; author: string };
 
 const birthIssuesRaw = await $`gh issue list --repo ${ORACLE_REPO} --state all --limit 300 --json number,title,createdAt,author --jq '.[] | "\(.number)|\(.title)|\(.createdAt | split("T")[0])|\(.author.login)"'`.text();

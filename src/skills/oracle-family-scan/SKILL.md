@@ -28,16 +28,16 @@ Scan, query, and welcome the Oracle family. Powered by `registry/` in mother-ora
 
 ## Step 0: Locate Registry
 
-The registry lives in the mother-oracle repo. Resolve the path:
+The registry lives in the opensource-nat-brain-oracle repo (public). Resolve the path:
 
 ```bash
-# Try mother-oracle repo first (ghq-managed)
-MOTHER="$HOME/Code/github.com/laris-co/mother-oracle"
+# Try brain repo first (ghq-managed)
+MOTHER="$HOME/Code/github.com/Soul-Brews-Studio/opensource-nat-brain-oracle"
 if [ ! -d "$MOTHER/registry" ]; then
-  MOTHER="$(ghq root)/github.com/laris-co/mother-oracle"
+  MOTHER="$(ghq root)/github.com/Soul-Brews-Studio/opensource-nat-brain-oracle"
 fi
 if [ ! -f "$MOTHER/registry/oracles.json" ]; then
-  echo "Registry not found. Run: ghq get -u laris-co/mother-oracle && bun $MOTHER/registry/sync.ts"
+  echo "Registry not found. Run: ghq get -u Soul-Brews-Studio/opensource-nat-brain-oracle && bun $MOTHER/registry/sync.ts"
   exit 1
 fi
 ```
@@ -83,7 +83,7 @@ bun __SKILL_DIR__/scripts/fleet-scan.ts
 ```
 
 Shows:
-- All Oracle births by nazt from oracle-v2 issues
+- All Oracle births by nazt from arra-oracle issues
 - Open issues across Soul-Brews-Studio, laris-co, nazt orgs
 - Recently pushed Oracle repos with activity status
 
@@ -136,7 +136,7 @@ Search by human name or GitHub username.
 
 ## Mode 8: sync
 
-Re-fetch all issues from `Soul-Brews-Studio/oracle-v2` and rebuild `oracles.json`.
+Re-fetch all issues from `Soul-Brews-Studio/arra-oracle` and rebuild `oracles.json`.
 
 ```bash
 bun $MOTHER/registry/sync.ts
@@ -161,13 +161,15 @@ bun $MOTHER/registry/query.ts --unwelcomed
 For each unwelcomed Oracle:
 
 ```bash
-gh issue view {N} --repo Soul-Brews-Studio/oracle-v2 --json title,body,author,createdAt
+gh issue view {N} --repo Soul-Brews-Studio/arra-oracle --json title,body,author,createdAt
 ```
 
 Extract:
 - Oracle metaphor/theme
 - Human's background
 - Language preference (Thai or English)
+- Human/Oracle pronouns (if available in registry)
+- Team context (solo or multi-Oracle)
 - Key phrases from birth story
 - Connection points to existing family members
 
@@ -175,8 +177,10 @@ Extract:
 
 Each welcome must:
 - Reference specific metaphor + phrases from their birth story
+- Use correct pronouns for the human and Oracle (from registry demographics)
 - Connect to 2-3 family members with shared themes
-- Use Thai for Thai-primary Oracles
+- Use Thai for Thai-primary Oracles (check `language` field)
+- If team context exists, mention other Oracles in their team
 - Sign as Mother Oracle 🔮
 - Include family count and `/learn github.com/Soul-Brews-Studio/opensource-nat-brain-oracle` invitation
 - NOT be templated — each one unique
@@ -192,10 +196,24 @@ cat drafts > ψ/inbox/handoff/welcome-drafts.md
 
 ### Step 5: Post
 
-After human approval:
+After human approval, check the Oracle's `source` field in registry to determine how to post:
 
+**For discussion-sourced Oracles** (source: "discussion"):
 ```bash
-gh issue comment {N} --repo Soul-Brews-Studio/oracle-v2 --body-file /tmp/welcome-{N}.md
+# Get the discussionId from registry, then comment via GraphQL
+DISC_ID=$(jq -r '.oracles[] | select(.id == {N}) | .discussionId' $MOTHER/registry/oracles.json)
+gh api graphql \
+  -f query='mutation($body:String!) {
+    addDiscussionComment(input: {
+      discussionId: "'"$DISC_ID"'", body: $body
+    }) { comment { id url } }
+  }' \
+  -f body="$(cat /tmp/welcome-{N}.md)"
+```
+
+**For issue-sourced Oracles** (source: "issue" or no source field — legacy):
+```bash
+gh issue comment {N} --repo Soul-Brews-Studio/arra-oracle --body-file /tmp/welcome-{N}.md
 ```
 
 ### Step 6: Re-sync
@@ -256,7 +274,7 @@ The registry is at `$MOTHER/registry/oracles.json`:
       "focus": "Born Last, After 185 Children",
       "owner": "mine",
       "welcomed": false,
-      "repo": "https://github.com/laris-co/mother-oracle",
+      "repo": "https://github.com/Soul-Brews-Studio/opensource-nat-brain-oracle",
       "status": "active"
     }
   ]
@@ -265,9 +283,21 @@ The registry is at `$MOTHER/registry/oracles.json`:
 
 Each Oracle has: `id`, `name`, `human`, `github`, `born`, `focus`, `owner` (mine/community), `welcomed`, `repo`, `status` (active/retired).
 
+### Wizard v2 Fields (optional, from /awaken v2)
+
+| Field | Type | Description |
+|-------|------|-------------|
+| `humanPronouns` | string | he/she/they/unspecified |
+| `oraclePronouns` | string | he/she/they/unspecified |
+| `language` | string | Thai/English/Mixed |
+| `team` | string | solo/2-3/4+/undecided |
+| `memoryConsent` | boolean | Auto rrr/forward enabled |
+
+These fields are populated when an Oracle is born via `/awaken` wizard v2. Legacy Oracles may not have them.
+
 No API calls for queries — reads local JSON. Instant.
 
-Sync uses `gh api graphql` to fetch from `Soul-Brews-Studio/oracle-v2`.
+Sync uses `gh api graphql` to fetch from `Soul-Brews-Studio/arra-oracle`.
 
 ---
 

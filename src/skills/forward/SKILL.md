@@ -19,9 +19,28 @@ Create context for next session, then enter plan mode to define next steps.
 ## Steps
 
 1. **Git status**: Check uncommitted work
-2. **Session summary**: What we did (from memory)
-3. **Pending items**: What's left
-4. **Next steps**: Specific actions
+2. **Detect session**: Current session ID for traceability
+3. **Session summary**: What we did (from memory)
+4. **Pending items**: What's left
+5. **Next steps**: Specific actions
+
+### Session Detection
+
+```bash
+ENCODED_PWD=$(pwd | sed 's|^/|-|; s|/|-|g')
+PROJECT_DIR="$HOME/.claude/projects/${ENCODED_PWD}"
+LATEST_JSONL=$(ls -t "$PROJECT_DIR"/*.jsonl 2>/dev/null | head -1)
+if [ -n "$LATEST_JSONL" ]; then
+  SESSION_ID=$(basename "$LATEST_JSONL" .jsonl)
+  echo "SESSION: ${SESSION_ID:0:8}"
+fi
+```
+
+Include in handoff header if detected:
+```markdown
+📡 Session: 74c32f34 | repo-name | Xh XXm
+```
+Skip silently if detection fails.
 
 ## Output
 
@@ -59,9 +78,18 @@ Do NOT `git add` vault files — they are shared state, not committed to repos.
 - [Important file 2]
 ```
 
-## Then: MUST Enter Plan Mode
+## Then: MUST Show Plan Approval Box
 
-**CRITICAL**: You MUST call `EnterPlanMode` after writing the handoff. This is NOT optional. The whole point of /forward is to show the user a plan they can approve for the next session.
+**CRITICAL — DO NOT SKIP**: The whole point of /forward is the plan approval UI.
+You MUST do ALL 3 steps in order. If you skip any step, the user cannot approve and clear the session.
+
+1. `EnterPlanMode` — enters plan mode
+2. Write plan file — session summary + next steps
+3. `ExitPlanMode` — **THIS shows the approval box** where user can approve/reject/clear
+
+If you only do EnterPlanMode without ExitPlanMode, the user sees nothing.
+If you skip EnterPlanMode entirely, the user sees nothing.
+ALL 3 STEPS ARE REQUIRED.
 
 **Do NOT commit the handoff file** — it lives in the vault, not the repo.
 After writing the handoff, gather cleanup context:
@@ -106,6 +134,21 @@ Then:
 The user gets the standard plan approval screen with options to approve, modify, or reject. This is the proper way to show plans.
 
 If user calls `/forward` again — just show the existing plan, do not re-create the handoff file.
+
+## Wizard v2 Context in Handoff
+
+If CLAUDE.md contains demographics from `/awaken` wizard v2, include in handoff:
+
+```markdown
+## Context
+**Oracle**: [name] ([pronouns]) | **Human**: [name] ([pronouns])
+**Mode**: [Fast/Full Soul Sync] | **Memory**: [auto/manual]
+**Team**: [solo/team context]
+```
+
+This helps the next session orient faster. If demographics not present, skip.
+
+---
 
 ## ASAP Mode
 

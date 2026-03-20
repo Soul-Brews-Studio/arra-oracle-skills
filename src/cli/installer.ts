@@ -302,6 +302,22 @@ bunx --bun oracle-skills@github:Soul-Brews-Studio/oracle-skills-cli#v${pkg.versi
 `;
     await Bun.write(join(targetDir, 'VERSION.md'), versionMd);
 
+    // Deduplicate: if agent has commandsOptIn (e.g. Claude Code), remove any
+    // existing command stubs that overlap with installed skills to prevent
+    // duplicate G-SKLL + G-CMD entries in slash command lists
+    if (agent.commandsDir && agent.commandsOptIn && !options.commands) {
+      const commandsDir = options.global ? agent.globalCommandsDir! : join(process.cwd(), agent.commandsDir);
+      if (existsSync(commandsDir)) {
+        const ext = agent.commandFormat === 'toml' ? 'toml' : 'md';
+        for (const skill of skillsToInstall) {
+          const cmdFile = join(commandsDir, `${skill.name}.${ext}`);
+          if (existsSync(cmdFile)) {
+            await rmf(cmdFile, shellMode);
+          }
+        }
+      }
+    }
+
     // Install flat command files to commands/ (OpenCode, Claude Code, etc.)
     // Agents with commandsOptIn only get commands when --commands flag is passed
     if (agent.commandsDir && (!agent.commandsOptIn || options.commands)) {

@@ -188,8 +188,8 @@ User: "I want to work on claude-mem"
 → Symlink created, work until done
 
 # User wants to contribute (keep ghq for follow-up)
-User: "Fix a bug in oracle-v2"
-→ /project incubate https://github.com/Soul-Brews-Studio/oracle-v2 --contribute
+User: "Fix a bug in arra-oracle"
+→ /project incubate https://github.com/Soul-Brews-Studio/arra-oracle --contribute
 → [edit, commit, push]
 → Auto-offload, ghq kept for PR feedback
 

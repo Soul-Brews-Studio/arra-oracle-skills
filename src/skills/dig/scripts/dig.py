@@ -2,6 +2,7 @@
 """Session goldminer — scan Claude Code .jsonl files for session timeline."""
 import json, os, glob, sys, subprocess, re
 from datetime import datetime, timedelta
+from pathlib import Path
 
 project_dirs = [d for d in os.environ.get('PROJECT_DIRS', '').split(':') if d]
 count = int(sys.argv[1]) if len(sys.argv) > 1 else 10  # 0 = no limit (scan all)

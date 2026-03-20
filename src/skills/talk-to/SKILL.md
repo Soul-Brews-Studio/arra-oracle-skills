@@ -42,7 +42,9 @@ Skip lookup. One MCP call.
 
 1. Compose message from intent
 2. `oracle_thread({ title: "channel:{agent}", message, role: "human" })`
-3. Confirm: `Created channel:{agent} (thread #{id})`
+3. **Notify**: `Bash maw hey {agent}-oracle 'Thread #{id} from {self}: {preview}'`
+   - If `maw hey` fails → warn only, don't error (thread already sent)
+4. Confirm: `Created channel:{agent} (thread #{id})`
 
 ## Mode 3: One-shot (default)
 
@@ -50,8 +52,10 @@ Skip lookup. One MCP call.
 2. If first arg is `#{id}` → post directly to that thread ID
 3. Otherwise: `oracle_threads()` → find `channel:{agent}`, create if missing
 4. Post message to thread
-5. `oracle_thread_read({ threadId })` → show any agent responses
-6. Confirm: `Posted to channel:{agent} (thread #{id})`
+5. **Notify**: `Bash maw hey {agent}-oracle 'Thread #{id} from {self}: {preview}'`
+   - If `maw hey` fails → warn only, don't error (thread already sent)
+6. `oracle_thread_read({ threadId })` → show any agent responses
+7. Confirm: `Posted to channel:{agent} (thread #{id})`
 
 ## Mode 4: loop (autonomous conversation)
 
@@ -65,7 +69,10 @@ Like Ralph loop — AI drives the conversation autonomously. No user prompts bet
    c. If no new response: compose a follow-up question or probe deeper, post it
    d. After each exchange, briefly note what you learned
    e. **Stop when**: enough insight gathered, conversation circling, or 10 iterations hit
-4. Show summary:
+4. **Notify** (once, after opening message):
+   `Bash maw hey {agent}-oracle 'Thread #{id} from {self}: {preview}'`
+   - If `maw hey` fails → warn only, don't error
+5. Show summary:
    ```
    Conversation with {agent} (thread #{id}) — {n} messages, {iterations} turns
 
@@ -73,7 +80,7 @@ Like Ralph loop — AI drives the conversation autonomously. No user prompts bet
    - [insight 1]
    - [insight 2]
    ```
-5. Leave thread open for future use
+6. Leave thread open for future use
 
 **The goal is insight extraction.** You are having a conversation on behalf of the human to learn something useful.
 
@@ -95,6 +102,20 @@ Like Ralph loop — AI drives the conversation autonomously. No user prompts bet
 - Show what you posted after sending
 
 If the message already reads like a direct message (e.g. `"What's your status?"`), post as-is.
+
+## Auto Notification (maw hey)
+
+After posting to a thread, notify the target agent via `maw hey`:
+
+```
+maw hey {agent}-oracle 'Thread #{id} from {self}: {first 60 chars of message}'
+```
+
+- `{self}` = current Oracle's name (e.g. "Mother Oracle")
+- `{agent}` = target agent name (lowercase)
+- `{preview}` = first ~60 chars of the posted message
+- Runs **once per /talk-to invocation** (not per loop iteration)
+- **Fail-safe**: if `maw hey` errors, log warning and continue — the thread is the source of truth
 
 ## Important Notes
 

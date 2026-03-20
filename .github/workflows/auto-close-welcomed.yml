@@ -52,7 +52,7 @@ jobs:
                     owner,
                     repo,
                     issue_number: issue.number,
-                    body: '🎉 Welcome complete! Auto-closing after 24 hours.\n\nYour Oracle is now part of the family. See you in the [Oracle Family Index](https://github.com/Soul-Brews-Studio/oracle-v2/issues/60)!'
+                    body: '🎉 Welcome complete! Auto-closing after 24 hours.\n\nYour Oracle is now part of the family. See you in the [Oracle Family Index](https://github.com/Soul-Brews-Studio/arra-oracle/issues/60)!'
                   });
 
                   await github.rest.issues.update({

@@ -31,12 +31,13 @@ date "+🕐 %H:%M %Z (%A %d %B %Y)"
 
 **Default** (current repo only):
 ```bash
-PROJECT_BASE=$(ls -d "$HOME/.claude/projects/"*"$(basename "$(pwd)")" 2>/dev/null | head -1)
+ENCODED_PWD=$(pwd | sed 's|^/|-|; s|/|-|g')
+PROJECT_BASE=$(ls -d "$HOME/.claude/projects/${ENCODED_PWD}" 2>/dev/null | head -1)
 export PROJECT_DIRS="$PROJECT_BASE"
-for wt in "${PROJECT_BASE}"-wt*; do [ -d "$wt" ] && export PROJECT_DIRS="$PROJECT_DIRS:$wt"; done
+for wt in "$HOME/.claude/projects/${ENCODED_PWD}"-wt*; do [ -d "$wt" ] && export PROJECT_DIRS="$PROJECT_DIRS:$wt"; done
 ```
 
-Uses `basename` of `pwd` to match the repo name suffix (avoids `github.com` vs `github-com` encoding mismatch). Also picks up worktree dirs (`-wt`, `-wt-1`, etc.).
+Encodes `pwd` the same way Claude does (replace `/` with `-`, prepend `-`) to match the `.claude/projects/` directory naming. Also picks up worktree dirs (`-wt`, `-wt-1`, etc.).
 
 **With `--all`** (all repos):
 ```bash
@@ -97,9 +98,9 @@ When `--timeline` flag is present, group sessions by date instead of a flat tabl
                   · · ·   sleeping / offline
 08:48–09:11    23m   homelab        Update Fleet Runbook + Explore black.local
 09:11–11:30   139m   homelab        Set Up KVM OpenClaw Node on black.local
-09:37–12:51   194m   Nat-s-Agents   /recap → supergateway → CF ZT → oracle-v2 dig
+09:37–12:51   194m   Nat-s-Agents   /recap → supergateway → CF ZT → arra-oracle dig
                   · · ·   45m gap
-12:51–13:03    12m   Nat-s-Agents   Dig All + Design oracle-v2 ← current
+12:51–13:03    12m   Nat-s-Agents   Dig All + Design arra-oracle ← current
                   · · ·   no session yet
 
 ## Feb 21 (Sat) — Long day: Fleet + Brewing + Skills

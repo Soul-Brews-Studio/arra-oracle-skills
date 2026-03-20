@@ -10,10 +10,10 @@
 #     status: linked | unlinked
 
 # Example:
-# oracle-v2:
-#   path: ψ/learn/repo/oracle-v2
-#   ghq: ~/Code/github.com/laris-co/oracle-v2
-#   github: github.com/laris-co/oracle-v2
+# arra-oracle:
+#   path: ψ/learn/repo/arra-oracle
+#   ghq: ~/Code/github.com/laris-co/arra-oracle
+#   github: github.com/laris-co/arra-oracle
 #   type: learn
 #   last_reunion: null
 #   status: linked
