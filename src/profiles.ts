@@ -39,9 +39,9 @@ export const features: Record<string, string[]> = {
   // wizard v2: gender, team, memory consent, fast/full mode, system check
   soul: ['awaken', 'philosophy', 'who-are-you', 'about-oracle', 'birth', 'feel'],
   // network: multi-oracle communication (talk-to↔trace 87%, family-scan↔forward 62%)
-  network: ['talk-to', 'oracle-family-scan', 'oracle-soul-sync-update', 'oracle', 'oraclenet'],
+  network: ['talk-to', 'oracle-family-scan', 'oracle-soul-sync-update', 'oracle'],
   // workspace: parallel work + ops (path↔worktree 100%)
-  workspace: ['worktree', 'workon', 'physical', 'schedule'],
+  workspace: ['worktree', 'workon', 'schedule'],
   // creator: content + research + speech
   creator: ['speak', 'deep-research', 'watch', 'gemini'],
 };

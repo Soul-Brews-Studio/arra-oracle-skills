@@ -1,6 +1,6 @@
 # oracle-skills
 
-31 skills for AI coding agents. 18 agents supported. Install once, use everywhere.
+29 skills for AI coding agents. 18 agents supported. Install once, use everywhere.
 
 ## Install
 
@@ -26,7 +26,7 @@ Features stack on any profile: `+soul`, `+network`, `+workspace`, `+creator`
 |---------|-------|--------|
 | **minimal** | 8 | `forward`, `rrr`, `recap`, `standup`, `go`, `about-oracle`, `oracle-family-scan`, `oracle-soul-sync-update` |
 | **standard** | 13 | `forward`, `rrr`, `recap`, `standup`, `trace`, `dig`, `learn`, `talk-to`, `oracle-family-scan`, `go`, `about-oracle`, `oracle-soul-sync-update`, `awaken` |
-| **full** | 31 | all |
+| **full** | 29 | all |
 
 Switch anytime: `/go minimal`, `/go standard`, `/go full`, `/go + soul`
 
@@ -35,8 +35,8 @@ Switch anytime: `/go minimal`, `/go standard`, `/go full`, `/go + soul`
 | Feature | Skills |
 |---------|--------|
 | **+soul** | `awaken`, `philosophy`, `who-are-you`, `about-oracle`, `birth`, `feel` |
-| **+network** | `talk-to`, `oracle-family-scan`, `oracle-soul-sync-update`, `oracle`, `oraclenet` |
-| **+workspace** | `worktree`, `workon`, `physical`, `schedule` |
+| **+network** | `talk-to`, `oracle-family-scan`, `oracle-soul-sync-update`, `oracle` |
+| **+workspace** | `worktree`, `workon`, `schedule` |
 | **+creator** | `speak`, `deep-research`, `watch`, `gemini` |
 
 <!-- profiles:end -->
@@ -57,29 +57,27 @@ Switch anytime: `/go minimal`, `/go standard`, `/go full`, `/go + soul`
 | 7 | **deep-research** | skill + code | Deep Research via Gemini |
 | 8 | **gemini** | skill + code | Control Gemini via MQTT WebSocket |
 | 9 | **oracle-family-scan** | skill + code | Oracle Family Registry |
-| 10 | **oraclenet** | skill + code | OracleNet social network |
-| 11 | **physical** | skill + code | Physical location awareness from FindMy |
-| 12 | **project** | skill + code | Clone and track external repos |
-| 13 | **recap** | skill + code | Session orientation and awareness |
-| 14 | **schedule** | skill + code | Query schedule via Oracle API (Drizzle DB) |
-| 15 | **speak** | skill + code | Text-to-speech using edge-tts or macOS say |
-| 16 | **watch** | skill + code | Learn from YouTube videos |
+| 10 | **project** | skill + code | Clone and track external repos |
+| 11 | **recap** | skill + code | Session orientation and awareness |
+| 12 | **schedule** | skill + code | Query schedule via Oracle API (Drizzle DB) |
+| 13 | **speak** | skill + code | Text-to-speech using edge-tts or macOS say |
+| 14 | **watch** | skill + code | Learn from YouTube videos |
 | - |  |  |  |
-| 17 | **awaken** | skill | Guided Oracle birth and awakening ritual |
-| 18 | **birth** | skill | Prepare birth props for a new Oracle repo |
-| 19 | **dig** | skill | Mine Claude Code sessions |
-| 20 | **feel** | skill | Log emotions with optional structure |
-| 21 | **forward** | skill | Create handoff + enter plan mode for next |
-| 22 | **go** | skill | Switch skill profiles and features |
-| 23 | **oracle** | skill | Manage Oracle skills |
-| 24 | **oracle-soul-sync-update** | skill | Sync Oracle instruments with the family |
-| 25 | **philosophy** | skill | Display Oracle philosophy |
-| 26 | **standup** | skill | Daily standup check |
-| 27 | **talk-to** | skill | Talk to another Oracle agent via threads |
-| 28 | **where-we-are** | skill | Session awareness |
-| 29 | **who-are-you** | skill | Know ourselves |
-| 30 | **workon** | skill | Work on an issue OR resume a killed worktree |
-| 31 | **worktree** | skill | Git worktree for parallel work |
+| 15 | **awaken** | skill | Guided Oracle birth and awakening ritual |
+| 16 | **birth** | skill | Prepare birth props for a new Oracle repo |
+| 17 | **dig** | skill | Mine Claude Code sessions |
+| 18 | **feel** | skill | Log emotions with optional structure |
+| 19 | **forward** | skill | Create handoff + enter plan mode for next |
+| 20 | **go** | skill | Switch skill profiles and features |
+| 21 | **oracle** | skill | Manage Oracle skills |
+| 22 | **oracle-soul-sync-update** | skill | Sync Oracle instruments with the family |
+| 23 | **philosophy** | skill | Display Oracle philosophy |
+| 24 | **standup** | skill | Daily standup check |
+| 25 | **talk-to** | skill | Talk to another Oracle agent via threads |
+| 26 | **where-we-are** | skill | Session awareness |
+| 27 | **who-are-you** | skill | Know ourselves |
+| 28 | **workon** | skill | Work on an issue OR resume a killed worktree |
+| 29 | **worktree** | skill | Git worktree for parallel work |
 
 <!-- skills:end -->
 

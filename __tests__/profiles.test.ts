@@ -63,17 +63,15 @@ describe("features", () => {
     expect(features.soul).toContain('feel');
   });
 
-  it("network has 5 comms skills", () => {
-    expect(features.network.length).toBe(5);
+  it("network has 4 comms skills", () => {
+    expect(features.network.length).toBe(4);
     expect(features.network).toContain('talk-to');
-    expect(features.network).toContain('oraclenet');
   });
 
-  it("workspace has 4 skills", () => {
-    expect(features.workspace.length).toBe(4);
+  it("workspace has 3 skills", () => {
+    expect(features.workspace.length).toBe(3);
     expect(features.workspace).toContain('worktree');
     expect(features.workspace).toContain('workon');
-    expect(features.workspace).toContain('physical');
     expect(features.workspace).toContain('schedule');
   });
 
@@ -99,8 +97,8 @@ describe("resolveProfileWithFeatures", () => {
 
   it("standard + network deduplicates talk-to, oracle-family-scan, oracle-soul-sync-update", () => {
     const result = resolveProfileWithFeatures("standard", ["network"], ALL_SKILLS);
-    // standard(13) + network(5) - 3 overlap (talk-to, oracle-family-scan, oracle-soul-sync-update) = 15
-    expect(result.length).toBe(15);
+    // standard(13) + network(4) - 3 overlap (talk-to, oracle-family-scan, oracle-soul-sync-update) = 14
+    expect(result.length).toBe(14);
     const unique = new Set(result);
     expect(unique.size).toBe(result.length);
   });
