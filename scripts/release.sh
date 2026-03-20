@@ -4,6 +4,28 @@ set -e
 # Release script for oracle-skills-cli
 # Usage: ./scripts/release.sh [patch|minor|major]
 #        ./scripts/release.sh 1.5.37  (specific version)
+#
+# Safety: must be on main branch, clean working tree, not in a worktree
+
+# Guard: must be on main
+BRANCH=$(git branch --show-current)
+if [[ "$BRANCH" != "main" ]]; then
+  echo "ERROR: releases must be cut from main (currently on '$BRANCH')"
+  echo "Merge your PR first, then run this script on main."
+  exit 1
+fi
+
+# Guard: must not be in a worktree
+if [[ "$(git rev-parse --git-common-dir)" != "$(git rev-parse --git-dir)" ]]; then
+  echo "ERROR: cannot release from a worktree — switch to the main repo checkout"
+  exit 1
+fi
+
+# Guard: working tree must be clean
+if [[ -n "$(git status --porcelain)" ]]; then
+  echo "ERROR: working tree is not clean — commit or stash changes first"
+  exit 1
+fi
 
 CURRENT=$(grep '"version"' package.json | head -1 | cut -d'"' -f4)
 echo "Current version: $CURRENT"
@@ -31,13 +53,22 @@ if [[ "$confirm" != "y" && "$confirm" != "Y" ]]; then
 fi
 
 echo ""
+
+# Run tests first
+echo "🧪 Running tests..."
+bun test __tests__/
+echo ""
+
 echo "📦 Bumping version..."
 
-# 1. Update package.json
-sed -i '' "s/\"version\": \"$CURRENT\"/\"version\": \"$NEW_VERSION\"/" package.json
-
-# 2. Update version in skill files that reference it
-find src/skills -name "SKILL.md" -exec sed -i '' "s/v$CURRENT/v$NEW_VERSION/g" {} \;
+# 1. Update package.json (portable sed — works on macOS and Linux)
+if [[ "$(uname)" == "Darwin" ]]; then
+  sed -i '' "s/\"version\": \"$CURRENT\"/\"version\": \"$NEW_VERSION\"/" package.json
+  find src/skills -name "SKILL.md" -exec sed -i '' "s/v$CURRENT/v$NEW_VERSION/g" {} \;
+else
+  sed -i "s/\"version\": \"$CURRENT\"/\"version\": \"$NEW_VERSION\"/" package.json
+  find src/skills -name "SKILL.md" -exec sed -i "s/v$CURRENT/v$NEW_VERSION/g" {} \;
+fi
 
 # 3. Compile skills
 echo "🔮 Compiling skills..."
@@ -46,7 +77,7 @@ bun run compile
 # 4. Commit
 echo "📝 Committing..."
 git add -A
-git commit -m "chore: release v$NEW_VERSION"
+git commit -m "release: v$NEW_VERSION"
 
 # 5. Push
 echo "🚀 Pushing to main..."

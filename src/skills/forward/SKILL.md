@@ -19,9 +19,28 @@ Create context for next session, then enter plan mode to define next steps.
 ## Steps
 
 1. **Git status**: Check uncommitted work
-2. **Session summary**: What we did (from memory)
-3. **Pending items**: What's left
-4. **Next steps**: Specific actions
+2. **Detect session**: Current session ID for traceability
+3. **Session summary**: What we did (from memory)
+4. **Pending items**: What's left
+5. **Next steps**: Specific actions
+
+### Session Detection
+
+```bash
+ENCODED_PWD=$(pwd | sed 's|^/|-|; s|/|-|g')
+PROJECT_DIR="$HOME/.claude/projects/${ENCODED_PWD}"
+LATEST_JSONL=$(ls -t "$PROJECT_DIR"/*.jsonl 2>/dev/null | head -1)
+if [ -n "$LATEST_JSONL" ]; then
+  SESSION_ID=$(basename "$LATEST_JSONL" .jsonl)
+  echo "SESSION: ${SESSION_ID:0:8}"
+fi
+```
+
+Include in handoff header if detected:
+```markdown
+📡 Session: 74c32f34 | repo-name | Xh XXm
+```
+Skip silently if detection fails.
 
 ## Output
 

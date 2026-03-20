@@ -67,6 +67,34 @@ const lines = status ? status.split('\n') : [];
 const modified = lines.filter(l => l.startsWith(' M'));
 const untracked = lines.filter(l => l.startsWith('??'));
 
+// Session detection
+let sessionLine = "";
+try {
+  const encodedPwd = root.replace(/^\//, '-').replace(/\//g, '-');
+  const projectDir = `${process.env.HOME}/.claude/projects/${encodedPwd}`;
+  if (existsSync(projectDir)) {
+    const jsonls = (await $`ls -t ${projectDir}/*.jsonl 2>/dev/null`.text()).trim().split('\n').filter(Boolean);
+    if (jsonls.length) {
+      const sessionId = jsonls[0].split('/').pop()!.replace('.jsonl', '');
+      const shortId = sessionId.slice(0, 8);
+      const firstLine = (await $`head -1 ${jsonls[0]}`.text()).trim();
+      let startStr = "";
+      try {
+        const ts = JSON.parse(firstLine).timestamp;
+        if (ts) {
+          const start = new Date(ts);
+          const elapsed = Math.round((Date.now() - start.getTime()) / 60000);
+          const h = Math.floor(elapsed / 60);
+          const m = elapsed % 60;
+          startStr = h > 0 ? `${h}h ${String(m).padStart(2, '0')}m` : `${m}m`;
+        }
+      } catch {}
+      const repoName = root.split('/').pop() || '';
+      sessionLine = `${shortId} | ${repoName}${startStr ? ` | ${startStr}` : ''}`;
+    }
+  }
+} catch {}
+
 // Output
 const now = new Date();
 const time = now.toLocaleTimeString('en', { hour: '2-digit', minute: '2-digit', hour12: false });
@@ -74,6 +102,7 @@ const date = now.toLocaleDateString('en', { day: '2-digit', month: 'short', year
 
 console.log("# RECAP");
 console.log("");
+if (sessionLine) console.log(`📡 Session: ${sessionLine}`);
 console.log(`🕐 ${time} | ${date}`);
 console.log("");
 console.log("---");

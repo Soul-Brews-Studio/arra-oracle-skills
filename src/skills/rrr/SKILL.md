@@ -29,6 +29,24 @@ date "+%H:%M %Z (%A %d %B %Y)"
 git log --oneline -10 && git diff --stat HEAD~5
 ```
 
+### 1.5. Detect Session (optional)
+
+```bash
+ENCODED_PWD=$(pwd | sed 's|^/|-|; s|/|-|g')
+PROJECT_DIR="$HOME/.claude/projects/${ENCODED_PWD}"
+LATEST_JSONL=$(ls -t "$PROJECT_DIR"/*.jsonl 2>/dev/null | head -1)
+if [ -n "$LATEST_JSONL" ]; then
+  SESSION_ID=$(basename "$LATEST_JSONL" .jsonl)
+  echo "SESSION: ${SESSION_ID:0:8}"
+fi
+```
+
+If detected, include in retrospective header:
+```
+📡 Session: 74c32f34 | repo-name | Xh XXm
+```
+If detection fails, skip silently.
+
 ### 2. Write Retrospective
 
 **Path**: `ψ/memory/retrospectives/YYYY-MM/DD/HH.MM_slug.md`

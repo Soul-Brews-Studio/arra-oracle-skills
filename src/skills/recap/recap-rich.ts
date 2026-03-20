@@ -13,7 +13,36 @@ const date = now.toLocaleDateString("en-GB", { day: "2-digit", month: "short", y
 const time = now.toTimeString().slice(0, 5);
 const month = now.toISOString().slice(0, 7);
 
+// Session detection
+let sessionLine = "";
+try {
+  const encodedPwd = ROOT.replace(/^\//, '-').replace(/\//g, '-');
+  const projectDir = `${process.env.HOME}/.claude/projects/${encodedPwd}`;
+  if (existsSync(projectDir)) {
+    const jsonls = (await $`ls -t ${projectDir}/*.jsonl 2>/dev/null`.text()).trim().split('\n').filter(Boolean);
+    if (jsonls.length) {
+      const sessionId = jsonls[0].split('/').pop()!.replace('.jsonl', '');
+      const shortId = sessionId.slice(0, 8);
+      const firstLine = (await $`head -1 ${jsonls[0]}`.text()).trim();
+      let startStr = "";
+      try {
+        const ts = JSON.parse(firstLine).timestamp;
+        if (ts) {
+          const start = new Date(ts);
+          const elapsed = Math.round((Date.now() - start.getTime()) / 60000);
+          const h = Math.floor(elapsed / 60);
+          const m = elapsed % 60;
+          startStr = h > 0 ? `${h}h ${String(m).padStart(2, '0')}m` : `${m}m`;
+        }
+      } catch {}
+      const repoName = ROOT.split('/').pop() || '';
+      sessionLine = `${shortId} | ${repoName}${startStr ? ` | ${startStr}` : ''}`;
+    }
+  }
+} catch {}
+
 console.log("# RECAP (Rich)");
+if (sessionLine) console.log(`📡 Session: ${sessionLine}`);
 console.log(`\n${time} | ${date}\n\n---\n`);
 
 // Resolve ψ symlink (used for focus + schedule)

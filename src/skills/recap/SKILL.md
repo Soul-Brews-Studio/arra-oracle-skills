@@ -201,6 +201,20 @@ Everything from `--now`, plus:
 
 ---
 
+## Session Context
+
+The recap scripts (`recap.ts` and `recap-rich.ts`) auto-detect and display the current session:
+
+```
+📡 Session: 74c32f34 | oracle-skills-cli | 2h 15m
+```
+
+Detection: scans `~/.claude/projects/[encoded-pwd]/*.jsonl` for the most recent session file, extracts short ID and elapsed time from first timestamp.
+
+If session detection fails, skip silently — it's informational only.
+
+---
+
 ## Demographics Context
 
 If CLAUDE.md contains demographics from `/awaken` wizard v2, include in recap output:
