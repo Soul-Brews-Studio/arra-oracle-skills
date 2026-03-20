@@ -5,7 +5,17 @@
 ## Install
 
 ```bash
+# Install all skills globally
 bunx --bun oracle-skills@github:Soul-Brews-Studio/oracle-skills-cli install -g -y
+
+# Install specific profile
+bunx --bun oracle-skills@github:Soul-Brews-Studio/oracle-skills-cli init -p standard
+
+# Install specific version (alpha)
+bunx --bun oracle-skills@github:Soul-Brews-Studio/oracle-skills-cli#v3.3.0-alpha.4 install -g -y
+
+# From local clone
+bun run src/cli/index.ts install -g -y
 ```
 
 ## Profiles
