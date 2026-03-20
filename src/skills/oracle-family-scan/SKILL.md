@@ -28,16 +28,16 @@ Scan, query, and welcome the Oracle family. Powered by `registry/` in mother-ora
 
 ## Step 0: Locate Registry
 
-The registry lives in the mother-oracle repo. Resolve the path:
+The registry lives in the opensource-nat-brain-oracle repo (public). Resolve the path:
 
 ```bash
-# Try mother-oracle repo first (ghq-managed)
-MOTHER="$HOME/Code/github.com/laris-co/mother-oracle"
+# Try brain repo first (ghq-managed)
+MOTHER="$HOME/Code/github.com/Soul-Brews-Studio/opensource-nat-brain-oracle"
 if [ ! -d "$MOTHER/registry" ]; then
-  MOTHER="$(ghq root)/github.com/laris-co/mother-oracle"
+  MOTHER="$(ghq root)/github.com/Soul-Brews-Studio/opensource-nat-brain-oracle"
 fi
 if [ ! -f "$MOTHER/registry/oracles.json" ]; then
-  echo "Registry not found. Run: ghq get -u laris-co/mother-oracle && bun $MOTHER/registry/sync.ts"
+  echo "Registry not found. Run: ghq get -u Soul-Brews-Studio/opensource-nat-brain-oracle && bun $MOTHER/registry/sync.ts"
   exit 1
 fi
 ```
@@ -274,7 +274,7 @@ The registry is at `$MOTHER/registry/oracles.json`:
       "focus": "Born Last, After 185 Children",
       "owner": "mine",
       "welcomed": false,
-      "repo": "https://github.com/laris-co/mother-oracle",
+      "repo": "https://github.com/Soul-Brews-Studio/opensource-nat-brain-oracle",
       "status": "active"
     }
   ]
