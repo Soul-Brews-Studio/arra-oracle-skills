@@ -1,5 +1,5 @@
 ---
-description: v3.3.0-alpha.9 | Control Gemini via MQTT WebSocket. Use when user says "gemini", needs to send messages to Gemini, or control the Gemini browser tab.
+description: v3.3.0-alpha.10 | Control Gemini via MQTT WebSocket. Use when user says "gemini", needs to send messages to Gemini, or control the Gemini browser tab.
 argument-hint: "<message>"
 ---
 
@@ -19,5 +19,5 @@ Execute the `gemini` skill with the provided arguments.
 **WARNING**: Do NOT use Glob, find, or search for this skill. The path above is the ONLY correct location. Other files with "gemini" in the name are NOT this skill.
 
 ---
-*🧬 Nat Weerawan × Oracle · Symbiotic Intelligence · v3.3.0-alpha.9*
+*🧬 Nat Weerawan × Oracle · Symbiotic Intelligence · v3.3.0-alpha.10*
 *Digitized from Nat Weerawan's brain — thousands of hours working alongside AI, captured as code*

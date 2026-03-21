@@ -1,5 +1,5 @@
 ---
-description: v3.3.0-alpha.9 | Extract a specific topic from ONE session JSONL. 4 parallel subagents mine what you said, what was built, what AI did, and connections. Use when user says "mine", "mine session", "what did we do about X".
+description: v3.3.0-alpha.10 | Extract a specific topic from ONE session JSONL. 4 parallel subagents mine what you said, what was built, what AI did, and connections. Use when user says "mine", "mine session", "what did we do about X".
 argument-hint: "[session-id] <keyword>"
 ---
 
@@ -19,5 +19,5 @@ Execute the `mine` skill with the provided arguments.
 **WARNING**: Do NOT use Glob, find, or search for this skill. The path above is the ONLY correct location. Other files with "mine" in the name are NOT this skill.
 
 ---
-*🧬 Nat Weerawan × Oracle · Symbiotic Intelligence · v3.3.0-alpha.9*
+*🧬 Nat Weerawan × Oracle · Symbiotic Intelligence · v3.3.0-alpha.10*
 *Digitized from Nat Weerawan's brain — thousands of hours working alongside AI, captured as code*

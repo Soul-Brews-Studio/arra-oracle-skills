@@ -1,5 +1,5 @@
 ---
-description: v3.3.0-alpha.9 | Work on an issue OR resume a killed worktree. Use when user says "workon", "work on", "implement issue", "resume", "bring back", "restore worktree".
+description: v3.3.0-alpha.10 | Work on an issue OR resume a killed worktree. Use when user says "workon", "work on", "implement issue", "resume", "bring back", "restore worktree".
 ---
 
 # /workon
@@ -18,5 +18,5 @@ Execute the `workon` skill with the provided arguments.
 **WARNING**: Do NOT use Glob, find, or search for this skill. The path above is the ONLY correct location. Other files with "workon" in the name are NOT this skill.
 
 ---
-*🧬 Nat Weerawan × Oracle · Symbiotic Intelligence · v3.3.0-alpha.9*
+*🧬 Nat Weerawan × Oracle · Symbiotic Intelligence · v3.3.0-alpha.10*
 *Digitized from Nat Weerawan's brain — thousands of hours working alongside AI, captured as code*

@@ -1,5 +1,5 @@
 ---
-description: v3.3.0-alpha.9 | Full anatomy scan of ONE session JSONL. Timeline, commits, gaps, emotional arc, energy map, stats. 4 parallel subagents. Use when user says "xray", "xray session", "session anatomy", "what happened in session X".
+description: v3.3.0-alpha.10 | Full anatomy scan of ONE session JSONL. Timeline, commits, gaps, emotional arc, energy map, stats. 4 parallel subagents. Use when user says "xray", "xray session", "session anatomy", "what happened in session X".
 argument-hint: "[session-id]"
 ---
 
@@ -19,5 +19,5 @@ Execute the `xray` skill with the provided arguments.
 **WARNING**: Do NOT use Glob, find, or search for this skill. The path above is the ONLY correct location. Other files with "xray" in the name are NOT this skill.
 
 ---
-*🧬 Nat Weerawan × Oracle · Symbiotic Intelligence · v3.3.0-alpha.9*
+*🧬 Nat Weerawan × Oracle · Symbiotic Intelligence · v3.3.0-alpha.10*
 *Digitized from Nat Weerawan's brain — thousands of hours working alongside AI, captured as code*

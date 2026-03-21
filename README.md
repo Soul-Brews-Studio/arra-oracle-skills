@@ -1,6 +1,6 @@
 # oracle-skills
 
-32 skills for AI coding agents. 18 agents supported. Install once, use everywhere.
+33 skills for AI coding agents. 18 agents supported. Install once, use everywhere.
 
 ## Install
 
@@ -12,7 +12,7 @@ bunx --bun oracle-skills@github:Soul-Brews-Studio/oracle-skills-cli install -g -
 bunx --bun oracle-skills@github:Soul-Brews-Studio/oracle-skills-cli init -p standard
 
 # Install specific version
-bunx --bun oracle-skills@github:Soul-Brews-Studio/oracle-skills-cli#v3.3.0-alpha.9 install -g -y
+bunx --bun oracle-skills@github:Soul-Brews-Studio/oracle-skills-cli#v3.3.0-alpha.10 install -g -y
 
 # From local clone
 bun run src/cli/index.ts install -g -y
@@ -36,7 +36,7 @@ Features stack on any profile: `+soul`, `+network`, `+workspace`, `+creator`
 |---------|-------|--------|
 | **minimal** | 8 | `forward`, `rrr`, `recap`, `standup`, `go`, `about-oracle`, `oracle-family-scan`, `oracle-soul-sync-update` |
 | **standard** | 13 | `forward`, `rrr`, `recap`, `standup`, `trace`, `dig`, `learn`, `talk-to`, `oracle-family-scan`, `go`, `about-oracle`, `oracle-soul-sync-update`, `awaken` |
-| **full** | 32 | all |
+| **full** | 33 | all |
 
 Switch anytime: `/go minimal`, `/go standard`, `/go full`, `/go + soul`
 
@@ -73,24 +73,25 @@ Switch anytime: `/go minimal`, `/go standard`, `/go full`, `/go + soul`
 | 13 | **speak** | skill + code | Text-to-speech using edge-tts or macOS say |
 | 14 | **watch** | skill + code | Learn from YouTube videos |
 | - |  |  |  |
-| 15 | **awaken** | skill | Guided Oracle birth and awakening ritual |
-| 16 | **birth** | skill | Prepare birth props for a new Oracle repo |
-| 17 | **dig** | skill | Mine Claude Code sessions |
-| 18 | **feel** | skill | Log emotions with optional structure |
-| 19 | **forward** | skill | Create handoff + enter plan mode for next |
-| 20 | **go** | skill | Switch skill profiles and features |
-| 21 | **new-issue** | skill | Create a GitHub issue in the current repo |
-| 22 | **oracle** | skill | Manage Oracle skills |
-| 23 | **oracle-soul-sync-update** | skill | Sync Oracle instruments with the family |
-| 24 | **philosophy** | skill | Display Oracle philosophy |
-| 25 | **release-alpha** | skill | Bump version, compile, test, commit, tag |
-| 26 | **standup** | skill | Daily standup check |
-| 27 | **talk-to** | skill | Talk to another Oracle agent via threads |
-| 28 | **whats-next** | skill | Suggest next action based on open issues |
-| 29 | **where-we-are** | skill | Session awareness |
-| 30 | **who-are-you** | skill | Know ourselves |
-| 31 | **workon** | skill | Work on an issue OR resume a killed worktree |
-| 32 | **worktree** | skill | Git worktree for parallel work |
+| 15 | **alpha-feature** | skill | Quickly create a new skill, add to repo |
+| 16 | **awaken** | skill | Guided Oracle birth and awakening ritual |
+| 17 | **birth** | skill | Prepare birth props for a new Oracle repo |
+| 18 | **dig** | skill | Mine Claude Code sessions |
+| 19 | **feel** | skill | Log emotions with optional structure |
+| 20 | **forward** | skill | Create handoff + enter plan mode for next |
+| 21 | **go** | skill | Switch skill profiles and features |
+| 22 | **new-issue** | skill | Create a GitHub issue in the current repo |
+| 23 | **oracle** | skill | Manage Oracle skills |
+| 24 | **oracle-soul-sync-update** | skill | Sync Oracle instruments with the family |
+| 25 | **philosophy** | skill | Display Oracle philosophy |
+| 26 | **release-alpha** | skill | Bump version, compile, test, commit, tag |
+| 27 | **standup** | skill | Daily standup check |
+| 28 | **talk-to** | skill | Talk to another Oracle agent via threads |
+| 29 | **whats-next** | skill | Suggest next action based on open issues |
+| 30 | **where-we-are** | skill | Session awareness |
+| 31 | **who-are-you** | skill | Know ourselves |
+| 32 | **workon** | skill | Work on an issue OR resume a killed worktree |
+| 33 | **worktree** | skill | Git worktree for parallel work |
 
 <!-- skills:end -->
 
