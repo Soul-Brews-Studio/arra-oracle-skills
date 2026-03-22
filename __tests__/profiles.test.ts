@@ -2,19 +2,18 @@ import { describe, it, expect } from "bun:test";
 import { profiles, features, resolveProfile, resolveProfileWithFeatures } from "../src/profiles";
 
 const ALL_SKILLS = [
-  'forward', 'rrr', 'recap', 'standup', 'go', 'about-oracle',
-  'trace', 'dig', 'learn', 'talk-to', 'oracle-family-scan',
-  'awaken', 'philosophy', 'who-are-you', 'birth', 'feel',
-  'oraclenet', 'oracle-soul-sync-update', 'oracle',
-  'worktree', 'physical', 'schedule',
-  'speak', 'deep-research', 'watch', 'gemini',
-  'where-we-are', 'project',
+  'forward', 'retrospective', 'recap', 'standup', 'go', 'about-oracle',
+  'trace', 'learn', 'talk-to', 'oracle-family-scan',
+  'awaken', 'philosophy', 'who-are-you',
+  'oracle-soul-sync-update',
+  'schedule', 'project',
+  'where-we-are', 'auto-retrospective',
 ];
 
 describe("profiles", () => {
-  it("minimal has 8 skills (4 ritual + go + about-oracle + oracle-family-scan + oracle-soul-sync-update)", () => {
+  it("minimal has 8 skills", () => {
     const result = resolveProfile("minimal", ALL_SKILLS);
-    expect(result).toEqual(['forward', 'rrr', 'recap', 'standup', 'go', 'about-oracle', 'oracle-family-scan', 'oracle-soul-sync-update']);
+    expect(result).toEqual(['forward', 'retrospective', 'recap', 'standup', 'go', 'about-oracle', 'oracle-family-scan', 'oracle-soul-sync-update']);
     expect(result?.length).toBe(8);
   });
 
@@ -24,21 +23,16 @@ describe("profiles", () => {
     expect(seed).toEqual(minimal);
   });
 
-  it("standard has 13 skills (minimal + discovery + awaken)", () => {
+  it("standard has 12 skills", () => {
     const result = resolveProfile("standard", ALL_SKILLS);
-    expect(result?.length).toBe(13);
-    // includes minimal
+    expect(result?.length).toBe(12);
     expect(result).toContain('forward');
-    expect(result).toContain('rrr');
+    expect(result).toContain('retrospective');
     expect(result).toContain('recap');
-    expect(result).toContain('standup');
-    expect(result).toContain('oracle-soul-sync-update');
-    // includes discovery
     expect(result).toContain('trace');
-    expect(result).toContain('dig');
     expect(result).toContain('learn');
     expect(result).toContain('talk-to');
-    expect(result).toContain('oracle-family-scan');
+    expect(result).toContain('awaken');
   });
 
   it("full returns null (no filtering)", () => {
@@ -53,61 +47,50 @@ describe("profiles", () => {
 });
 
 describe("features", () => {
-  it("soul has 6 identity skills", () => {
-    expect(features.soul.length).toBe(6);
+  it("soul has 4 skills", () => {
+    expect(features.soul.length).toBe(4);
     expect(features.soul).toContain('awaken');
     expect(features.soul).toContain('philosophy');
     expect(features.soul).toContain('who-are-you');
     expect(features.soul).toContain('about-oracle');
-    expect(features.soul).toContain('birth');
-    expect(features.soul).toContain('feel');
   });
 
-  it("network has 4 comms skills", () => {
-    expect(features.network.length).toBe(4);
+  it("network has 3 comms skills", () => {
+    expect(features.network.length).toBe(3);
     expect(features.network).toContain('talk-to');
   });
 
-  it("workspace has 3 skills", () => {
-    expect(features.workspace.length).toBe(3);
-    expect(features.workspace).toContain('worktree');
-    expect(features.workspace).toContain('workon');
+  it("workspace has 2 skills", () => {
+    expect(features.workspace.length).toBe(2);
     expect(features.workspace).toContain('schedule');
-  });
-
-  it("creator has 4 content skills", () => {
-    expect(features.creator.length).toBe(4);
-    expect(features.creator).toContain('speak');
-    expect(features.creator).toContain('deep-research');
-    expect(features.creator).toContain('watch');
-    expect(features.creator).toContain('gemini');
+    expect(features.workspace).toContain('project');
   });
 });
 
 describe("resolveProfileWithFeatures", () => {
-  it("minimal + soul = 13 skills", () => {
+  it("minimal + soul = 11 skills", () => {
     const result = resolveProfileWithFeatures("minimal", ["soul"], ALL_SKILLS);
-    // 8 minimal + 6 soul - 1 overlap (about-oracle) = 13
-    expect(result.length).toBe(13);
+    // 8 minimal + 4 soul - 1 overlap (about-oracle) = 11
+    expect(result.length).toBe(11);
     expect(result).toContain('forward');
-    expect(result).toContain('standup');
     expect(result).toContain('awaken');
     expect(result).toContain('philosophy');
   });
 
-  it("standard + network deduplicates talk-to, oracle-family-scan, oracle-soul-sync-update", () => {
+  it("standard + network deduplicates", () => {
     const result = resolveProfileWithFeatures("standard", ["network"], ALL_SKILLS);
-    // standard(13) + network(4) - 3 overlap (talk-to, oracle-family-scan, oracle-soul-sync-update) = 14
-    expect(result.length).toBe(14);
+    // standard(12) + network(3) - 3 overlap = 12
+    expect(result.length).toBe(12);
     const unique = new Set(result);
     expect(unique.size).toBe(result.length);
   });
 
-  it("minimal + creator = 12 skills", () => {
-    const result = resolveProfileWithFeatures("minimal", ["creator"], ALL_SKILLS);
-    expect(result.length).toBe(12);
-    expect(result).toContain('speak');
-    expect(result).toContain('gemini');
+  it("minimal + workspace = 10 skills", () => {
+    const result = resolveProfileWithFeatures("minimal", ["workspace"], ALL_SKILLS);
+    // 8 + 2 = 10
+    expect(result.length).toBe(10);
+    expect(result).toContain('schedule');
+    expect(result).toContain('project');
   });
 
   it("full + any feature = all skills", () => {
@@ -116,11 +99,11 @@ describe("resolveProfileWithFeatures", () => {
   });
 
   it("multiple features stack", () => {
-    const result = resolveProfileWithFeatures("minimal", ["soul", "creator"], ALL_SKILLS);
-    // 8 + 6 + 4 - 1 (about-oracle overlap) = 17
-    expect(result.length).toBe(17);
+    const result = resolveProfileWithFeatures("minimal", ["soul", "workspace"], ALL_SKILLS);
+    // 8 + 4 + 2 - 1 (about-oracle overlap) = 13
+    expect(result.length).toBe(13);
     expect(result).toContain('awaken');
-    expect(result).toContain('speak');
+    expect(result).toContain('schedule');
   });
 
   it("empty features = just profile", () => {
