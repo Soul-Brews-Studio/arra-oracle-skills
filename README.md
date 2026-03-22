@@ -1,6 +1,6 @@
 # oracle-skills
 
-37 skills for AI coding agents. 18 agents supported.
+40 skills for AI coding agents. 18 agents supported.
 
 ## Install
 
@@ -31,7 +31,7 @@ oracle-skills uninstall -g -y         # remove all
 |---------|-------|--------|
 | **minimal** | 8 | `forward`, `rrr`, `recap`, `standup`, `go`, `about-oracle`, `oracle-family-scan`, `oracle-soul-sync-update` |
 | **standard** | 13 | `forward`, `rrr`, `recap`, `standup`, `trace`, `dig`, `learn`, `talk-to`, `oracle-family-scan`, `go`, `about-oracle`, `oracle-soul-sync-update`, `awaken` |
-| **full** | 37 | all |
+| **full** | 40 | all |
 
 Switch anytime: `/go minimal`, `/go standard`, `/go full`, `/go + soul`
 
@@ -76,21 +76,24 @@ Switch anytime: `/go minimal`, `/go standard`, `/go full`, `/go + soul`
 | 20 | **feel** | skill | Log emotions with optional structure |
 | 21 | **forward** | skill | Create handoff + enter plan mode for next |
 | 22 | **go** | skill | Switch skill profiles and features |
-| 23 | **list-issues-pr-pulse** | skill | List open issues, PRs |
-| 24 | **new-issue** | skill | Create a GitHub issue in the current repo |
-| 25 | **oracle** | skill | Manage Oracle skills |
-| 26 | **oracle-soul-sync-update** | skill | Sync Oracle instruments with the family |
-| 27 | **philosophy** | skill | Display Oracle philosophy |
-| 28 | **release-alpha** | skill | Bump version, compile, test, commit, tag |
-| 29 | **resonance** | skill | Capture a resonance moment |
-| 30 | **standup** | skill | Daily standup check |
-| 31 | **talk-to** | skill | Talk to another Oracle agent via threads |
-| 32 | **what-we-done** | skill | Quick list of what got done |
-| 33 | **whats-next** | skill | Suggest next action based on open issues |
-| 34 | **where-we-are** | skill | Session awareness |
-| 35 | **who-are-you** | skill | Know ourselves |
-| 36 | **workon** | skill | Work on an issue OR resume a killed worktree |
-| 37 | **worktree** | skill | Git worktree for parallel work |
+| 23 | **handover** | skill | Transfer work to another Oracle |
+| 24 | **list-issues-pr-pulse** | skill | List open issues, PRs |
+| 25 | **new-issue** | skill | Create a GitHub issue in the current repo |
+| 26 | **oracle** | skill | Manage Oracle skills |
+| 27 | **oracle-soul-sync-update** | skill | Sync Oracle instruments with the family |
+| 28 | **philosophy** | skill | Display Oracle philosophy |
+| 29 | **release-alpha** | skill | Bump version, compile, test, commit, tag |
+| 30 | **resonance** | skill | Capture a resonance moment |
+| 31 | **standup** | skill | Daily standup check |
+| 32 | **talk-to** | skill | Talk to another Oracle agent via threads |
+| 33 | **tell** | skill | Send one-way command to another Oracle |
+| 34 | **wake** | skill | Spawn Oracle in new tmux tab with instruction |
+| 35 | **what-we-done** | skill | Quick list of what got done |
+| 36 | **whats-next** | skill | Suggest next action based on open issues |
+| 37 | **where-we-are** | skill | Session awareness |
+| 38 | **who-are-you** | skill | Know ourselves |
+| 39 | **workon** | skill | Work on an issue OR resume a killed worktree |
+| 40 | **worktree** | skill | Git worktree for parallel work |
 
 <!-- skills:end -->
 
