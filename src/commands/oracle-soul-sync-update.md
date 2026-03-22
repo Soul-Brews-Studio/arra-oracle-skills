@@ -1,5 +1,5 @@
 ---
-description: v3.3.0-alpha.10 | Sync Oracle instruments with the family. Check and update skills to latest version. Use when user says "soul-sync", "sync", "calibrate", "update", or before /awaken.
+description: v3.3.0-alpha.10 [core] | Sync Oracle instruments with the family. Check and update skills to latest version. Use when user says "soul-sync", "sync", "calibrate", "update", or before /awaken.
 ---
 
 # /oracle-soul-sync-update

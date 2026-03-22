@@ -1,5 +1,5 @@
 ---
-description: v3.3.0-alpha.10 | Configure auto-rrr and auto-forward triggers based on context window usage. Use when user says "auto rrr", "auto-scale", "configure auto triggers", "change rrr interval", "toggle auto", or wants to adjust when /rrr and /forward auto-trigger. Do NOT trigger for running /rrr manually (use /rrr) or creating handoffs (use /forward).
+description: v3.3.0-alpha.10 [core] | Configure auto-rrr and auto-forward triggers based on context window usage. Use when user says "auto rrr", "auto-scale", "configure auto triggers", "change rrr interval", "toggle auto", or wants to adjust when /rrr and /forward auto-trigger. Do NOT trigger for running /rrr manually (use /rrr) or creating handoffs (use /forward).
 argument-hint: "[on | off | status | rrr:<interval>k | fwd:<interval>k]"
 ---
 

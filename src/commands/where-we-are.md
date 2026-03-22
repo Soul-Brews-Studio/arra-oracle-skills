@@ -1,5 +1,5 @@
 ---
-description: v3.3.0-alpha.10 | Session awareness — alias for /recap --now deep. Quick mid-session check of current topic, timeline, and pending items. Use when user asks "now", "where are we", "what are we doing". Do NOT trigger for full session start orientation (use /recap), "standup" (use /standup), or past session mining (use /dig).
+description: v3.3.0-alpha.10 [core] | Session awareness — alias for /recap --now deep. Quick mid-session check of current topic, timeline, and pending items. Use when user asks "now", "where are we", "what are we doing". Do NOT trigger for full session start orientation (use /recap), "standup" (use /standup), or past session mining (use /dig).
 ---
 
 # /where-we-are

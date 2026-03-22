@@ -41,7 +41,7 @@ async function compile() {
         const argumentHint = hintMatch ? hintMatch[1] : null;
 
         // Inject version
-        const description = `v${pkg.version} | ${rawDescription}`;
+        const description = `v${pkg.version} ${pkg.skillTag || ''} | ${rawDescription}`.replace('  ', ' ');
 
         // Create stub command that tells agent to execute skill with args
         const hintLine = argumentHint ? `\nargument-hint: "${argumentHint}"` : '';

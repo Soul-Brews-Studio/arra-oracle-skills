@@ -1,5 +1,5 @@
 ---
-description: v3.3.0-alpha.10 | Create handoff + enter plan mode for next session. Use when user says "forward", "handoff", "wrap up", or before ending session.
+description: v3.3.0-alpha.10 [core] | Create handoff + enter plan mode for next session. Use when user says "forward", "handoff", "wrap up", or before ending session.
 argument-hint: "[asap | --only]"
 ---
 

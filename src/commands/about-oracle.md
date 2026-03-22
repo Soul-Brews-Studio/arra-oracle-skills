@@ -1,5 +1,5 @@
 ---
-description: v3.3.0-alpha.10 | What is Oracle — told by the AI itself. Origin story, stats, family count, ecosystem overview. Use when someone asks "what is oracle", "about oracle", "tell me about this project", or wants the origin story. Do NOT trigger for "who are you" (use /who-are-you), "philosophy" (use /philosophy), or session status questions.
+description: v3.3.0-alpha.10 [core] | What is Oracle — told by the AI itself. Origin story, stats, family count, ecosystem overview. Use when someone asks "what is oracle", "about oracle", "tell me about this project", or wants the origin story. Do NOT trigger for "who are you" (use /who-are-you), "philosophy" (use /philosophy), or session status questions.
 argument-hint: "--short | --stats | --family | --th | --en/th"
 ---
 

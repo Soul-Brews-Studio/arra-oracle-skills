@@ -1,5 +1,5 @@
 ---
-description: v3.3.0-alpha.10 | Switch skill profiles and features. Enable/disable skills instantly. Use when user says "go", "go minimal", "go standard", "go + soul", "switch profile", "enable skills", "disable skills".
+description: v3.3.0-alpha.10 [core] | Switch skill profiles and features. Enable/disable skills instantly. Use when user says "go", "go minimal", "go standard", "go + soul", "switch profile", "enable skills", "disable skills".
 argument-hint: "<minimal|standard|full> [+ soul|network|workspace|creator]"
 ---
 

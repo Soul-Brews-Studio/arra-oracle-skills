@@ -1,5 +1,5 @@
 ---
-description: v3.3.0-alpha.10 | Query schedule via Oracle API (Drizzle DB). Use when user says "schedule", "upcoming events", "what's on today", "calendar".
+description: v3.3.0-alpha.10 [core] | Query schedule via Oracle API (Drizzle DB). Use when user says "schedule", "upcoming events", "what's on today", "calendar".
 argument-hint: "[today | tomorrow | week]"
 ---
 

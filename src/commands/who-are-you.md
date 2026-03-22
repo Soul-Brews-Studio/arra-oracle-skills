@@ -1,5 +1,5 @@
 ---
-description: v3.3.0-alpha.10 | Know ourselves — show current AI identity, model info, session stats, and Oracle philosophy. Use when user asks "who are you", "who", "who we are", "what model", or wants to check current AI identity and session context. Do NOT trigger for "what is oracle" (use /about-oracle), "philosophy" or "principles" (use /philosophy), or general project questions.
+description: v3.3.0-alpha.10 [core] | Know ourselves — show current AI identity, model info, session stats, and Oracle philosophy. Use when user asks "who are you", "who", "who we are", "what model", or wants to check current AI identity and session context. Do NOT trigger for "what is oracle" (use /about-oracle), "philosophy" or "principles" (use /philosophy), or general project questions.
 ---
 
 # /who-are-you
