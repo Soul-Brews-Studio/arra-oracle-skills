@@ -1,11 +1,14 @@
 #!/usr/bin/env python3
 """Session goldminer — scan Claude Code .jsonl files for session timeline."""
-import json, os, glob, sys, subprocess, re
-from datetime import datetime, timedelta
+import json, os, glob, sys, subprocess, re, time
+from datetime import datetime, timedelta, timezone
 
 project_dirs = [d for d in os.environ.get('PROJECT_DIRS', '').split(':') if d]
 count = int(sys.argv[1]) if len(sys.argv) > 1 else 10
-bkk = timedelta(hours=7)
+
+# Auto-detect local timezone offset (works on any machine)
+local_offset = timedelta(seconds=-time.timezone if time.daylight == 0 else -time.altzone)
+local_tz = timezone(local_offset)
 
 def build_repo_map():
     mapping = {}
@@ -83,11 +86,11 @@ for fp, source_dir in files:
 
     if not first_ts: continue
 
-    # Convert timestamps to GMT+7
-    def to_gmt7(iso):
+    # Convert timestamps to local timezone
+    def to_local(iso):
         try:
             dt = datetime.fromisoformat(iso.replace('Z', '+00:00'))
-            return (dt + bkk).strftime('%Y-%m-%d %H:%M')
+            return dt.astimezone(local_tz).strftime('%Y-%m-%d %H:%M')
         except: return iso
 
     dur_min = 0
@@ -106,8 +109,8 @@ for fp, source_dir in files:
     sessions.append({
         'sessionId': sid[:12],
         'repoName': get_repo_name(source_dir, repo_map),
-        'startGMT7': to_gmt7(first_ts),
-        'endGMT7': to_gmt7(last_ts),
+        'startLocal': to_local(first_ts),
+        'endLocal': to_local(last_ts),
         'durationMin': dur_min,
         'realHumanMessages': len(real_human),
         'assistantMessages': assistant_count,
@@ -117,11 +120,11 @@ for fp, source_dir in files:
         'isSidechain': is_sidechain,
     })
 
-sessions.sort(key=lambda s: s['startGMT7'])  # chronological (oldest first)
+sessions.sort(key=lambda s: s['startLocal'])  # chronological (oldest first)
 
 GAP_THRESHOLD = 30  # minutes
 
-def parse_gmt7(s):
+def parse_local(s):
     try: return datetime.strptime(s, '%Y-%m-%d %H:%M')
     except: return None
 
@@ -130,8 +133,8 @@ for i, s in enumerate(sessions):
     if i == 0:
         with_gaps.append({"type": "gap", "label": "sleeping / offline"})
     else:
-        prev_end = parse_gmt7(sessions[i-1]['endGMT7'])
-        curr_start = parse_gmt7(s['startGMT7'])
+        prev_end = parse_local(sessions[i-1]['endLocal'])
+        curr_start = parse_local(s['startLocal'])
         if prev_end and curr_start:
             gap_min = int((curr_start - prev_end).total_seconds() / 60)
             if gap_min > GAP_THRESHOLD:

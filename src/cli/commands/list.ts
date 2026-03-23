@@ -51,6 +51,7 @@ export function registerList(program: Command) {
           console.log(`  ${agent.displayName} ${scope}: ${skillDirs.length} skills`);
           for (const skill of skillDirs) {
             let version = '';
+            let hidden = false;
             const skillMdPath = join(skillsDir, skill, 'SKILL.md');
             if (existsSync(skillMdPath)) {
               try {
@@ -59,9 +60,11 @@ export function registerList(program: Command) {
                 if (versionMatch) {
                   version = ` (v${versionMatch[1]})`;
                 }
+                hidden = /hidden:\s*(true|yes)/i.test(content);
               } catch {}
             }
-            console.log(`    - ${skill}${version}`);
+            const hiddenTag = hidden ? ' [hidden]' : '';
+            console.log(`    - ${skill}${version}${hiddenTag}`);
           }
           totalSkills += skillDirs.length;
         }

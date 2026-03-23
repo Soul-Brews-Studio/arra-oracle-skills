@@ -6,6 +6,11 @@ import pkg from '../package.json' with { type: 'json' };
 const SKILLS_DIR = join(process.cwd(), 'src', 'skills');
 const COMMANDS_DIR = join(process.cwd(), 'src', 'commands');
 
+/** Quote YAML description values that start with [ to prevent YAML sequence parsing */
+function yamlQuote(desc: string): string {
+  return desc.startsWith('[') ? `'${desc.replace(/'/g, "''")}'` : desc;
+}
+
 async function compile() {
   console.log(`🔮 Compiling skills to commands (v${pkg.version})...`);
 
@@ -41,12 +46,12 @@ async function compile() {
         const argumentHint = hintMatch ? hintMatch[1] : null;
 
         // Inject version
-        const description = `v${pkg.version} | ${rawDescription}`;
+        const description = `${pkg.skillTag ? pkg.skillTag + ' ' : ''}v${pkg.version} | ${rawDescription}`;
 
         // Create stub command that tells agent to execute skill with args
         const hintLine = argumentHint ? `\nargument-hint: "${argumentHint}"` : '';
         const commandContent = `---
-description: ${description}${hintLine}
+description: ${yamlQuote(description)}${hintLine}
 ---
 
 # /${skillName}
@@ -78,7 +83,7 @@ Execute the \`${skillName}\` skill with the provided arguments.
 
   // Aliases: alternative names pointing to existing skills
   const aliases: Record<string, string> = {
-    'retrospective': 'rrr',
+    // retrospective is now a standalone skill, not an alias
   };
 
   for (const [alias, target] of Object.entries(aliases)) {
@@ -91,7 +96,7 @@ Execute the \`${skillName}\` skill with the provided arguments.
       const rawDescription = descMatch ? descMatch[1].trim() : `${target} skill`;
 
       const aliasContent = `---
-description: v${pkg.version} | Alias for /${target}. ${rawDescription}
+description: ${yamlQuote(`v${pkg.version} | Alias for /${target}. ${rawDescription}`)}
 ---
 
 # /${alias}

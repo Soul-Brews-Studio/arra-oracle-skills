@@ -88,16 +88,22 @@ describe("e2e: install with standard profile", () => {
 
     for (const name of skills) {
       const content = await readFile(join(SKILLS_DIR, name, "SKILL.md"), "utf-8");
-      expect(content).toMatch(/v\d+\.\d+\.\d+(-[\w.]+)? G-SKLL \|/);
+      expect(content).toMatch(/v\d+\.\d+\.\d+(-[\w.]+)? G-SKLL(\s\[\w+\])? \|/);
     }
   });
 
-  it("command stubs exist for each skill", async () => {
+  it("command stubs exist for each non-hidden skill", async () => {
     const commands = await listCommandFiles(COMMANDS_DIR);
+    const allSkills = await discoverSkills();
+    const hiddenNames = new Set(allSkills.filter((s) => s.hidden).map((s) => s.name));
     const standardSkills = profiles.standard.include!;
 
     for (const name of standardSkills) {
-      expect(commands).toContain(`${name}.md`);
+      if (hiddenNames.has(name)) {
+        expect(commands).not.toContain(`${name}.md`);
+      } else {
+        expect(commands).toContain(`${name}.md`);
+      }
     }
   });
 
@@ -161,12 +167,16 @@ describe("e2e: install full profile", () => {
     }
   });
 
-  it("command stubs match installed skills", async () => {
+  it("command stubs match installed non-hidden skills", async () => {
     const allSkills = await discoverSkills();
     const commands = await listCommandFiles(COMMANDS_DIR);
 
     for (const skill of allSkills) {
-      expect(commands).toContain(`${skill.name}.md`);
+      if (skill.hidden) {
+        expect(commands).not.toContain(`${skill.name}.md`);
+      } else {
+        expect(commands).toContain(`${skill.name}.md`);
+      }
     }
   });
 });
@@ -190,8 +200,8 @@ describe("e2e: uninstall full", () => {
   });
 });
 
-describe("e2e: profile switch (standard → minimal)", () => {
-  it("installs standard then switches to minimal, removes extras", async () => {
+describe("e2e: profile switch (standard → seed)", () => {
+  it("installs standard then switches to seed, removes extras", async () => {
     // Install standard first
     await installSkills([TEST_AGENT], {
       global: true,
@@ -203,25 +213,25 @@ describe("e2e: profile switch (standard → minimal)", () => {
     let skills = await listSkillDirs(SKILLS_DIR);
     expect(skills.length).toBe(profiles.standard.include!.length);
 
-    // Switch to minimal
+    // Switch to seed
     await installSkills([TEST_AGENT], {
       global: true,
-      profile: "minimal",
+      profile: "seed",
       yes: true,
       commands: true,
     });
 
     skills = await listSkillDirs(SKILLS_DIR);
-    const minimalSkills = profiles.minimal.include!;
+    const seedSkills = profiles.seed.include!;
 
-    expect(skills.length).toBe(minimalSkills.length);
-    for (const name of minimalSkills) {
+    expect(skills.length).toBe(seedSkills.length);
+    for (const name of seedSkills) {
       expect(skills).toContain(name);
     }
 
     // Standard-only skills should be gone
     const standardOnly = profiles.standard.include!.filter(
-      (s) => !minimalSkills.includes(s)
+      (s) => !seedSkills.includes(s)
     );
     for (const name of standardOnly) {
       expect(skills).not.toContain(name);

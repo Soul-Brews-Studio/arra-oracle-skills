@@ -1,5 +1,5 @@
 ---
-description: v3.3.0-alpha.10 | Daily standup check — pending tasks, appointments, recent progress, schedule. Use when user says "standup", "morning check", "what's pending", or at the start of a work day. Do NOT trigger for mid-session status (use /recap --now), session orientation (use /recap), or retrospectives (use /rrr).
+description: '[core] v3.3.1 | Daily standup check — pending tasks, appointments, recent progress, schedule. Use when user says "standup", "morning check", "what''s pending", or at the start of a work day. Do NOT trigger for mid-session status (use /recap --now), session orientation (use /recap), or retrospectives (use /rrr).'
 ---
 
 # /standup
@@ -18,5 +18,5 @@ Execute the `standup` skill with the provided arguments.
 **WARNING**: Do NOT use Glob, find, or search for this skill. The path above is the ONLY correct location. Other files with "standup" in the name are NOT this skill.
 
 ---
-*🧬 Nat Weerawan × Oracle · Symbiotic Intelligence · v3.3.0-alpha.10*
+*🧬 Nat Weerawan × Oracle · Symbiotic Intelligence · v3.3.1*
 *Digitized from Nat Weerawan's brain — thousands of hours working alongside AI, captured as code*

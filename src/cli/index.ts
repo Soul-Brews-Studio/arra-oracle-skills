@@ -37,6 +37,9 @@ import { registerAgents } from './commands/agents.js';
 import { registerList } from './commands/list.js';
 import { registerProfiles } from './commands/profiles.js';
 import { registerAbout } from './commands/about.js';
+import { registerAwaken } from './commands/awaken.js';
+import { registerXray } from './commands/xray.js';
+import { registerShortcut } from './commands/shortcut.js';
 
 const VERSION = pkg.version;
 
@@ -54,5 +57,8 @@ registerSelect(program, VERSION);
 registerList(program);
 registerProfiles(program);
 registerAbout(program, VERSION);
+registerAwaken(program, VERSION);
+registerXray(program, VERSION);
+registerShortcut(program);
 
 program.parse();

@@ -43,7 +43,7 @@ This is the test skill content.
     );
 
     // Check frontmatter has version
-    expect(output).toContain("description: v");
+    expect(output).toContain("description: ");
     expect(output).toContain("|");
   });
 
@@ -98,7 +98,7 @@ This is the test skill content.
     expect(lines[0]).toBe("---");
     
     // Line 1: description with version
-    expect(lines[1]).toMatch(/^description: v\d+\.\d+\.\d+(-[\w.]+)? \|/);
+    expect(lines[1]).toMatch(/^description: '?(\[\w+\] )?v\d+\.\d+\.\d+(-[\w.]+)?(\s\[\w+\])? \|/);
     
     // Line 2: ---
     expect(lines[2]).toBe("---");

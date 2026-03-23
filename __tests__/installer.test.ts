@@ -54,7 +54,7 @@ describe("installer stub format", () => {
 
     // Frontmatter
     expect(lines[0]).toBe("---");
-    expect(lines[1]).toMatch(/^description: v\d+\.\d+\.\d+(-[\w.]+)? \|/);
+    expect(lines[1]).toMatch(/^description: '?(\[\w+\] )?v\d+\.\d+\.\d+(-[\w.]+)?(\s\[\w+\])? \|/);
     expect(lines[2]).toBe("---");
 
     // Header with skill name

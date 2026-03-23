@@ -37,8 +37,4 @@ describe("schedule scripts", () => {
   it("query.ts", async () => expect(await run(`${S}/schedule/scripts/query.ts`)).toMatch(/Schedule|No events|Cannot connect/));
 });
 
-describe("watch scripts", () => {
-  it("get-cc.ts", async () => expect(await run(`${S}/watch/scripts/get-cc.ts`)).toContain("Usage"));
-  it("get-metadata.ts", async () => expect(await run(`${S}/watch/scripts/get-metadata.ts`)).toContain("Usage"));
-  it("save-learning.ts", async () => expect(await run(`${S}/watch/scripts/save-learning.ts`)).toContain("Usage"));
-});
+// watch scripts moved to arra-symbiosis-skills
