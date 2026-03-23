@@ -61,7 +61,7 @@ Switch anytime: `/go minimal`, `/go standard`, `/go full`, `/go + soul`
 | 7 | **auto-retrospective** | skill | Configure auto-rrr |
 | 8 | **awaken** | skill | Guided Oracle birth and awakening ritual |
 | 9 | **contacts** | skill | Manage Oracle contacts |
-| 10 | **create-shortcut** | skill | Create shell shortcuts |
+| 10 | **create-shortcut** | skill | Create local skills as shortcuts |
 | 11 | **forward** | skill | Create handoff + enter plan mode for next |
 | 12 | **go** | skill | 'Switch skill profiles and features |
 | 13 | **inbox** | skill | Read and write to Oracle inbox |
