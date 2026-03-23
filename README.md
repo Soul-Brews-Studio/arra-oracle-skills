@@ -1,6 +1,6 @@
 # oracle-skills
 
-20 skills for AI coding agents. 18 agents supported.
+21 skills for AI coding agents. 18 agents supported.
 
 ## Install
 
@@ -29,8 +29,8 @@ oracle-skills uninstall -g -y         # remove all
 
 | Profile | Count | Skills |
 |---------|-------|--------|
-| **standard** | 14 | `forward`, `retrospective`, `recap`, `standup`, `trace`, `learn`, `talk-to`, `oracle-family-scan`, `go`, `about-oracle`, `oracle-soul-sync-update`, `awaken`, `inbox`, `memory` |
-| **full** | 20 | all |
+| **standard** | 15 | `forward`, `retrospective`, `recap`, `standup`, `trace`, `learn`, `talk-to`, `oracle-family-scan`, `go`, `about-oracle`, `oracle-soul-sync-update`, `awaken`, `inbox`, `memory`, `create-shortcut` |
+| **full** | 21 | all |
 
 Switch anytime: `/go minimal`, `/go standard`, `/go full`, `/go + soul`
 
@@ -60,18 +60,19 @@ Switch anytime: `/go minimal`, `/go standard`, `/go full`, `/go + soul`
 | - |  |  |  |
 | 7 | **auto-retrospective** | skill | Configure auto-rrr |
 | 8 | **awaken** | skill | Guided Oracle birth and awakening ritual |
-| 9 | **forward** | skill | Create handoff + enter plan mode for next |
-| 10 | **go** | skill | Switch skill profiles and features |
-| 11 | **inbox** | skill | Read and write to Oracle inbox |
-| 12 | **memory** | skill | Scan and manage Claude Code auto-memory |
-| 13 | **oracle-soul-sync-update** | skill | Sync Oracle instruments with the family |
-| 14 | **philosophy** | skill | Display Oracle philosophy |
-| 15 | **retrospective** | skill | Quick session retrospective |
-| 16 | **standup** | skill | Daily standup check |
-| 17 | **talk-to** | skill | Talk to another Oracle agent via threads |
-| 18 | **trace** | skill | v3.3.1 G-SKLL | Find projects, code |
-| 19 | **where-we-are** | skill | Session awareness |
-| 20 | **who-are-you** | skill | Know ourselves |
+| 9 | **create-shortcut** | skill | Create shell shortcuts |
+| 10 | **forward** | skill | Create handoff + enter plan mode for next |
+| 11 | **go** | skill | 'Switch skill profiles and features |
+| 12 | **inbox** | skill | Read and write to Oracle inbox |
+| 13 | **memory** | skill | Scan and manage Claude Code auto-memory |
+| 14 | **oracle-soul-sync-update** | skill | Sync Oracle instruments with the family |
+| 15 | **philosophy** | skill | Display Oracle philosophy |
+| 16 | **retrospective** | skill | Quick session retrospective |
+| 17 | **standup** | skill | Daily standup check |
+| 18 | **talk-to** | skill | Talk to another Oracle agent via threads |
+| 19 | **trace** | skill | v3.3.1 G-SKLL | Find projects, code |
+| 20 | **where-we-are** | skill | Session awareness |
+| 21 | **who-are-you** | skill | Know ourselves |
 
 <!-- skills:end -->
 

@@ -1,7 +1,7 @@
 ---
 name: go
-description: Switch skill profiles and features. Enable/disable skills instantly. Use when user says "go", "go minimal", "go standard", "go + soul", "switch profile", "enable skills", "disable skills".
-argument-hint: "<minimal|standard|full> [+ soul|network|workspace|creator]"
+description: 'Switch skill profiles and features. Profiles: seed (10), standard (14), full (20). Features: +soul, +network, +workspace. Use when user says "go", "go seed", "go standard", "go full", "go + soul", "switch profile", "enable skills", "disable skills".'
+argument-hint: "<seed|standard|full> [+ soul|network|workspace]"
 ---
 
 # /go
