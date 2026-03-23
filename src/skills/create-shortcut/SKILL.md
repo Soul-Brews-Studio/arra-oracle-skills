@@ -124,8 +124,9 @@ Creates in `~/.claude/skills/` instead of `.claude/skills/`.
 2. Show its content
 3. Ask confirmation: "Delete /<name>? (yes/no)"
 4. If yes:
-   - Remove the directory: `rm -rf .claude/skills/<name>`
-   - Confirm: "Deleted: /<name>"
+   - Move to trash (Nothing is Deleted): `mv .claude/skills/<name> .claude/skills/.trash/<name>_$(date +%Y%m%d_%H%M%S)`
+   - Create `.trash/` if needed: `mkdir -p .claude/skills/.trash`
+   - Confirm: "Archived: /<name> → .claude/skills/.trash/"
 5. If no: "Kept: /<name>"
 
 **Only delete local skills.** Never delete global/core skills — warn instead:
