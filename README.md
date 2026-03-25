@@ -9,8 +9,8 @@
 bunx --bun arra-oracle-skills@github:Soul-Brews-Studio/arra-arra-oracle-skills install -g -y
 
 # Or via Vercel Skills CLI (any single skill, 43+ agents)
-npx skills add Soul-Brews-Studio/arra-arra-oracle-skills
-npx skills add Soul-Brews-Studio/arra-arra-oracle-skills --skill recap -y
+npx skills add Soul-Brews-Studio/arra-oracle-skills
+npx skills add Soul-Brews-Studio/arra-oracle-skills --skill recap -y
 ```
 
 Audited on [skills.sh](https://skills.sh/Soul-Brews-Studio/arra-arra-oracle-skills). Discoverable via `npx skills find arra-arra-oracle-skills`.
