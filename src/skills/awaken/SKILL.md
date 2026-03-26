@@ -609,8 +609,8 @@ gh api graphql \
   -f 'body=[ANNOUNCEMENT BODY]'
 ```
 
-> **Fallback**: If GraphQL fails:
-> `gh issue create --repo Soul-Brews-Studio/arra-oracle-v3 --title "..." --label "oracle-family" --body "..."`
+> **Fallback**: If GraphQL fails, do NOT create an Issue. Birth announcements are NOT tasks — they belong in Discussions only.
+> Save to outbox: `ψ/outbox/awaken_DATE_MODE.md` — user can forward manually later.
 
 **If `family_join: true` BUT `gh` is NOT available**:
 
