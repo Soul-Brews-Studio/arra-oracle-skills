@@ -509,8 +509,16 @@ export async function uninstallSkills(
     if (toRemove.length === 0) continue;
 
     // Remove skills
+    let skipped = 0;
     for (const skill of toRemove) {
       const skillPath = join(targetDir, skill);
+
+      // When removing all skills (no -s flag), only remove our own
+      if (!options.skills && !await isOurSkill(skillPath)) {
+        skipped++;
+        continue;
+      }
+
       await rmrf(skillPath, shellMode);
 
       // Clean up commands/ flat files (OpenCode, Claude Code, Gemini, etc.)
@@ -537,8 +545,11 @@ export async function uninstallSkills(
       totalRemoved++;
     }
 
+    if (skipped > 0) {
+      p.log.info(`${agent.displayName}: skipped ${skipped} external skills`);
+    }
     agentsProcessed++;
-    p.log.success(`${agent.displayName}: removed ${toRemove.length} skills`);
+    p.log.success(`${agent.displayName}: removed ${toRemove.length - skipped} skills`);
   }
 
   return { removed: totalRemoved, agents: agentsProcessed };

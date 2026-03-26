@@ -1,5 +1,5 @@
 import { describe, it, expect, beforeAll, afterAll } from "bun:test";
-import { readdir, readFile, rm, mkdir } from "fs/promises";
+import { readdir, readFile, rm, mkdir, writeFile } from "fs/promises";
 import { join } from "path";
 import { existsSync } from "fs";
 import { tmpdir } from "os";
@@ -197,6 +197,72 @@ describe("e2e: uninstall full", () => {
 
     const commands = await listCommandFiles(COMMANDS_DIR);
     expect(commands.length).toBe(0);
+  });
+});
+
+describe("e2e: uninstall preserves external skills", () => {
+  it("skips skills without installer marker", async () => {
+    // Install oracle skills normally
+    await installSkills([TEST_AGENT], {
+      global: true,
+      profile: "seed",
+      yes: true,
+    });
+
+    // Create an external skill (no installer marker)
+    const externalDir = join(SKILLS_DIR, "external-skill");
+    await mkdir(externalDir, { recursive: true });
+    await writeFile(
+      join(externalDir, "SKILL.md"),
+      "# External Skill\n\nInstalled by another tool."
+    );
+
+    // Uninstall (without -s flag = remove all)
+    const result = await uninstallSkills([TEST_AGENT], {
+      global: true,
+      yes: true,
+    });
+
+    // External skill should survive
+    expect(existsSync(externalDir)).toBe(true);
+    expect(existsSync(join(externalDir, "SKILL.md"))).toBe(true);
+
+    // Oracle skills should be removed
+    const remaining = await listSkillDirs(SKILLS_DIR);
+    expect(remaining).toEqual(["external-skill"]);
+
+    // Cleanup
+    await rm(externalDir, { recursive: true });
+  });
+
+  it("removes explicitly named external skills with -s flag", async () => {
+    // Install oracle skills
+    await installSkills([TEST_AGENT], {
+      global: true,
+      profile: "seed",
+      yes: true,
+    });
+
+    // Create an external skill
+    const externalDir = join(SKILLS_DIR, "my-custom-skill");
+    await mkdir(externalDir, { recursive: true });
+    await writeFile(
+      join(externalDir, "SKILL.md"),
+      "# Custom\n\nNo marker."
+    );
+
+    // Uninstall with explicit -s flag (should remove even without marker)
+    await uninstallSkills([TEST_AGENT], {
+      global: true,
+      skills: ["my-custom-skill"],
+      yes: true,
+    });
+
+    // Explicitly named skill should be removed
+    expect(existsSync(externalDir)).toBe(false);
+
+    // Cleanup remaining oracle skills
+    await uninstallSkills([TEST_AGENT], { global: true, yes: true });
   });
 });
 
