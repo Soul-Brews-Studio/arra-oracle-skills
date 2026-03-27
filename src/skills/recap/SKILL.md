@@ -1,6 +1,6 @@
 ---
 name: recap
-description: Session orientation and awareness — retro summaries, handoffs, git state, focus. Use when starting a session, after /jump, lost your place, switching context, or when user asks "now", "where are we", "what are we doing", "status", "recap". Do NOT trigger for "standup" or "morning check" (use /standup), or session mining "dig", "past sessions" (use /dig).
+description: "Session orientation and awareness — retro summaries, handoffs, git state, focus. Use when starting a session, after /jump, lost your place, switching context, or when user asks 'now', 'where are we', 'what are we doing', 'status', 'recap'. Do NOT trigger for 'standup' or 'morning check' (use /standup), or session mining 'dig', 'past sessions' (use /dig)."
 argument-hint: "[--now | --deep]"
 trigger: /recap
 ---
@@ -22,14 +22,13 @@ trigger: /recap
 
 ## DEFAULT MODE (Rich)
 
-**Run the rich script, then add suggestions:**
+### Step 1: Run rich script
 
 ```bash
 bun ~/.claude/skills/recap/recap-rich.ts
 ```
 
-Script reads retro summaries, handoff content, tracks, git state. Then LLM adds:
-- **What's next?** (2-3 options based on context)
+If script fails (file missing, bun not installed): fall back to manual git + ψ/ reads below. Otherwise use script output as the base.
 
 ### Step 2: Git context
 
@@ -38,13 +37,12 @@ git status --short
 git log --oneline -1
 ```
 
-Check what's appropriate from git status:
-- **Uncommitted changes?** → show them, suggest commit or stash
-- **On a branch (not main)?** → `git log main..HEAD --oneline` to see branch work
-- **Branch ahead of remote?** → suggest push or PR
-- **Clean on main?** → just show last commit, move on
-
-Only read what matters — don't dump 10 commits if status is clean.
+| Condition | Action |
+|-----------|--------|
+| Uncommitted changes | Show them, suggest commit or stash |
+| On a branch (not main) | `git log main..HEAD --oneline` |
+| Branch ahead of remote | Suggest push or PR |
+| Clean on main | Show last commit, move on |
 
 ### Step 3: Read latest ψ/ brain files
 
@@ -65,14 +63,12 @@ export PROJECT_DIRS="$PROJECT_BASE"
 python3 ~/.claude/skills/dig/scripts/dig.py 1
 ```
 
-Include in recap:
-```
-📡 Last session: HH:MM–HH:MM (Xm, N msgs) — [topic]
-```
+If dig succeeds, include: `📡 Last session: HH:MM–HH:MM (Xm, N msgs) — [topic]`
+If dig fails (missing script/no sessions): skip silently.
 
-Need more? `/dig 5` or `/dig --timeline`.
+### Step 5: Synthesize + suggest
 
-**Total**: 1 bash call + LLM analysis
+LLM adds **What's next?** (2-3 options based on all gathered context).
 
 ---
 
@@ -106,8 +102,6 @@ Script outputs git status + focus state (~0.1s). Then LLM adds:
 1. **ONE bash call** — never multiple parallel calls (adds latency)
 2. **No subagents** — everything in main agent
 3. **Ask, don't suggest** — "What next?" not "You should..."
-
----
 
 ---
 
@@ -228,8 +222,3 @@ Add this as one line after the timestamp in any mode. If demographics not presen
 Look for fields in CLAUDE.md: `Human Pronouns`, `Oracle Pronouns`, `Language`, `Team`, `Experience`.
 
 ---
-
-**Philosophy**: Detect reality. Surface blockers. Offer direction. *"Not just the clock. The map."*
-
-**Version**: 8.0 (Merged where-we-are into --now mode)
-**Updated**: 2026-02-10

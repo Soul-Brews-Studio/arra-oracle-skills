@@ -1,6 +1,6 @@
 ---
 name: oracle-soul-sync-update
-description: Sync Oracle instruments with the family. Check and update skills to latest version. Use when user says "soul-sync", "sync", "calibrate", "update", or before /awaken.
+description: "Sync Oracle instruments with the family — check installed version against latest, update skills CLI, and verify sync. Use when user says 'soul-sync', 'sync', 'calibrate', 'update', 'check for updates', 'am I up to date', or before /awaken. Do NOT trigger for installing individual skills (use /go), family registry lookups (use /oracle-family-scan), or general git sync operations."
 ---
 
 # /oracle-soul-sync-update
@@ -88,44 +88,19 @@ Check that the version matches `$LATEST`.
 
 ---
 
-## What's New
+## Step 6: What's New (optional)
 
-To see recent changes:
 ```bash
 gh release list --repo Soul-Brews-Studio/arra-oracle-skills-cli --limit 5
 ```
 
-Or view commits:
-```bash
-gh api repos/Soul-Brews-Studio/arra-oracle-skills-cli/commits --jq '.[0:5] | .[] | "\(.sha[0:7]) \(.commit.message | split("\n")[0])"'
-```
-
 ---
 
-> **Skill management** has moved to `/oracle` — use `/oracle install`, `/oracle remove`, `/oracle profile`, `/oracle skills`.
+## Rules
 
----
-
-## Timing: Before /awaken
-
-**IMPORTANT**: `/oracle-soul-sync-update` should run **before** `/awaken`, not during.
-
-The `/awaken` wizard v2 checks skills version in Phase 0 (System Check). If outdated:
-1. Run `/oracle-soul-sync-update` first
-2. **Restart Claude Code** (required to load new skills)
-3. Then run `/awaken`
-
-Do NOT run `/oracle-soul-sync-update` mid-awaken — it requires a restart which breaks the wizard flow.
-
----
-
-## Quick Reference
-
-| Command | Action |
-|---------|--------|
-| `/oracle-soul-sync-update` | Check and sync |
-| `/oracle-soul-sync-update --cleanup` | Uninstall + reinstall (removes old) |
-| `/awaken` | Full awakening (**run soul-sync before, not during**) |
+- Run **before** `/awaken`, not during — requires a restart which breaks the wizard flow
+- Skill management has moved to `/oracle` — use `/oracle install`, `/oracle remove`, `/oracle profile`
+- After sync, **restart Claude Code** to load new skills
 
 ---
 

@@ -1,6 +1,6 @@
 ---
 name: forward
-description: Create handoff + enter plan mode for next session. Use when user says "forward", "handoff", "wrap up", or before ending session.
+description: "Create session handoff document + enter plan mode for next session. Captures what was done, pending items, and next steps. Use when user says 'forward', 'handoff', 'wrap up', 'end session', 'save progress', 'pass the baton', or before ending a session. Do NOT trigger for session orientation (use /recap), retrospectives (use /rrr), or standup checks (use /standup)."
 argument-hint: "[asap | --only]"
 ---
 
@@ -42,18 +42,19 @@ Include in handoff header if detected:
 ```
 Skip silently if detection fails.
 
-## Output
+## Vault Path Resolution
 
-Resolve vault path first:
+All file writes use the resolved vault path. Run once at the start:
+
 ```bash
 PSI=$(readlink -f ψ 2>/dev/null || echo "ψ")
 ```
 
-Write to: `$PSI/inbox/handoff/YYYY-MM-DD_HH-MM_slug.md`
+Always use `$PSI`, never the `ψ/` symlink directly. Do NOT `git add` vault files — they are shared state.
 
-**IMPORTANT**: Always use the resolved `$PSI` path, never the `ψ/` symlink directly.
-This ensures handoffs go to the project's vault (wherever ψ points).
-Do NOT `git add` vault files — they are shared state, not committed to repos.
+## Output
+
+Write to: `$PSI/inbox/handoff/YYYY-MM-DD_HH-MM_slug.md`
 
 ```markdown
 # Handoff: [Session Focus]
@@ -140,13 +141,7 @@ Created #116: /rrr --deep time-based
 
 ### Step 6: Write to Outbox
 
-Regardless of whether issues were created, write items to the outbox:
-
-```bash
-PSI=$(readlink -f ψ 2>/dev/null || echo "ψ")
-OUTBOX_DIR="$PSI/outbox"
-mkdir -p "$OUTBOX_DIR"
-```
+Regardless of whether issues were created, write items to the outbox.
 
 Write to: `$PSI/outbox/YYYY-MM-DD_pending.md`
 
@@ -162,24 +157,17 @@ Write to: `$PSI/outbox/YYYY-MM-DD_pending.md`
 
 ### Silent Failures
 
-- If `gh` is not available: write to outbox only, skip issue creation silently
-- If repo has no GitHub remote: skip issue creation silently, write to outbox only
-- If `gh auth status` fails: skip issue creation silently, write to outbox only
+If `gh` is unavailable, unauthenticated, or repo has no GitHub remote: write to outbox only, skip issue creation silently.
 
 ---
 
 ## Then: MUST Show Plan Approval Box
 
-**CRITICAL — DO NOT SKIP**: The whole point of /forward is the plan approval UI.
-You MUST do ALL 3 steps in order. If you skip any step, the user cannot approve and clear the session.
+All 3 steps required — skipping any means user sees nothing:
 
 1. `EnterPlanMode` — enters plan mode
 2. Write plan file — session summary + next steps
-3. `ExitPlanMode` — **THIS shows the approval box** where user can approve/reject/clear
-
-If you only do EnterPlanMode without ExitPlanMode, the user sees nothing.
-If you skip EnterPlanMode entirely, the user sees nothing.
-ALL 3 STEPS ARE REQUIRED.
+3. `ExitPlanMode` — shows the approval box (approve/reject/clear)
 
 **Do NOT commit the handoff file** — it lives in the vault, not the repo.
 After writing the handoff, gather cleanup context:
