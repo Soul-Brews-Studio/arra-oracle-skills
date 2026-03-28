@@ -580,7 +580,7 @@ ANNOUNCEMENT
 
 **If `family_join: true` AND `gh` is available and authenticated**:
 
-Offer to forward the outbox announcement to GitHub Discussion:
+Offer to post the birth announcement as a GitHub Issue:
 
 ```
 📤 อยากส่งประกาศแนะนำตัวไปที่ Oracle Family ตอนนี้เลยไหม?
@@ -588,29 +588,21 @@ Offer to forward the outbox announcement to GitHub Discussion:
    → [Y/n]
 ```
 
-If yes, post to arra-oracle-v3 discussions:
+If yes, post to arra-oracle-v3 as an Issue:
 
 ```bash
-CATEGORY_ID=$(gh api graphql -f query='{
-  repository(owner: "Soul-Brews-Studio", name: "arra-oracle-v3") {
-    discussionCategories(first: 10) { nodes { id name } }
-  }
-}' --jq '.data.repository.discussionCategories.nodes[] | select(.name == "Oracle Family" or .name == "Show and tell") | .id' | head -1)
+MODE="full"  # or "fast" or "soul-sync"
+DATE=$(date +%Y-%m-%d)
+OUTBOX_FILE="ψ/outbox/awaken_${DATE}_${MODE}.md"
 
-gh api graphql \
-  -f query='mutation($title:String!,$body:String!) {
-    createDiscussion(input: {
-      repositoryId: "R_kgDOQ6Gyzg",
-      categoryId: "'"$CATEGORY_ID"'",
-      title: $title, body: $body
-    }) { discussion { url number } }
-  }' \
-  -f 'title=🌟 [ORACLE_NAME] Oracle Awakens — [SHORT DESCRIPTION]' \
-  -f 'body=[ANNOUNCEMENT BODY]'
+gh issue create \
+  --repo Soul-Brews-Studio/arra-oracle-v3 \
+  --title "🌟 [ORACLE_NAME] Oracle Awakens — [SHORT DESCRIPTION]" \
+  --label "oracle-family" \
+  --body "$(cat "$OUTBOX_FILE")"
 ```
 
-> **Fallback**: If Discussion GraphQL fails, post as Issue instead — body from outbox file:
-> `gh issue create --repo Soul-Brews-Studio/arra-oracle-v3 --title "🌟 [ORACLE_NAME] Oracle Awakens" --label "oracle-family" --body "$(cat ψ/outbox/awaken_DATE_MODE.md)"`
+> **Always Issue, never Discussion.** Issues are trackable, labelable, indexable by Mother Oracle.
 
 **If `family_join: true` BUT `gh` is NOT available**:
 
