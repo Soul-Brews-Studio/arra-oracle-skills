@@ -57,7 +57,7 @@ describe('installer', () => {
     const skills = await discoverSkills();
     
     expect(skills.length).toBeGreaterThan(0);
-    expect(skills.some(s => s.name === 'retrospective')).toBe(true);
+    expect(skills.some(s => s.name === 'rrr')).toBe(true);
     expect(skills.some(s => s.name === 'recap')).toBe(true);
     expect(skills.some(s => s.name === 'trace')).toBe(true);
   });

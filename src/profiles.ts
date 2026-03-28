@@ -7,11 +7,11 @@
 
 export const profiles: Record<string, { include?: string[]; exclude?: string[] }> = {
   seed: {
-    include: ['forward', 'retrospective', 'rrr', 'recap', 'standup', 'go', 'about-oracle', 'oracle-family-scan', 'oracle-soul-sync-update', 'inbox', 'xray', 'dig'],
+    include: ['forward', 'rrr', 'recap', 'standup', 'go', 'about-oracle', 'oracle-family-scan', 'oracle-soul-sync-update', 'inbox', 'xray', 'dig'],
   },
   standard: {
     include: [
-      'forward', 'retrospective', 'rrr', 'recap', 'standup',
+      'forward', 'rrr', 'recap', 'standup',
       'trace', 'learn', 'talk-to', 'oracle-family-scan',
       'go', 'about-oracle', 'oracle-soul-sync-update', 'awaken', 'inbox', 'xray', 'create-shortcut', 'contacts',
     ],
