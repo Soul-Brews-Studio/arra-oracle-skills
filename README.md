@@ -5,9 +5,6 @@
 ## Install
 
 ```bash
-# Full CLI (profiles, picker, xray, awaken)
-bunx --bun arra-oracle-skills@github:Soul-Brews-Studio/arra-arra-oracle-skills install -g -y
-
 # Or via Vercel Skills CLI (any single skill, 43+ agents)
 npx skills add Soul-Brews-Studio/arra-oracle-skills
 npx skills add Soul-Brews-Studio/arra-oracle-skills --skill recap -y
