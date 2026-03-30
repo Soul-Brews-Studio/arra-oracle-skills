@@ -79,7 +79,7 @@ export async function discoverSkills(): Promise<Skill[]> {
   if (!existsSync(skillsPath)) return [];
 
   const skillDirs = readdirSync(skillsPath, { withFileTypes: true })
-    .filter((d) => d.isDirectory() && !d.name.startsWith('.') && d.name !== '_template')
+    .filter((d) => d.isDirectory() && !d.name.startsWith('.'))
     .map((d) => d.name);
 
   const skills: Skill[] = [];

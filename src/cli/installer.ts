@@ -436,7 +436,7 @@ Execute the \`${skill.name}\` skill with args: \`$ARGUMENTS\`
         .map((d) => d.name);
 
       const toRemove = installed.filter(
-        (name) => !profileSet.has(name) && name !== '_template'
+        (name) => !profileSet.has(name) && !name.startsWith('.')
       );
 
       if (toRemove.length > 0) {

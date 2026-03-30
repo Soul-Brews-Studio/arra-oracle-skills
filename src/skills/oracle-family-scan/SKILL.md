@@ -79,7 +79,8 @@ Lists all Oracles created by nazt (Nat's fleet) from the registry.
 **Goal**: Show status of all local Oracle repos owned by the current user with live GitHub data.
 
 ```bash
-bun __SKILL_DIR__/scripts/fleet-scan.ts
+SKILL_DIR="$(dirname "$(readlink -f "$HOME/.claude/skills/oracle-family-scan/SKILL.md" 2>/dev/null || echo "$HOME/.claude/skills/oracle-family-scan/SKILL.md")")"
+bun "$SKILL_DIR/scripts/fleet-scan.ts"
 ```
 
 Shows:

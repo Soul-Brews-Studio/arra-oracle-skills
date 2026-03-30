@@ -1,16 +1,12 @@
 # arra-arra-oracle-skills
 
-24 skills for AI coding agents. Compatible with 43+ agents via [Vercel Skills CLI](https://github.com/vercel-labs/skills).
+24 skills for AI coding agents. Supports 18 agents natively.
 
 ## Install
 
 ```bash
-# Or via Vercel Skills CLI (any single skill, 43+ agents)
-npx skills add Soul-Brews-Studio/arra-oracle-skills
-npx skills add Soul-Brews-Studio/arra-oracle-skills --skill recap -y
+bunx --bun arra-oracle-skills@github:Soul-Brews-Studio/arra-oracle-skills install -g -y
 ```
-
-Audited on [skills.sh](https://skills.sh/Soul-Brews-Studio/arra-arra-oracle-skills). Discoverable via `npx skills find arra-arra-oracle-skills`.
 
 ## Profiles
 
@@ -114,9 +110,7 @@ description: ...
 
 ## Agents
 
-**Native** (18): Claude Code, OpenCode, Codex, Cursor, Amp, Kilo Code, Roo Code, Goose, Gemini CLI, Antigravity, GitHub Copilot, OpenClaw, Droid, Windsurf, Cline, Aider, Continue, Zed
-
-**Via [Vercel Skills CLI](https://github.com/vercel-labs/skills)**: 43+ agents
+Claude Code, OpenCode, Codex, Cursor, Amp, Kilo Code, Roo Code, Goose, Gemini CLI, Antigravity, GitHub Copilot, OpenClaw, Droid, Windsurf, Cline, Aider, Continue, Zed
 
 ## Origin
 
