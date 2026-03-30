@@ -5,10 +5,10 @@
 ## Install
 
 ```bash
-npx arra-oracle-skills install -g -y
+npx arra-oracle-skills install -g -y                # standard (16 skills, default)
+npx arra-oracle-skills install -g -y -p full        # all 24 skills
+npx arra-oracle-skills install -g -y -p seed        # minimal 11 skills
 ```
-
-Options: `-p seed|standard|full` · `-f soul,network,workspace` · `--agent claude-code`
 
 ## Profiles
 

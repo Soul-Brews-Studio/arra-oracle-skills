@@ -12,7 +12,7 @@ export function registerInstall(program: Command, version: string) {
     .option('-g, --global', 'Install to user directory instead of project')
     .option('-a, --agent <agents...>', 'Target specific agents (e.g., claude-code, opencode)')
     .option('-s, --skill <skills...>', 'Install specific skills by name')
-    .option('-p, --profile <name>', 'Install a skill profile (seed, minimal, standard, full)')
+    .option('-p, --profile <name>', 'Install a skill profile (seed, standard, full)', 'standard')
     .option('-f, --feature <features...>', 'Add feature modules (soul, network, workspace, creator)')
     .option('-l, --list', 'List available skills without installing')
     .option('-y, --yes', 'Skip confirmation prompts')
