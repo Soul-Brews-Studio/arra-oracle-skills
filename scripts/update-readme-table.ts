@@ -89,9 +89,9 @@ async function updateReadmeTable() {
   // --- Update version in install commands ---
   const pkg = JSON.parse(await readFile(join(process.cwd(), 'package.json'), 'utf-8'));
   const version = pkg.version;
-  readme = readme.replace(
-    /oracle-skills-cli#v[\w.\-]+ install/,
-    `oracle-skills-cli#v${version} install`
+  readme = readme.replaceAll(
+    /arra-oracle-skills@[\w.\-]+ install/g,
+    `arra-oracle-skills@${version} install`
   );
 
   // Check if changed
