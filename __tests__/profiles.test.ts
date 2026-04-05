@@ -1,9 +1,9 @@
 import { describe, it, expect } from "bun:test";
-import { profiles, resolveProfile } from "../src/profiles";
+import { profiles, labOnly, resolveProfile } from "../src/profiles";
 
 const ALL_SKILLS = [
   "about-oracle", "auto-retrospective", "awaken", "contacts", "create-shortcut",
-  "dig", "forward", "go", "inbox", "learn", "oracle-family-scan",
+  "dig", "dream", "feel", "forward", "go", "inbox", "learn", "oracle-family-scan",
   "oracle-soul-sync-update", "philosophy", "project", "recap", "resonance",
   "rrr", "schedule", "standup", "talk-to", "trace", "where-we-are",
   "who-are-you", "xray",
@@ -14,12 +14,13 @@ describe("profiles", () => {
     expect(profiles.standard.include).toHaveLength(16);
   });
 
-  it("full has no include (means all)", () => {
-    expect(profiles.full.include).toBeUndefined();
+  it("full excludes lab-only skills", () => {
+    expect(profiles.full.exclude).toEqual(labOnly);
   });
 
-  it("lab exists", () => {
-    expect(profiles.lab).toBeDefined();
+  it("lab has no include or exclude (means all)", () => {
+    expect(profiles.lab.include).toBeUndefined();
+    expect(profiles.lab.exclude).toBeUndefined();
   });
 
   it("standard includes dig", () => {
@@ -30,8 +31,15 @@ describe("profiles", () => {
     expect(profiles.standard.include).not.toContain("create-shortcut");
   });
 
-  it("lab includes create-shortcut", () => {
-    expect(profiles.lab.include).toContain("create-shortcut");
+  it("standard does NOT include dream or feel", () => {
+    expect(profiles.standard.include).not.toContain("dream");
+    expect(profiles.standard.include).not.toContain("feel");
+  });
+
+  it("labOnly contains dream, feel, create-shortcut", () => {
+    expect(labOnly).toContain("dream");
+    expect(labOnly).toContain("feel");
+    expect(labOnly).toContain("create-shortcut");
   });
 });
 
@@ -41,9 +49,13 @@ describe("resolveProfile", () => {
     expect(result).toHaveLength(16);
   });
 
-  it("full returns null (all skills)", () => {
-    const result = resolveProfile("full", ALL_SKILLS);
-    expect(result).toBeNull();
+  it("full returns all minus lab-only", () => {
+    const result = resolveProfile("full", ALL_SKILLS)!;
+    expect(result).not.toBeNull();
+    expect(result.length).toBe(ALL_SKILLS.length - labOnly.length);
+    for (const name of labOnly) {
+      expect(result).not.toContain(name);
+    }
   });
 
   it("lab returns null (all skills)", () => {
@@ -60,6 +72,14 @@ describe("resolveProfile", () => {
     const result = resolveProfile("standard", ALL_SKILLS)!;
     for (const skill of result) {
       expect(ALL_SKILLS).toContain(skill);
+    }
+  });
+
+  it("full includes everything standard has", () => {
+    const full = resolveProfile("full", ALL_SKILLS)!;
+    const standard = resolveProfile("standard", ALL_SKILLS)!;
+    for (const skill of standard) {
+      expect(full).toContain(skill);
     }
   });
 });

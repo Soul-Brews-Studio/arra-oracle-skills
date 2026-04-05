@@ -1,6 +1,6 @@
 # arra-oracle-skills-cli
 
-24 skills for AI coding agents. Give your AI persistent memory, session awareness, and collaborative tools.
+26 skills for AI coding agents. Give your AI persistent memory, session awareness, and collaborative tools.
 
 ## Install
 
@@ -49,18 +49,20 @@ npx arra-oracle-skills@3.6.0 install -g -y --agent claude-code codex opencode
 | 10 | **contacts** | skill | Manage Oracle contacts |
 | 11 | **create-shortcut** | skill | Create local skills as shortcuts |
 | 12 | **dig** | skill | Mine Claude Code sessions |
-| 13 | **forward** | skill | Create handoff + enter plan mode for next |
-| 14 | **go** | skill | 'Switch skill profiles |
-| 15 | **inbox** | skill | Read and write to Oracle inbox |
-| 16 | **oracle-soul-sync-update** | skill | Sync Oracle instruments with the family |
-| 17 | **philosophy** | skill | Display Oracle philosophy |
-| 18 | **resonance** | skill | Capture a resonance moment |
-| 19 | **standup** | skill | Daily standup check |
-| 20 | **talk-to** | skill | Talk to another Oracle agent via threads |
-| 21 | **trace** | skill | Find projects, code |
-| 22 | **where-we-are** | skill | Session awareness |
-| 23 | **who-are-you** | skill | Know ourselves |
-| 24 | **xray** | skill | X-ray deep scan |
+| 13 | **dream** | skill | "Cross-repo pattern discovery |
+| 14 | **feel** | skill | "Capture how the system feels |
+| 15 | **forward** | skill | Create handoff + enter plan mode for next |
+| 16 | **go** | skill | 'Switch skill profiles |
+| 17 | **inbox** | skill | Read and write to Oracle inbox |
+| 18 | **oracle-soul-sync-update** | skill | Sync Oracle instruments with the family |
+| 19 | **philosophy** | skill | Display Oracle philosophy |
+| 20 | **resonance** | skill | Capture a resonance moment |
+| 21 | **standup** | skill | Daily standup check |
+| 22 | **talk-to** | skill | Talk to another Oracle agent via threads |
+| 23 | **trace** | skill | Find projects, code |
+| 24 | **where-we-are** | skill | Session awareness |
+| 25 | **who-are-you** | skill | Know ourselves |
+| 26 | **xray** | skill | X-ray deep scan |
 
 <!-- skills:end -->
 
@@ -71,8 +73,8 @@ npx arra-oracle-skills@3.6.0 install -g -y --agent claude-code codex opencode
 | Profile | Count | Skills |
 |---------|-------|--------|
 | **standard** | 16 | `about-oracle`, `awaken`, `contacts`, `dig`, `forward`, `go`, `inbox`, `learn`, `oracle-family-scan`, `oracle-soul-sync-update`, `recap`, `rrr`, `standup`, `talk-to`, `trace`, `xray` |
-| **full** | 24 | all |
-| **lab** | 1 | `create-shortcut` |
+| **full** | 26 | all |
+| **lab** | 26 | all |
 
 Switch anytime: `/go standard`, `/go full`, `/go lab`
 
