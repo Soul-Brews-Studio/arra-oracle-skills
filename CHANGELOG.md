@@ -1,5 +1,15 @@
 # Changelog
 
+## v3.7.4 (2026-04-10)
+
+### Contacts `repo` field — know where every agent lives
+
+- `/contacts` — new `repo` field (org/repo) in schema, list, add, show
+- `/talk-to` — reads `repo` field from contacts lookup
+- 29 skills, 124 tests
+
+---
+
 ## v3.7.3 (2026-04-10)
 
 ### `/talk-to` contacts integration + `/trace --dig` combo
