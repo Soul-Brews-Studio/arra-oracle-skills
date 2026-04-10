@@ -2,7 +2,6 @@
 name: vault
 description: Connect external knowledge bases (Obsidian, Logseq, markdown folders) to Oracle. Use when user says "vault", "connect vault", "obsidian", "knowledge base", "search notes", or wants to link external note systems to Oracle context.
 argument-hint: "[connect <path> | disconnect <name> | search <query> | list]"
-hidden: true
 ---
 
 # /vault - External Knowledge Connection

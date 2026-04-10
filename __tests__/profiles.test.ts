@@ -36,10 +36,11 @@ describe("profiles", () => {
     expect(profiles.standard.include).not.toContain("feel");
   });
 
-  it("labOnly contains dream, feel, create-shortcut, vault", () => {
+  it("labOnly contains create-shortcut, dream, feel, schedule, vault", () => {
+    expect(labOnly).toContain("create-shortcut");
     expect(labOnly).toContain("dream");
     expect(labOnly).toContain("feel");
-    expect(labOnly).toContain("create-shortcut");
+    expect(labOnly).toContain("schedule");
     expect(labOnly).toContain("vault");
   });
 });
