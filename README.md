@@ -1,6 +1,6 @@
 # arra-oracle-skills-cli
 
-27 skills for AI coding agents. Give your AI persistent memory, session awareness, and collaborative tools.
+28 skills for AI coding agents. Give your AI persistent memory, session awareness, and collaborative tools.
 
 ## Install
 
@@ -54,16 +54,17 @@ npx arra-oracle-skills@3.6.1 install -g -y --agent claude-code codex opencode
 | 15 | **forward** | skill | Create handoff + enter plan mode for next |
 | 16 | **go** | skill | 'Switch skill profiles |
 | 17 | **inbox** | skill | Read and write to Oracle inbox |
-| 18 | **oracle-soul-sync-update** | skill | Sync Oracle instruments with the family |
-| 19 | **philosophy** | skill | Display Oracle philosophy |
-| 20 | **resonance** | skill | Capture a resonance moment |
-| 21 | **standup** | skill | Daily standup check |
-| 22 | **talk-to** | skill | Talk to another Oracle agent via threads |
-| 23 | **trace** | skill | Find projects, code |
-| 24 | **vault** | skill | Connect external knowledge bases (Obsidian |
-| 25 | **where-we-are** | skill | Session awareness |
-| 26 | **who-are-you** | skill | Know ourselves |
-| 27 | **xray** | skill | X-ray deep scan |
+| 18 | **incubate** | skill | Clone or create repos for active development |
+| 19 | **oracle-soul-sync-update** | skill | Sync Oracle instruments with the family |
+| 20 | **philosophy** | skill | Display Oracle philosophy |
+| 21 | **resonance** | skill | Capture a resonance moment |
+| 22 | **standup** | skill | Daily standup check |
+| 23 | **talk-to** | skill | Talk to another Oracle agent via threads |
+| 24 | **trace** | skill | Find projects, code |
+| 25 | **vault** | skill | Connect external knowledge bases (Obsidian |
+| 26 | **where-we-are** | skill | Session awareness |
+| 27 | **who-are-you** | skill | Know ourselves |
+| 28 | **xray** | skill | X-ray deep scan |
 
 <!-- skills:end -->
 
@@ -74,8 +75,8 @@ npx arra-oracle-skills@3.6.1 install -g -y --agent claude-code codex opencode
 | Profile | Count | Skills |
 |---------|-------|--------|
 | **standard** | 16 | `about-oracle`, `awaken`, `contacts`, `dig`, `forward`, `go`, `inbox`, `learn`, `oracle-family-scan`, `oracle-soul-sync-update`, `recap`, `rrr`, `standup`, `talk-to`, `trace`, `xray` |
-| **full** | 27 | all |
-| **lab** | 27 | all |
+| **full** | 28 | all |
+| **lab** | 28 | all |
 
 Switch anytime: `/go standard`, `/go full`, `/go lab`
 
