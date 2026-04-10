@@ -1,19 +1,19 @@
 /**
  * Skill profiles — 3 tiers, no features.
  *
- * standard: daily driver (default) — 16 essential skills
+ * standard: daily driver (default) — 14 essential skills
  * full: all stable skills (excludes lab-only experiments)
  * lab: everything including experimental / bleeding edge
  */
 
 // Skills that are lab-only (experimental, not in standard or full)
-export const labOnly = ['create-shortcut', 'dream', 'feel', 'schedule', 'vault'];
+export const labOnly = ['contacts', 'create-shortcut', 'dream', 'feel', 'inbox', 'schedule', 'vault'];
 
 export const profiles: Record<string, { include?: string[]; exclude?: string[] }> = {
   standard: {
     include: [
-      'about-oracle', 'awaken', 'contacts', 'dig', 'forward', 'go',
-      'inbox', 'learn', 'oracle-family-scan', 'oracle-soul-sync-update',
+      'about-oracle', 'awaken', 'dig', 'forward', 'go',
+      'learn', 'oracle-family-scan', 'oracle-soul-sync-update',
       'recap', 'rrr', 'standup', 'talk-to', 'trace', 'xray',
     ],
   },

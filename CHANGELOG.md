@@ -1,5 +1,33 @@
 # Changelog
 
+## v3.7.0 (2026-04-10)
+
+### Standalone /incubate + profile reorg
+
+**New skill:**
+- `/incubate` — clone or create repos for active development. The right hand of `/learn`. Workflow modes: default (long-term dev), `--flash` (issue → PR → offload), `--contribute` (fork + multi-PR), `--status`, `--offload`
+
+**Profile changes:**
+
+| Profile | Count | Description |
+|---------|-------|-------------|
+| **standard** | 14 | Daily driver (default) |
+| **full** | 21 | All stable skills |
+| **lab** | 28 | Full + experimental |
+
+- `contacts`, `inbox` → moved to lab (experimental)
+- `schedule` → moved to lab (experimental)
+- `dream`, `feel`, `vault` → now visible in autocomplete (removed `hidden: true`)
+- `incubate` → added to full profile (same level as `/learn` and `/project`)
+
+**Other:**
+- `/project incubate` → graduation note pointing to standalone `/incubate`
+- `/learn` description updated: `/project incubate` → `/incubate`
+- Resolved 7 open issues (#199 #198 #193 #192 #180 #141 #72)
+- 28 skills, 124 tests
+
+---
+
 ## v3.6.1 (2026-04-05)
 
 **Bug fixes + issue cleanup**
