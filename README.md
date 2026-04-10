@@ -1,30 +1,30 @@
 # arra-oracle-skills-cli
 
-28 skills for AI coding agents. Give your AI persistent memory, session awareness, and collaborative tools.
+29 skills for AI coding agents. Give your AI persistent memory, session awareness, and collaborative tools.
 
 ## Install
 
 ```bash
 # Claude Code — standard profile (default)
-npx arra-oracle-skills@3.7.1 install -g -y --agent claude-code
+npx arra-oracle-skills@3.7.2 install -g -y --agent claude-code
 
 # Full profile (all skills)
-npx arra-oracle-skills@3.7.1 install -g -y -p full --agent claude-code
+npx arra-oracle-skills@3.7.2 install -g -y -p full --agent claude-code
 
 # Lab profile (full + experimental)
-npx arra-oracle-skills@3.7.1 install -g -y -p lab --agent claude-code
+npx arra-oracle-skills@3.7.2 install -g -y -p lab --agent claude-code
 
 # Specific skills only
-npx arra-oracle-skills@3.7.1 install -g -y -s recap rrr trace --agent claude-code
+npx arra-oracle-skills@3.7.2 install -g -y -s recap rrr trace --agent claude-code
 
 # Other agents (skills + commands)
-npx arra-oracle-skills@3.7.1 install -g -y --agent codex --with-commands
-npx arra-oracle-skills@3.7.1 install -g -y --agent opencode --with-commands
-npx arra-oracle-skills@3.7.1 install -g -y --agent cursor
-npx arra-oracle-skills@3.7.1 install -g -y --agent gemini-cli --with-commands
+npx arra-oracle-skills@3.7.2 install -g -y --agent codex --with-commands
+npx arra-oracle-skills@3.7.2 install -g -y --agent opencode --with-commands
+npx arra-oracle-skills@3.7.2 install -g -y --agent cursor
+npx arra-oracle-skills@3.7.2 install -g -y --agent gemini-cli --with-commands
 
 # Multiple agents
-npx arra-oracle-skills@3.7.1 install -g -y --agent claude-code codex opencode
+npx arra-oracle-skills@3.7.2 install -g -y --agent claude-code codex opencode
 ```
 
 18 agents: Claude Code, Codex, OpenCode, Cursor, Gemini CLI, Amp, Kilo Code, Roo Code, Goose, Antigravity, GitHub Copilot, OpenClaw, Droid, Windsurf, Cline, Aider, Continue, Zed
@@ -60,11 +60,12 @@ npx arra-oracle-skills@3.7.1 install -g -y --agent claude-code codex opencode
 | 21 | **resonance** | skill | Capture a resonance moment |
 | 22 | **standup** | skill | Daily standup check |
 | 23 | **talk-to** | skill | Talk to another Oracle agent via threads |
-| 24 | **trace** | skill | Find projects, code |
-| 25 | **vault** | skill | Connect external knowledge bases (Obsidian |
-| 26 | **where-we-are** | skill | Session awareness |
-| 27 | **who-are-you** | skill | Know ourselves |
-| 28 | **xray** | skill | X-ray deep scan |
+| 24 | **team-agents** | skill | Spin up coordinated agent teams for any task |
+| 25 | **trace** | skill | Find projects, code |
+| 26 | **vault** | skill | Connect external knowledge bases (Obsidian |
+| 27 | **where-we-are** | skill | Session awareness |
+| 28 | **who-are-you** | skill | Know ourselves |
+| 29 | **xray** | skill | X-ray deep scan |
 
 <!-- skills:end -->
 
@@ -75,8 +76,8 @@ npx arra-oracle-skills@3.7.1 install -g -y --agent claude-code codex opencode
 | Profile | Count | Skills |
 |---------|-------|--------|
 | **standard** | 14 | `about-oracle`, `awaken`, `dig`, `forward`, `go`, `learn`, `oracle-family-scan`, `oracle-soul-sync-update`, `recap`, `rrr`, `standup`, `talk-to`, `trace`, `xray` |
-| **full** | 28 | all |
-| **lab** | 28 | all |
+| **full** | 29 | all |
+| **lab** | 29 | all |
 
 Switch anytime: `/go standard`, `/go full`, `/go lab`
 

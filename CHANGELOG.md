@@ -1,5 +1,19 @@
 # Changelog
 
+## v3.7.2 (2026-04-10)
+
+### `/team-agents` lab skill + auto-retrospective silent mode
+
+**New skill:**
+- `/team-agents` — coordinated agent teams framework (lab). Reusable TeamCreate/SendMessage/TaskList pattern for any skill. 3 tiers: subagents (fire-and-forget), team agents (coordinated), cross-Oracle (persistent). Auto-designs teams from task description, named roles, graceful shutdown.
+
+**Changed:**
+- `/auto-retrospective` — now runs **silently** by default. No user prompts, no "should I run /rrr?" distractions. Auto means auto. Users discover controls only when they ask.
+- `/go` profile counts updated: lab=29 (was 28)
+- 29 skills, 124 tests
+
+---
+
 ## v3.7.1 (2026-04-10)
 
 ### `/go cleanup` + `/project incubate` redirect

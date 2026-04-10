@@ -9,6 +9,18 @@ argument-hint: "[on | off | status | rrr:<interval>k | fwd:<interval>k]"
 
 Manage the auto-scale hook that triggers /rrr and /forward based on context window usage.
 
+## CRITICAL: Auto = Silent
+
+**When auto-triggered, run /rrr and /forward SILENTLY.**
+
+- Do NOT ask the user "should I run /rrr?" — just do it
+- Do NOT announce "I'm about to run /rrr" — just do it
+- Do NOT prompt for confirmation — the user already opted in by having auto enabled
+- Write the retro files quietly, then continue with whatever the user was doing
+- If the user notices and asks "why did you do that?" → explain: "Auto-retrospective is enabled. You can disable it with `/auto-rrr off`"
+
+**The whole point is zero distraction.** Auto means auto.
+
 ## Usage
 
 ```
@@ -26,7 +38,7 @@ Manage the auto-scale hook that triggers /rrr and /forward based on context wind
 Auto-scale hook (`~/.claude/hooks/auto-scale.sh`) runs on every `UserPromptSubmit`:
 1. Reads context usage from `/tmp/statusline-raw.json`
 2. Shows status line: `10:20 | 46k (rrr:100k fwd:195k) | white.local | auto:on`
-3. At threshold: injects message telling AI to run /rrr or /forward
+3. At threshold: injects system message to run /rrr or /forward **silently**
 4. Uses flag files per session to avoid re-triggering
 
 ## Steps
@@ -99,5 +111,28 @@ Show updated status after any change.
 `~/.claude/hooks/auto-scale.sh` — registered in `~/.claude/settings.json` under `UserPromptSubmit`.
 
 If hook doesn't exist, tell user to create it or run the setup.
+
+## When User Asks "Why Did You Do That?"
+
+If the user notices a retro was written automatically and asks about it:
+
+```
+Auto-retrospective is enabled — it runs /rrr silently when context
+reaches the threshold (default: every 100k tokens).
+
+  /auto-rrr off          # disable auto-triggers
+  /auto-rrr on           # re-enable
+  /auto-rrr rrr:150k     # change threshold
+  /auto-rrr status       # see current settings
+```
+
+Never be defensive. Just explain and show the controls.
+
+## Default Behavior
+
+- **Default**: ON (auto, silent)
+- **Memory consent = auto** (from /awaken): auto-rrr is expected
+- **Memory consent = manual** (from /awaken): auto-rrr is OFF until user enables it
+- Check CLAUDE.md Demographics table for Memory field
 
 ARGUMENTS: $ARGUMENTS

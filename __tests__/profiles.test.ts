@@ -5,8 +5,8 @@ const ALL_SKILLS = [
   "about-oracle", "auto-retrospective", "awaken", "contacts", "create-shortcut",
   "dig", "dream", "feel", "forward", "go", "inbox", "incubate", "learn",
   "oracle-family-scan", "oracle-soul-sync-update", "philosophy", "project", "recap",
-  "resonance", "rrr", "schedule", "standup", "talk-to", "trace", "vault",
-  "where-we-are", "who-are-you", "xray",
+  "resonance", "rrr", "schedule", "standup", "talk-to", "team-agents", "trace",
+  "vault", "where-we-are", "who-are-you", "xray",
 ];
 
 describe("profiles", () => {
@@ -36,13 +36,14 @@ describe("profiles", () => {
     expect(profiles.standard.include).not.toContain("feel");
   });
 
-  it("labOnly contains contacts, create-shortcut, dream, feel, inbox, schedule, vault", () => {
+  it("labOnly contains contacts, create-shortcut, dream, feel, inbox, schedule, team-agents, vault", () => {
     expect(labOnly).toContain("contacts");
     expect(labOnly).toContain("create-shortcut");
     expect(labOnly).toContain("dream");
     expect(labOnly).toContain("feel");
     expect(labOnly).toContain("inbox");
     expect(labOnly).toContain("schedule");
+    expect(labOnly).toContain("team-agents");
     expect(labOnly).toContain("vault");
   });
 });

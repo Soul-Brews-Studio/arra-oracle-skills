@@ -1,6 +1,6 @@
 ---
 name: go
-description: 'Switch skill profiles or fresh install. Profiles: standard (14), full (21), lab (28). Use when user says "go", "go standard", "go full", "go lab", "go cleanup", "switch profile", "enable skills", "disable skills", "fresh install".'
+description: 'Switch skill profiles or fresh install. Profiles: standard (14), full (21), lab (29). Use when user says "go", "go standard", "go full", "go lab", "go cleanup", "switch profile", "enable skills", "disable skills", "fresh install".'
 argument-hint: "<standard|full|lab|cleanup> | enable|disable <skill...>"
 ---
 
@@ -74,10 +74,10 @@ for dir in "$SKILLS_DIR"/*/; do
 done
 ```
 
-**Step 2: Show full table** — display ALL 28 arra skills with status:
+**Step 2: Show full table** — display ALL 29 arra skills with status:
 
 ```
-📋 Skills Overview (28 arra + N external):
+📋 Skills Overview (29 arra + N external):
 
   #  Skill                    Profile    Installed  Version   Status
   ── ──────────────────────── ────────── ────────── ───────── ──────
@@ -104,11 +104,12 @@ done
   21 schedule                 lab        ✗          —         —
   22 standup                  standard   ✓          v3.7.0    ✓ ok
   23 talk-to                  standard   ✓          v3.7.0    ✓ ok
-  24 trace                    standard   ✓          v3.7.0    ✓ ok
-  25 vault                    lab        ✗          —         —
-  26 where-we-are             full       ✗          —         —
-  27 who-are-you              full       ✓          v1.0.22   ⚠️ conflict
-  28 xray                     standard   ✓          v3.7.0    ✓ ok
+  24 team-agents              lab        ✗          —         —
+  25 trace                    standard   ✓          v3.7.0    ✓ ok
+  26 vault                    lab        ✗          —         —
+  27 where-we-are             full       ✗          —         —
+  28 who-are-you              full       ✓          v1.0.22   ⚠️ conflict
+  29 xray                     standard   ✓          v3.7.0    ✓ ok
 
   External (will keep):
   ○ drink, mawjs, mawjs-local, ultrathink
@@ -234,7 +235,7 @@ arra-oracle-skills uninstall -g -s <skill...> -y
 |---------|-------|-------------|
 | **standard** | 14 | Daily driver — essential Oracle skills (default) |
 | **full** | 21 | All stable skills (excludes lab-only) |
-| **lab** | 28 | Everything including experimental |
+| **lab** | 29 | Everything including experimental |
 
 ---
 
