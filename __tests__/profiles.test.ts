@@ -3,10 +3,10 @@ import { profiles, labOnly, resolveProfile } from "../src/profiles";
 
 const ALL_SKILLS = [
   "about-oracle", "auto-retrospective", "awaken", "contacts", "create-shortcut",
-  "dig", "dream", "feel", "forward", "go", "inbox", "learn", "oracle-family-scan",
-  "oracle-soul-sync-update", "philosophy", "project", "recap", "resonance",
-  "rrr", "schedule", "standup", "talk-to", "trace", "vault", "where-we-are",
-  "who-are-you", "xray",
+  "dig", "dream", "feel", "forward", "go", "inbox", "incubate", "learn",
+  "oracle-family-scan", "oracle-soul-sync-update", "philosophy", "project", "recap",
+  "resonance", "rrr", "schedule", "standup", "talk-to", "trace", "vault",
+  "where-we-are", "who-are-you", "xray",
 ];
 
 describe("profiles", () => {

@@ -1,6 +1,6 @@
 ---
 name: project
-description: Clone and track external repos. Use when user shares GitHub URL to study or develop, or says "search repos", "find repo", "where is [project]". Actions - learn (clone for study), incubate (clone for development), search/find (search repos), list (show tracked).
+description: Clone and track external repos. Use when user shares GitHub URL to study or develop, or says "search repos", "find repo", "where is [project]". Actions - learn (clone for study), search/find (search repos), list (show tracked). For active development, use /incubate.
 argument-hint: "<github-url> | search <query>"
 ---
 
@@ -39,6 +39,8 @@ ln -sf "$GHQ_ROOT/github.com/owner/repo" ψ/learn/owner/repo
 ```
 
 **Output**: "✓ Linked [repo] to ψ/learn/owner/repo"
+
+> **Note**: For full development workflows (--flash, --contribute, --offload), use the standalone `/incubate` skill. This section is kept as plumbing reference.
 
 ### incubate [url|slug] [--offload|--contribute|--flash]
 
