@@ -1,5 +1,22 @@
 # Changelog
 
+## v3.8.0 (2026-04-11)
+
+### Stabilized — alpha.1 + alpha.2 + alpha.3 promoted to stable
+
+Nothing new in this release — it's the stable cut of the v3.8.0 alpha series:
+
+- `/bampenpien` — guided practice skill (from alpha.1)
+- `/i-believe` — declaration of belief skill (from v3.7.5)
+- `create-shortcut` promoted to standard profile (from alpha.1)
+- `/go` hardened with official `disable-model-invocation: true` frontmatter (from alpha.3)
+
+31 skills | standard=15 | full=22 | lab=31 | 124 tests
+
+See alpha entries below for full details.
+
+---
+
 ## v3.8.0-alpha.3 (2026-04-11)
 
 ### `/go` uses official `disable-model-invocation` flag
