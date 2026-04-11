@@ -1,5 +1,16 @@
 # Changelog
 
+## v3.8.0-alpha.2 (2026-04-11)
+
+### `/go` anti-trigger fix — no more accidental profile switches
+
+- `/go` description hardened: EXPLICIT slash command only, never auto-invoke
+- Added anti-triggers for common phrases: "let's go", "go ahead", "ready to go", "go for it", "here we go", "gotta go"
+- Added "Go programming language" anti-trigger
+- **Why**: `/go cleanup` / `/go <profile>` reinstalls skills — destructive. The word "go" is too common to allow auto-triggering. User caught this dream-pattern.
+
+---
+
 ## v3.8.0-alpha.1 (2026-04-10)
 
 ### `/bampenpien` + `create-shortcut` promoted to standard

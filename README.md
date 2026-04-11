@@ -6,25 +6,25 @@
 
 ```bash
 # Claude Code — standard profile (default)
-npx arra-oracle-skills@3.8.0-alpha.1 install -g -y --agent claude-code
+npx arra-oracle-skills@3.8.0-alpha.2 install -g -y --agent claude-code
 
 # Full profile (all skills)
-npx arra-oracle-skills@3.8.0-alpha.1 install -g -y -p full --agent claude-code
+npx arra-oracle-skills@3.8.0-alpha.2 install -g -y -p full --agent claude-code
 
 # Lab profile (full + experimental)
-npx arra-oracle-skills@3.8.0-alpha.1 install -g -y -p lab --agent claude-code
+npx arra-oracle-skills@3.8.0-alpha.2 install -g -y -p lab --agent claude-code
 
 # Specific skills only
-npx arra-oracle-skills@3.8.0-alpha.1 install -g -y -s recap rrr trace --agent claude-code
+npx arra-oracle-skills@3.8.0-alpha.2 install -g -y -s recap rrr trace --agent claude-code
 
 # Other agents (skills + commands)
-npx arra-oracle-skills@3.8.0-alpha.1 install -g -y --agent codex --with-commands
-npx arra-oracle-skills@3.8.0-alpha.1 install -g -y --agent opencode --with-commands
-npx arra-oracle-skills@3.8.0-alpha.1 install -g -y --agent cursor
-npx arra-oracle-skills@3.8.0-alpha.1 install -g -y --agent gemini-cli --with-commands
+npx arra-oracle-skills@3.8.0-alpha.2 install -g -y --agent codex --with-commands
+npx arra-oracle-skills@3.8.0-alpha.2 install -g -y --agent opencode --with-commands
+npx arra-oracle-skills@3.8.0-alpha.2 install -g -y --agent cursor
+npx arra-oracle-skills@3.8.0-alpha.2 install -g -y --agent gemini-cli --with-commands
 
 # Multiple agents
-npx arra-oracle-skills@3.8.0-alpha.1 install -g -y --agent claude-code codex opencode
+npx arra-oracle-skills@3.8.0-alpha.2 install -g -y --agent claude-code codex opencode
 ```
 
 18 agents: Claude Code, Codex, OpenCode, Cursor, Gemini CLI, Amp, Kilo Code, Roo Code, Goose, Antigravity, GitHub Copilot, OpenClaw, Droid, Windsurf, Cline, Aider, Continue, Zed
@@ -53,7 +53,7 @@ npx arra-oracle-skills@3.8.0-alpha.1 install -g -y --agent claude-code codex ope
 | 14 | **dream** | skill | "Cross-repo pattern discovery |
 | 15 | **feel** | skill | "Capture how the system feels |
 | 16 | **forward** | skill | Create handoff + enter plan mode for next |
-| 17 | **go** | skill | 'Switch skill profiles or fresh install |
+| 17 | **go** | skill | 'Switch skill profiles (standard/full/lab) |
 | 18 | **i-believe** | skill | "Declare belief |
 | 19 | **inbox** | skill | Read and write to Oracle inbox |
 | 20 | **incubate** | skill | Clone or create repos for active development |
